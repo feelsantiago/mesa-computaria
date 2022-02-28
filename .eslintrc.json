@@ -1,0 +1,14 @@
+{
+    "root": true,
+    "extends": [
+        "eslint:recommended",
+        "airbnb-base",
+        "prettier",
+        "plugin:unicorn/recommended",
+        "plugin:import/recommended",
+        "plugin:promise/recommended"
+    ],
+    "rules": {
+        "semi": 2
+    }
+}
