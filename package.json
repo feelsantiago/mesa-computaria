@@ -1,0 +1,21 @@
+{
+  "name": "mesa-computaria",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.49.9",
+    "vite": "^2.8.0",
+    "vite-plugin-html-template": "^1.1.2",
+    "vite-plugin-mpa": "^1.1.1",
+    "vite-plugin-raw": "^1.0.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "jquery": "^3.6.0"
+  }
+}
