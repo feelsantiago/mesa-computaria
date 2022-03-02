@@ -11,7 +11,9 @@ describe('[LayoutProviderService]', () => {
             const page = 'Test Mock Page';
             vi.spyOn($.fn, 'html');
 
-            LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve(`<h1>${page}</h1>`));
+            LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve({
+                default: `<h1>${page}</h1>`,
+            }));
 
             document.body.innerHTML = '<div id="app"></div>';
             await LayoutProviderService.inject('test');

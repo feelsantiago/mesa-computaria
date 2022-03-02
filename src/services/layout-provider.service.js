@@ -6,15 +6,19 @@ export default class LayoutProvider {
     async inject(page) {
        const content =  await this.loadContent(page);
 
-        if (StringUtils.isEmptyOrBlank(content)) {
+        if (StringUtils.isEmptyOrBlank(content.default)) {
             throw new Error(`Unable to load page ${page} - Content Not Found`);
         }
 
-        $('#app').html(content);
+        $('#app').html(content.default);
     }
 
     async loadContent(page) {
-        return import(`/src/pages/${page}/index.html?raw`);
+        try {
+            return import(`/src/pages/${page}/index.html?raw`);
+        } catch {
+            return {};
+        }
     }
 }
 
