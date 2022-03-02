@@ -8,11 +8,11 @@ describe('[LayoutProviderService]', () => {
 
         it('Should load content on DOM', async () => {
 
-            const page = 'Test Mock Page';
+            const content = 'Test Mock Page';
             vi.spyOn($.fn, 'html');
 
             LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve({
-                default: `<h1>${page}</h1>`,
+                default: `<h1>${content}</h1>`,
             }));
 
             document.body.innerHTML = '<div id="app"></div>';
