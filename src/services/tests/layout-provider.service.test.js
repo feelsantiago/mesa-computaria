@@ -25,7 +25,7 @@ describe('[LayoutProviderService]', () => {
 
         it('Should throw error if page not exist', async () => {
             // eslint-disable-next-line unicorn/no-useless-undefined
-            LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve(undefined));
+            LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve({}));
 
             try {
                await LayoutProviderService.inject('test');
