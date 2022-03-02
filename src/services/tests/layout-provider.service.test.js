@@ -27,7 +27,6 @@ describe('[LayoutProviderService]', () => {
             // eslint-disable-next-line unicorn/no-useless-undefined
             LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve(undefined));
 
-
             try {
                await LayoutProviderService.inject('test');
             } catch (error) {
