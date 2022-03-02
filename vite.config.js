@@ -29,6 +29,7 @@ export default defineConfig({
     test: {
         globals: true,
         reporters: 'verbose',
-        watch: false
+        watch: false,
+        environment: "happy-dom"
     }
 });
