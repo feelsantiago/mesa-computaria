@@ -28,8 +28,13 @@ export default defineConfig({
     },
     test: {
         globals: true,
-        reporters: 'verbose',
+        reporters: ['verbose'],
         watch: false,
-        environment: "happy-dom"
+        environment: "happy-dom",
+        coverage: {
+            all: true,
+            reporter: ['clover', 'cobertura', 'lcov', 'text'],
+            include: ['src'],
+        }
     }
 });
