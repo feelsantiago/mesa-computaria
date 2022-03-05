@@ -11,27 +11,20 @@ describe('[LayoutProviderService]', () => {
             const content = 'Test Mock Page';
             vi.spyOn($.fn, 'html');
 
-            LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve({
-                default: `<h1>${content}</h1>`,
-            }));
-
             document.body.innerHTML = '<div id="app"></div>';
-            await LayoutProviderService.inject('test');
+            await LayoutProviderService.inject(`<h1>${content}</h1>`);
 
-            expect(LayoutProviderService.loadContent).toBeCalledTimes(1);
             expect($.fn.html).toBeCalledTimes(1);
             expect($('#app h1').html()).toBe('Test Mock Page');
         });
 
-        it('Should throw error if page not exist', async () => {
-            // eslint-disable-next-line unicorn/no-useless-undefined
-            LayoutProviderService.loadContent = vi.fn().mockImplementation(() => Promise.resolve({}));
+        it('Should throw error if page is not a string', async () => {
 
             try {
-               await LayoutProviderService.inject('test');
+               await LayoutProviderService.inject(0);
             } catch (error) {
                 expect(error).toBeInstanceOf(Error);
-                expect(error.message).toBe('Unable to load page test - Content Not Found');
+                expect(error.message).toBeDefined();
             }
         });
     });
