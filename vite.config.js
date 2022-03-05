@@ -28,8 +28,9 @@ export default defineConfig({
     },
     test: {
         globals: true,
-        reporters: 'verbose',
+        reporters: ['verbose', 'junit'],
+        outputFile: 'coverage/report.xml',
         watch: false,
-        environment: "happy-dom"
+        environment: "happy-dom",
     }
 });
