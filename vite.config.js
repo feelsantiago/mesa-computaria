@@ -28,9 +28,13 @@ export default defineConfig({
     },
     test: {
         globals: true,
-        reporters: ['verbose', 'junit'],
-        outputFile: 'coverage/report.xml',
+        reporters: ['verbose'],
         watch: false,
         environment: "happy-dom",
+        coverage: {
+            all: true,
+            reporter: ['clover', 'cobertura', 'lcov', 'text'],
+            include: ['src'],
+        }
     }
 });
