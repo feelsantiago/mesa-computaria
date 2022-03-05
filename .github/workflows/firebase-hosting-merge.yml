@@ -11,10 +11,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: npm run build
-            - uses: FirebaseExtended/action-hosting-deploy@v0
-              with:
-                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
-                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MESA_COMPUTARIA }}'
-                  channelId: live
-                  projectId: mesa-computaria
+            - name: Install Dependencies
+              - run: npm i
+            - name: Build & Deploy
+              - run: npm run build
+              - uses: FirebaseExtended/action-hosting-deploy@v0
+                with:
+                    repoToken: '${{ secrets.GITHUB_TOKEN }}'
+                    firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MESA_COMPUTARIA }}'
+                    channelId: live
+                    projectId: mesa-computaria

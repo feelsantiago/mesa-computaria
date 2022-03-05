@@ -9,6 +9,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: npm run lint
-            - run: npm run test:coverage
-            - run: npm run build
+            - name: Install Dependencies
+              - run: npm i
+            - name: Lint Code
+              - run: npm run lint
+            - name: Test Coverage
+              - run: npm run test:coverage
+            -name: Build
+              - run: npm run build
