@@ -12,9 +12,9 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Install Dependencies
-              - run: npm i
+              run: npm i
             - name: Build & Deploy
-              - run: npm run build
+              run: npm run build
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
                   repoToken: '${{ secrets.GITHUB_TOKEN }}'
