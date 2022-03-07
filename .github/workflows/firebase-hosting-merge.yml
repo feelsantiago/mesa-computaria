@@ -16,6 +16,12 @@ jobs:
               run: npm i
             - name: Build
               run: npm run build
+            - name: Test Coverage
+              run: npm run test:coverage
+            - uses: codecov/codecov-action@v2
+              with:
+                  name: codecov-mesa-computaria
+                  fail_ci_if_error: true
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
                   repoToken: '${{ secrets.GITHUB_TOKEN }}'
