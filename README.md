@@ -9,12 +9,12 @@
 </p>
 
 <p align="center"><a href="https://mesa-computaria.firebaseapp.com/home/" target="_blank">Mesa Computaria Web Site</a></p>
-  
+
 <p align="center">
-  <a href="https://github.com/feelsantiago/mesa-computaria/actions/workflows/firebase-hosting-merge.yml" target="_blank">
-    <img src="https://github.com/feelsantiago/mesa-computaria/actions/workflows/firebase-hosting-merge.yml/badge.svg"></img>
+  <a href="https://github.com/feelsantiago/mesa-computaria/actions/workflows/ci.yml" target="_blank">
+    <img src="https://github.com/feelsantiago/mesa-computaria/actions/workflows/ci.yml/badge.svg"></img>
   </a>
-  <a href="https://codecov.io/gh/feelsantiago/mesa-computaria">
+  <a href="https://codecov.io/gh/feelsantiago/mesa-computaria" target="_blank">
     <img src="https://codecov.io/gh/feelsantiago/mesa-computaria/branch/develop/graph/badge.svg?token=VDRZDKT1T3"/>
   </a>
 </p>
