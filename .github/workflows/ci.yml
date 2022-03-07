@@ -73,7 +73,7 @@ jobs:
                   fail_ci_if_error: true
 
     Deploy:
-        if: '${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' }}'
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' 
         needs: Integration
         runs-on: ubuntu-latest
         steps:
