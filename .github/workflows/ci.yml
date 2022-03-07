@@ -44,7 +44,7 @@ jobs:
               run: pnpm test:coverage
 
             - name: Log
-              run: ls -a
+              run: cd src && ls -a
 
             - name: Build
               run: pnpm build
