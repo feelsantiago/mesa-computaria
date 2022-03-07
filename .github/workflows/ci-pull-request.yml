@@ -2,22 +2,63 @@
 # https://github.com/firebase/firebase-tools
 
 name: PR CI
-'on': pull_request
+
+on:
+  pull_request:
+    branches:
+      - "*"
+
 jobs:
+
     Integration:
-        if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - name: Install Dependencies
-              run: npm i
-            - name: Lint Code
-              run: npm run lint
-            - name: Test Coverage
-              run: npm run test:coverage
-            - name: Build
-              run: npm run build
-            - uses: codecov/codecov-action@v2
+
+            - uses: actions/setup-node@v2
               with:
-                  name: codecov-mesa-computaria
-                  fail_ci_if_error: true
+                node-version: "14"
+
+            # pnpm cache
+            - uses: actions/cache@v2
+              with:
+                path: ~/.pnpm-store
+                key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+                restore-keys: |
+                  ${{ runner.os }}-
+
+            # Install
+            - name: Install Dependencies
+              uses: pnpm/action-setup@v2.0.1
+              with:
+                version: 6.22.2
+                run_install: true
+
+            - name: Lint Code
+              run: pnpm lint
+
+            - name: Test
+              run: pnpm test:coverage
+
+            - name: Build
+              run: pnpm build
+
+            # Upload coverage artifacts
+            - uses: actions/upload-artifact@v2
+              with:
+                name: coverage
+                path: coverage/lcov.info
+
+    Coverage:
+        needs: Integration
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - uses: actions/download-artifact@v2
+              with:
+                name: coverage
+          - uses: codecov/codecov-action@v2
+              with:
+                name: codecov-mesa-computaria
+                fail_ci_if_error: true
+                files: lcov.info
