@@ -14,7 +14,11 @@ export default defineConfig({
                 home: {
                     template: './src/layouts/home.layout.html',
                     title: 'HomePage',
-                },
+                }, 
+                components: {
+                    template: './src/layouts/home.layout.html',
+                    title: 'ComponentsPage',
+                }
             },
             data: {
                 title: 'HomePage',
