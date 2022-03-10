@@ -12,5 +12,5 @@ LayoutProviderService.inject(page)
     .then(() => {
         // Javascript Code initialization
         sum(1, 2);
-        PasswordInputService.initFor('#pw-input');
+        PasswordInputService.initFor('#eye-icon');
 });
