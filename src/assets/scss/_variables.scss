@@ -1,3 +1,25 @@
+// GoogleFonts variables import
+@font-face {
+    font-family: 'Noto Sans', sans-serif;
+    src: url('../fonts/noto-sans/NotoSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Biryani', sans-serif;
+    src: url('../fonts/biyrani/Biryani-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'IM Fell English', serif;
+    src: url('../fonts/im-fell-english/IMFellEnglish-Regular.ttf');
+}
+
+// Fonts variables
+$title-text: 'Noto Sans', sans-serif;
+$general-text: 'Biryani', sans-serif;
+$other-text: 'IM Fell English', serif;
+
+// Colors variables
 $primary-dark: #40407a;
 $primary-light: #474787;
 $accent-dark: #cd6133;
