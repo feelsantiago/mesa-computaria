@@ -3,8 +3,25 @@
 
 // Font Awesome
 
+
 // Layouts
 @import './home-layout.scss';
+
+// GoogleFonts variables import
+@font-face {
+    font-family: 'Noto Sans', sans-serif;
+    src: url('../fonts/noto-sans/NotoSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Biryani', sans-serif;
+    src: url('../fonts/biyrani/Biryani-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'IM Fell English', serif;
+    src: url('../fonts/im-fell-english/IMFellEnglish-Regular.ttf');
+}
 
 * {
     box-sizing: border-box;
