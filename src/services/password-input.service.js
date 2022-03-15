@@ -1,15 +1,24 @@
 import $ from 'jquery';
 
 export default class PasswordInput {
-    initFor(queryIcon) {
-        const toggleIcon = $(queryIcon);
-        toggleIcon.on('click', () => {
-            if ($('#pw_input').attr('type') == 'password') {
-                $('#pw_input').attr('type', 'text');
-                $('#eye_icon').attr('class', 'fa-solid fa-eye');
+    initFor(queryInput) {
+        const input = $(`${queryInput} input`);
+        const icon = $(`${queryInput} input~i`);
+
+        console.log(input);
+        console.log(icon);
+
+        icon.on('click', () => {
+            if (input.attr('type') === 'password') {
+
+                input.attr('type', 'text');
+                icon.attr('class', 'fa-solid fa-eye');
+
               } else {
-                  $('#pw_input').attr('type', 'password');
-                  $('#eye_icon').attr('class', 'fa-solid fa-eye-slash');
+
+                input.attr('type', 'password');
+                icon.attr('class', 'fa-solid fa-eye-slash');
+
               }
         });
     }

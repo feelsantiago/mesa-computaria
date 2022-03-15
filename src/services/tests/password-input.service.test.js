@@ -23,7 +23,7 @@ describe('[PasswordInputService]', () => {
             const input = '<input type="password" id="input-id-test">';
             document.body.innerHTML = input;
 
-            PasswordInputService.initFor('#input-id-test');
+            PasswordInputService.initFor('#input-id-test input');
             $('#input-id-test').trigger('click');
 
             const result = $('#input-id-test').attr('type');
