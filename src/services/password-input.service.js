@@ -4,10 +4,7 @@ export default class PasswordInput {
     initFor(queryInput) {
         const input = $(`${queryInput} input`);
         const icon = $(`${queryInput} input~i`);
-
-        console.log(input);
-        console.log(icon);
-
+        
         icon.on('click', () => {
             if (input.attr('type') === 'password') {
 

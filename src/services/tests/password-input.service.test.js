@@ -8,23 +8,26 @@ describe('[PasswordInputService]', () => {
 
         it('Should add a listener to click event', () => {
 
-            const input = '<input id="input-id-test">';
-            document.body.innerHTML = input;
+            const divTest = '<div id="div-id-test">';
+            document.body.innerHTML = divTest;
 
             vi.spyOn($.fn, 'on');
-            PasswordInputService.initFor('#input-id-test');
+            PasswordInputService.initFor('#div-id-test');
 
             expect($.fn.on).toHaveBeenCalledWith('click', expect.anything());
             expect($.fn.on).toHaveBeenCalledTimes(1);
         });
 
         it('Should change password input to text input', () => {
-        
-            const input = '<input type="password" id="input-id-test">';
-            document.body.innerHTML = input;
+            
+            const iconTest = '<i id="icon-id-test"></i>';
+            const inputTest = `<input id="input-id-test" type="password"></input> <br> ${iconTest}`;
+            const divTest = `<div id="div-id-test">${inputTest}</div>`;
+            
+            document.body.innerHTML = divTest;
 
-            PasswordInputService.initFor('#input-id-test input');
-            $('#input-id-test').trigger('click');
+            PasswordInputService.initFor('#div-id-test');
+            $('#div-id-test').trigger('click');
 
             const result = $('#input-id-test').attr('type');
             
