@@ -8,8 +8,8 @@ describe('[PasswordInputService]', () => {
 
         it('Should add a listener to click event', () => {
 
-            const divTest = '<div id="div-id-test">';
-            document.body.innerHTML = divTest;
+            const div = '<div id="div-id-test">';
+            document.body.innerHTML = div;
 
             vi.spyOn($.fn, 'on');
             PasswordInputService.initFor('#div-id-test');
@@ -18,32 +18,41 @@ describe('[PasswordInputService]', () => {
             expect($.fn.on).toHaveBeenCalledTimes(1);
         });
 
-        it('Should change password input to text input', () => {
+        it.only('Should change password input to text input', () => {
             
-            const iconTest = '<i id="icon-id-test"></i>';
-            const inputTest = `<input id="input-id-test" type="password"></input> <br> ${iconTest}`;
-            const divTest = `<div id="div-id-test">${inputTest}</div>`;
-            
-            document.body.innerHTML = divTest;
+            const div = `
+                    <div id="pass">
+                        <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                 `;
 
-            PasswordInputService.initFor('#div-id-test');
-            $('#div-id-test').trigger('click');
+            $(document.body).html(div);
 
-            const result = $('#input-id-test').attr('type');
+            PasswordInputService.initFor('#pass');
+            $('#icon').trigger('click');
+
+            const result = $('#input-password').attr('type');
             
             expect(result).toBe('text');
         });
 
         it('Should change text input to password input', () => {
         
-            const input = '<input type="text" id="input-id-test">';
-            document.body.innerHTML = input;
+            const div = `
+                    <div id="pass">
+                        <input id="input-password" type="text" class="form-control password-input-enter" placeholder="Senha" required="required">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                 `;
 
-            PasswordInputService.initFor('#input-id-test');
-            $('#input-id-test').trigger('click');
+            $(document.body).html(div);
 
-            const result = $('#input-id-test').attr('type');
+            PasswordInputService.initFor('#pass');
+            $('#icon').trigger('click');
 
+            const result = $('#input-password').attr('type');
+            
             expect(result).toBe('password');
         });
     });
