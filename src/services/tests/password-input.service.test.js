@@ -77,7 +77,7 @@ describe('[PasswordInputService]', () => {
 
             PasswordInputService.initFor('#pass');
             $('#icon').trigger('click');
-                     
+            
         });
     });
 });

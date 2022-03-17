@@ -6,13 +6,13 @@ export default class PasswordInput {
 
     const input = $(`${queryInput} input`);
     const icon = $(`${queryInput} input+i`);
-    const errorMessage = `Can't query input or icon const`;
+    const errorMessage = `Can't query input and/or icon const`;
     
     icon.on('click', () => {
 
       if (input.length === 0 || icon.length === 0) {
 
-        throw new TypeError(errorMessage);
+        throw new Error(errorMessage);
         
       }
 
@@ -32,7 +32,6 @@ export default class PasswordInput {
 
       }
     });
-    
   }
 }
 
