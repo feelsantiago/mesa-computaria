@@ -43,11 +43,11 @@ describe('[PasswordInputService]', () => {
         it('Should change text input to password input', () => {
         
             const div = `
-                    <div id="pass">
-                        <input id="input-password" type="text" class="form-control password-input-enter" placeholder="Senha" required="required">
-                        <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
-                 `;
+                <div id="pass">
+                    <input id="input-password" type="text" class="form-control password-input-enter" placeholder="Senha" required="required">
+                    <i id="icon" class="fa-solid fa-eye-slash"></i>
+                </div>
+            `;
 
             $(document.body).html(div);
 
@@ -62,5 +62,9 @@ describe('[PasswordInputService]', () => {
             expect(resultIcon).toBe('fa-solid fa-eye-slash');
             // expect do focus
         });
+
+        it('Should check if input and icon query is empty', () => {
+            // Test empty query on initFor
+        })
     });
 });
