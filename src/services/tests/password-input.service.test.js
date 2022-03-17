@@ -18,7 +18,7 @@ describe('[PasswordInputService]', () => {
             expect($.fn.on).toHaveBeenCalledTimes(1);
         });
 
-        it.only('Should change password input to text input', () => {
+        it('Should change password input to text input', () => {
             
             const div = `
                     <div id="pass">
@@ -32,9 +32,12 @@ describe('[PasswordInputService]', () => {
             PasswordInputService.initFor('#pass');
             $('#icon').trigger('click');
 
-            const result = $('#input-password').attr('type');
+            const resultType = $('#input-password').attr('type');
+            const resultIcon = $('#icon').attr('class');
             
-            expect(result).toBe('text');
+            expect(resultType).toBe('text');
+            expect(resultIcon).toBe('fa-solid fa-eye');
+            // expect do focus
         });
 
         it('Should change text input to password input', () => {
@@ -51,9 +54,13 @@ describe('[PasswordInputService]', () => {
             PasswordInputService.initFor('#pass');
             $('#icon').trigger('click');
 
-            const result = $('#input-password').attr('type');
+            const resultType = $('#input-password').attr('type');
+            const resultIcon = $('#icon').attr('class');
             
-            expect(result).toBe('password');
+            
+            expect(resultType).toBe('password');
+            expect(resultIcon).toBe('fa-solid fa-eye-slash');
+            // expect do focus
         });
     });
 });
