@@ -6,12 +6,12 @@ export default class PasswordInput {
 
     const input = $(`${queryInput} input`);
     const icon = $(`${queryInput} input+i`);
-    const errorMessage = `Can't find input and icon const`;
+    const errorMessage = `Can't query input and icon const`;
     
     // Test if input and icon query is empty 
-    if (input && input.length === 0 || icon && icon.length === 0) {
+    if (input.length === 0 || icon.length === 0) {
 
-      console.log(errorMessage);
+      throw new TypeError(errorMessage);
       
     } else {
       icon.on('click', () => {

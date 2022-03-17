@@ -65,6 +65,6 @@ describe('[PasswordInputService]', () => {
 
         it('Should check if input and icon query is empty', () => {
             // Test empty query on initFor
-        })
+        });
     });
 });
