@@ -8,11 +8,17 @@ describe('[PasswordInputService]', () => {
 
         it('Should add a listener to click event', () => {
 
-            const div = '<div id="div-id-test">';
-            document.body.innerHTML = div;
+            const div = `
+                <div id="pass">
+                    <input id="input-password" type="text" class="form-control password-input-enter" placeholder="Senha" required="required">
+                    <i id="icon" class="fa-solid fa-eye-slash"></i>
+                </div>
+            `;
+
+            $(document.body).html(div);
 
             vi.spyOn($.fn, 'on');
-            PasswordInputService.initFor('#div-id-test');
+            PasswordInputService.initFor('#pass');
 
             expect($.fn.on).toHaveBeenCalledWith('click', expect.anything());
             expect($.fn.on).toHaveBeenCalledTimes(1);
@@ -76,8 +82,6 @@ describe('[PasswordInputService]', () => {
             $(document.body).html(div);
 
             PasswordInputService.initFor('#pass');
-            $('#icon').trigger('click');
-            
         });
     });
 });

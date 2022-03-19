@@ -1,40 +1,24 @@
-import $, { error } from 'jquery';
-
+import $ from 'jquery';
 
 export default class PasswordInput {
 
-  hasQueryOrNot(queryInput) {
+  initFor(queryInput) {
 
     const div = $(queryInput);
     const input = $(`${queryInput} input`);
     const icon = $(`${queryInput} input+i`);
 
-    if (div.is('type: password')) {
+    if (div.length === 0) {
 
-      return true;
-
-    }
-
-    if (input.length === 0) {
-
-      throw new Error('Failed to query input');
+      throw new Error('Failed to query Div');
       
     }
 
-    if (icon.length === 0) {
+    if (input.length === 0 || icon.length === 0) {
 
-      throw new Error('Failed to query icon');
+      throw new Error('Failed to query input and/or icon');
       
     }
-
-     return true;
-  }
-
-  initFor(queryInput) {
-
-    const input = $(`${queryInput} input`);
-    const icon = $(`${queryInput} input+i`);
-    
     
     icon.on('click', () => {
 
@@ -53,8 +37,9 @@ export default class PasswordInput {
         input.trigger('focus');
 
       }
-    });
-  }
+    });   
+  }    
 }
+
 
 export const PasswordInputService = new PasswordInput();
