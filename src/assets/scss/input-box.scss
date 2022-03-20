@@ -1,4 +1,4 @@
-.text-input-box{
+.text-input-box {
     width: 600px;
     margin: 20px;
     margin-bottom: 20px;
@@ -6,30 +6,33 @@
     color: $other-light;
 }
 
-.text-input-box h3, p{
+.text-input-box h3,
+p {
     margin-left: 10px;
     margin-top: 10px;
 }
 
-.input-box{
+.input-box {
     appearance: none;
     border-radius: 25px;
     border: 2px solid $accent-light;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.185);
     padding: 20px;
-    width: 80%; 
+    width: 80%;
     margin: 5px;
     height: 15px;
-    transition: .3s box-shadow;
+    transition: 0.3s box-shadow;
     background-color: $primary-light;
     color: $other-light;
     outline: none;
     margin-bottom: 20px;
 }
-.input-box::placeholder{
+
+.input-box::placeholder {
     color: $other-dark;
 }
-.input-box:focus{
+
+.input-box:focus {
     background-color: $primary-light;
     border: 2px solid $accent-light;
 }
