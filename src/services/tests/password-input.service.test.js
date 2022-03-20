@@ -70,18 +70,50 @@ describe('[PasswordInputService]', () => {
             expect(resultInput.is(':focus')).toBe(true);
         });
 
-        it('Should check if input and icon query', () => {
+        it('Should check if div has query', () => {
         
             const div = `
                 <div id="pass">
-                    <input id="input-password" type="text" class="form-control password-input-enter" placeholder="Senha" required="required">
+                    <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
                     <i id="icon" class="fa-solid fa-eye-slash"></i>
                 </div>
             `;
 
             $(document.body).html(div);
 
-            PasswordInputService.initFor('#pass');
+            expect(() => {
+                PasswordInputService.initFor('#paz');
+            }).toThrow('Failed to query div');
+        });
+
+        it('Should check if input has query', () => {
+        
+            const div = `
+                <div id="pass">
+                    <i id="icon" class="fa-solid fa-eye-slash"></i>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            expect(() => {
+                PasswordInputService.initFor('#pass');
+            }).toThrow('Failed to query input');
+        });
+
+        it('Should check if icon has query', () => {
+        
+            const div = `
+                <div id="pass">
+                    <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            expect(() => {
+                PasswordInputService.initFor('#pass');
+            }).toThrow('Failed to query icon');
         });
     });
 });
