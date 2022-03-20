@@ -1,13 +1,10 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from 'vitest';
 import $ from 'jquery';
 import { LayoutProviderService } from '../layout-provider.service';
 
 describe('[LayoutProviderService]', () => {
-
     describe('[inject]', () => {
-
         it('Should load content on DOM', async () => {
-
             const content = 'Test Mock Page';
             vi.spyOn($.fn, 'html');
 
@@ -19,9 +16,8 @@ describe('[LayoutProviderService]', () => {
         });
 
         it('Should throw error if page is not a string', async () => {
-
             try {
-               await LayoutProviderService.inject(0);
+                await LayoutProviderService.inject(0);
             } catch (error) {
                 expect(error).toBeInstanceOf(Error);
                 expect(error.message).toBeDefined();

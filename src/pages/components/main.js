@@ -11,4 +11,3 @@ LayoutProviderService.inject(page).then(() => {
     // Javascript Code initialization
     sum(1, 2);
 });
-

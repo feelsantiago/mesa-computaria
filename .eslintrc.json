@@ -8,6 +8,7 @@
     "env": {
         "browser": true
     },
+    "plugins": ["prettier"],
     "extends": [
         "eslint:recommended",
         "airbnb-base",
@@ -17,6 +18,7 @@
         "plugin:promise/recommended"
     ],
     "rules": {
+        "prettier/prettier": "error",
         "semi": 2,
         "class-methods-use-this": "off",
         "import/no-extraneous-dependencies": "off",
