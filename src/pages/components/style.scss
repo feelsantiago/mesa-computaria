@@ -9,3 +9,16 @@
     align-items: center;
     justify-content: center;
 }
+
+// Password Box 
+.password-box-enter {
+    font-family: $general-text;
+    color: $other-light;
+    background-color: $primary-dark;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    padding: 10px;
+    //Space to put away from other components (optional)
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
