@@ -1,4 +1,4 @@
-import { describe, expect, it, spyOn, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import $ from 'jquery';
 import { PasswordInputService } from '../password-input.service';
 
@@ -46,7 +46,7 @@ describe('[PasswordInputService]', () => {
         it('Should change text input to password input', () => {
             const div = `
                 <div id="pass">
-                    <input id="input-password" type="text" class="form-control password-input-enter" placeholder="Senha" required="required">
+                    <input id="input-password" type="password" class="form-control password-input" placeholder="Senha" required="required">
                     <i id="icon" class="fa-solid fa-eye-slash"></i>
                 </div>
             `;
@@ -54,6 +54,7 @@ describe('[PasswordInputService]', () => {
             $(document.body).html(div);
 
             PasswordInputService.initFor('#pass');
+            $('#icon').trigger('click');
             $('#icon').trigger('click');
 
             const resultType = $('#input-password').attr('type');
@@ -68,7 +69,7 @@ describe('[PasswordInputService]', () => {
         it('Should check if div has query', () => {
             const div = `
                 <div id="pass">
-                    <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
+                    <input id="input-password" type="password" class="form-control password-input" placeholder="Senha" required="required">
                     <i id="icon" class="fa-solid fa-eye-slash"></i>
                 </div>
             `;

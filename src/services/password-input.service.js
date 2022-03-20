@@ -10,7 +10,7 @@ export default class PasswordInput {
         throw new Error('Failed to query input');
       }
 
-      if (input.attr('type') !== 'password' && !input.hasClass('password-input')) {
+      if (input.attr('type') !== 'password') {
         throw new Error('Input query is not password type');
       }
    
