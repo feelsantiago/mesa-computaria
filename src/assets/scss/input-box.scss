@@ -1,5 +1,6 @@
 .text-input-box {
-    width: 600px;
+    width: auto;
+    min-width: 200px;
     margin: 20px;
     margin-bottom: 20px;
     background-color: $primary-light;
