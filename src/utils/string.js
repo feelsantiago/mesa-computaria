@@ -1,5 +1,5 @@
 const StringUtils = {
-     isEmptyOrBlank(value) {
+    isEmptyOrBlank(value) {
         if (value === null || value === undefined) {
             return true;
         }
@@ -13,7 +13,7 @@ const StringUtils = {
         }
 
         return false;
-    }
+    },
 };
 
 export default StringUtils;
