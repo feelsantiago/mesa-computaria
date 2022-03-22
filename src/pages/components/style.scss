@@ -8,8 +8,8 @@
     align-items: center;
     justify-content: center;
 }
-.text-input-box {
-    width: 600px;
+.container-text-input-box  {
+    min-width: 200px;
     margin: 20px;
     margin-bottom: 20px;
     background-color: $primary-light;
