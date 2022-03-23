@@ -68,12 +68,13 @@
     }
 
     &-list {
+        display: none;
         width: 100%;
         min-width: 170px;
         top: 57px;
         position: absolute;
         background: $other-light;
-        z-index: 999;
+        z-index: 998;
     }
 
     &-item {
@@ -81,6 +82,7 @@
         padding: 0 1rem;
         color: $accent-light;
         background: transparent;
+        z-index: 999;
 
         &:hover {
             color: $accent-dark;
