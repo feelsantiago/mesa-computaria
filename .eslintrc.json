@@ -18,6 +18,7 @@
     ],
     "rules": {
         "semi": 2,
+        "no-else-return": ["error", {"allowElseIf": true}],
         "class-methods-use-this": "off",
         "import/no-extraneous-dependencies": "off",
         "import/no-unresolved": [2, { "ignore": ["\\.html[?]raw$"] }],
