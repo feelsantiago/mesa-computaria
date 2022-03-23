@@ -1,0 +1,102 @@
+@import './style.scss';
+
+//Border, font, align and shadow >> all buttons
+.button-text-only-accent,
+.button-text-only-primary,
+.button-icon-and-text-accent,
+.button-icon-and-text-primary,
+.button-round-accent {
+    align-items: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    box-shadow: 0px 2px 3px;
+    font-family: $title-text;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+//Hight and font size >> all square shaped buttons
+.button-text-only-accent,
+.button-text-only-primary,
+.button-icon-and-text-accent,
+.button-icon-and-text-primary {
+    height: 50px;
+    font-size: 16px;
+}
+
+//Round button dimentions and font size
+.button-round-accent {
+    display: flex;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    font-size: 48px;
+    max-width: 55px !important;
+}
+
+//Text only button dimensions
+.button-text-only-accent,
+.button-text-only-primary {
+    display: flex;
+    width: 325px;
+    border-radius: 20px;
+    max-width: 325px !important;
+    min-width: 100px !important;
+}
+
+//Icon and text button dimensions
+.button-icon-and-text-accent,
+.button-icon-and-text-primary {
+    display: inline-flex;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    max-width: 200px !important;
+    min-width: 75px !important;
+}
+
+//Accent buttons color
+.button-text-only-accent,
+.button-icon-and-text-accent,
+.button-round-accent {
+    background: $accent-light;
+}
+
+//Primary buttons color
+.button-text-only-primary,
+.button-icon-and-text-primary {
+    background: $primary-light;
+}
+
+//Hover color for accent buttons
+.button-text-only-accent:hover,
+.button-icon-and-text-accent:hover,
+.button-round-accent:hover {
+    background: $accent-dark;
+}
+
+//Hover color for primary buttons
+.button-text-only-primary:hover,
+.button-icon-and-text-primary:hover {
+    background: $primary-dark;
+}
+
+//Button text align
+.button-text {
+    justify-content: center;
+    width: 100%;
+}
+
+//Button icon size and padding
+.button-icon {
+    padding: 0 20px;
+    font-size: 1.5em;
+}
+
+//Button text and icon color
+.button-text,
+.button-icon {
+    color: #fff;
+}

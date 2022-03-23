@@ -1,5 +1,6 @@
 import { LayoutProviderService } from '../../services/layout-provider.service';
 
+import '../../assets/scss/buttons.scss';
 import './style.scss';
 import page from './index.html?raw';
 
@@ -11,4 +12,3 @@ LayoutProviderService.inject(page).then(() => {
     // Javascript Code initialization
     sum(1, 2);
 });
-
