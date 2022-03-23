@@ -1,7 +1,7 @@
 @import '@/assets/scss/style.scss';
 
 @import '@/assets/scss/input-box.scss';
-
+@import '@/assets/scss/checkbox-component.scss';
 // page scss
 .header {
     display: flex;
@@ -20,4 +20,12 @@
 p {
     margin-left: 10px;
     margin-top: 10px;
+}
+
+.container-checkbox-component{
+    min-width: 200px;
+    margin: 20px;
+    margin-bottom: 20px;
+    background-color: $primary-light;
+    color: $other-light;
 }

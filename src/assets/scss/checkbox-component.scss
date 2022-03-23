@@ -1,0 +1,12 @@
+.form-check-input {
+    background-color: $primary-light;
+    border: 1px solid $other-dark;
+    margin-bottom: 15px;
+}
+.form-check-input:checked {
+    background-color: $accent-light;
+    border-color: $accent-light;
+}
+.container-checkbox-component p{
+    margin-left: 15px;
+}
