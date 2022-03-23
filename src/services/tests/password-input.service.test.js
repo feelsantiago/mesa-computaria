@@ -66,13 +66,13 @@ describe('[PasswordInputService]', () => {
             expect(resultInput.is(':focus')).toBe(true);
         });
 
-        it('Should throw error failed on query div', () => {
+        it('Should throw error if query fail or the div element is not finded.', () => {
             expect(() => {
                 PasswordInputService.initFor('#paz');
             }).toThrow('Failed to query div');
         });
 
-        it('Should throw error failed on query input', () => {
+        it('Should throw error if query fail or the input element is not finded.', () => {
             const div = `
                 <div id="pass">
                     <i id="icon" class="fa-solid fa-eye-slash"></i>
@@ -86,7 +86,7 @@ describe('[PasswordInputService]', () => {
             }).toThrow('Failed to query input');
         });
 
-        it('Should throw error failed on query icon', () => {
+        it('Should throw error if query fail or the icon element is not finded.', () => {
             const div = `
                 <div id="pass">
                     <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
