@@ -11,8 +11,10 @@
 }
 
 .row-dropdown-input {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 370px;
+    .container {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-width: 170px;
+    }
 }

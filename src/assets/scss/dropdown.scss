@@ -31,7 +31,6 @@
     &-btn {
         position: relative;
         width: 100%;
-        min-width: 170px;
         height: 49px;
         padding: 0 1rem;
         color: $other-dark;
@@ -70,11 +69,10 @@
     &-list {
         display: none;
         width: 100%;
-        min-width: 170px;
         top: 57px;
         position: absolute;
         background: $other-light;
-        z-index: 998;
+        z-index: 999;
     }
 
     &-item {
@@ -82,7 +80,6 @@
         padding: 0 1rem;
         color: $accent-light;
         background: transparent;
-        z-index: 999;
 
         &:hover {
             color: $accent-dark;
