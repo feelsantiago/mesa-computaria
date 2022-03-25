@@ -15,8 +15,8 @@ label {
 input {
     position: relative;
     -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     margin: 8px;
     box-sizing: content-box;
     overflow: hidden;
@@ -52,51 +52,51 @@ input:after {
     border-radius: 100vh;
     transform: translate(-50%, -50%) scale(0);
 }
-input[type="checkbox"]:before {
+input[type='checkbox']:before {
     border-radius: 2px;
-  }
-  input[type="checkbox"]:after {
+}
+input[type='checkbox']:after {
     width: 9.3px;
     height: 17px;
     border-radius: 0;
     transform: translate(-50%, -85%) scale(0) rotate(45deg);
     background-color: transparent;
     box-shadow: 3px 3px 0px 0px $other-light;
-  }
-  input[type="checkbox"]:checked:after {
+}
+input[type='checkbox']:checked:after {
     -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
-            animation: toggleOnCheckbox 0.2s ease forwards;
-  }
-  input[type="checkbox"].filled:before {
+    animation: toggleOnCheckbox 0.2s ease forwards;
+}
+input[type='checkbox'].filled:before {
     border-radius: 3px;
     transition: 0.2s border-color ease, 0.2s background-color ease;
-  }
-  input[type="checkbox"].filled:checked:not(:disabled):before {
+}
+input[type='checkbox'].filled:checked:not(:disabled):before {
     background-color: $accent-light;
-  }
-  @-webkit-keyframes toggleOnCheckbox {
+}
+@-webkit-keyframes toggleOnCheckbox {
     0% {
-      opacity: 0;
-      transform: translate(-50%, -85%) scale(0) rotate(45deg);
+        opacity: 0;
+        transform: translate(-50%, -85%) scale(0) rotate(45deg);
     }
     70% {
-      opacity: 1;
-      transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
+        opacity: 1;
+        transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
     }
     100% {
-      transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
+        transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
     }
-  }
-  @keyframes toggleOnCheckbox {
+}
+@keyframes toggleOnCheckbox {
     0% {
-      opacity: 0;
-      transform: translate(-50%, -85%) scale(0) rotate(45deg);
+        opacity: 0;
+        transform: translate(-50%, -85%) scale(0) rotate(45deg);
     }
     70% {
-      opacity: 1;
-      transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
+        opacity: 1;
+        transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
     }
     100% {
-      transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
+        transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
     }
-  }
+}
