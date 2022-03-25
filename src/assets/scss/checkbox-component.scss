@@ -1,12 +1,102 @@
-.form-check-input {
-    background-color: $primary-light;
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    align-items: flex-start;
+    min-width: 400px;
+}
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $other-dark;
+}
+input {
+    position: relative;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    margin: 8px;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+input:before {
+    content: '';
+    display: block;
+    box-sizing: content-box;
+    width: 16px;
+    height: 16px;
     border: 1px solid $other-dark;
-    margin-bottom: 15px;
+    transition: 0.2s border-color ease;
 }
-.form-check-input:checked {
-    background-color: $accent-light;
+input:checked:before {
     border-color: $accent-light;
+    transition: 0.5s border-color ease;
 }
-.container-checkbox-component p{
-    margin-left: 15px;
+input:disabled:before {
+    border-color: $accent-light;
+    background-color: $accent-light;
 }
+input:after {
+    content: '';
+    display: block;
+    position: absolute;
+    box-sizing: content-box;
+    top: 50%;
+    left: 50%;
+    transform-origin: 50% 50%;
+    background-color: $other-light;
+    width: 16px;
+    height: 16px;
+    border-radius: 100vh;
+    transform: translate(-50%, -50%) scale(0);
+}
+input[type="checkbox"]:before {
+    border-radius: 2px;
+  }
+  input[type="checkbox"]:after {
+    width: 9.3px;
+    height: 17px;
+    border-radius: 0;
+    transform: translate(-50%, -85%) scale(0) rotate(45deg);
+    background-color: transparent;
+    box-shadow: 3px 3px 0px 0px $other-light;
+  }
+  input[type="checkbox"]:checked:after {
+    -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
+            animation: toggleOnCheckbox 0.2s ease forwards;
+  }
+  input[type="checkbox"].filled:before {
+    border-radius: 3px;
+    transition: 0.2s border-color ease, 0.2s background-color ease;
+  }
+  input[type="checkbox"].filled:checked:not(:disabled):before {
+    background-color: $accent-light;
+  }
+  @-webkit-keyframes toggleOnCheckbox {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -85%) scale(0) rotate(45deg);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
+    }
+    100% {
+      transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
+    }
+  }
+  @keyframes toggleOnCheckbox {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -85%) scale(0) rotate(45deg);
+    }
+    70% {
+      opacity: 1;
+      transform: translate(-50%, -85%) scale(0.9) rotate(45deg);
+    }
+    100% {
+      transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
+    }
+  }
