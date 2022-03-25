@@ -10,9 +10,9 @@ describe('[DropdownComponent]', () => {
             <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>
-                        <li class="dropdown-item selected">Select one</li>
-                        <li class="dropdown-item">Dugeons&Dragons</li>
-                        <li class="dropdown-item">Vampire 5e</li>
+                        <li class="dropdown-item selected" id="select">Select one</li>
+                        <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
+                        <li class="dropdown-item" id="vampire">Vampire 5e</li>
                     </ul>
                 </div>
             </div>
@@ -29,41 +29,47 @@ describe('[DropdownComponent]', () => {
                     return button;
                 case '.dropdown-list':
                     return list;
-                case '.dropdown-item':
-                    return items;
-                default:
+                case '#test':
                     return place;
+                default:
+                    return items;
             }
         });
+
+        // eslint-disable-next-line no-unused-vars
+        const dropdown = new DropdownComponent('#test');
     });
 
     describe('[addDropdownClickEventListner]', () => {
         it('Should change a dropdown list style display from none to block', async () => {
-            // eslint-disable-next-line no-unused-vars
-            const dropdown = new DropdownComponent('#test');
-
             const resultDisplay = $('.dropdown-list');
-            console.log(resultDisplay.attr('style'));
 
             resultDisplay.toggle();
-            console.log(resultDisplay.attr('style'));
-
-            console.log($('.dropdown-btn'));
-
             $('.dropdown-btn').trigger('click');
-            console.log(resultDisplay.attr('style'));
-
             expect(resultDisplay.attr('style')).toEqual('display: block;');
         });
 
         it('Should change a dropdown list style display from block to none', async () => {
-            // eslint-disable-next-line no-unused-vars
-            const dropdown = new DropdownComponent('#test');
-
             const resultDisplay = $('.dropdown-list');
 
             $('.dropdown-btn').trigger('click');
             expect(resultDisplay.attr('style')).toEqual('display: none;');
+        });
+    });
+
+    describe('[addItemClickEventListner]', () => {
+        it('Should remove seleceted class from previus selected item', async () => {
+            const selectedItem = $('.dropdown-item');
+
+            console.log(selectedItem.attr('class'));
+            console.log($('.dropdown-item').attr('class'));
+
+            $('.dropdown-item').trigger('click');
+
+            console.log(selectedItem.attr('class'));
+            console.log($('.dropdown-item').attr('class'));
+
+            expect(selectedItem.hasClass('selected')).toBeFalsy();
         });
     });
 });
