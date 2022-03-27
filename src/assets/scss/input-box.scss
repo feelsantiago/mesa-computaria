@@ -19,10 +19,6 @@
     color: $other-dark;
 }
 
-.input-box::placeholder {
-    color: $other-dark;
-}
-
 .input-box:focus {
     background-color: $primary-light;
     border: 2px solid $accent-light;
