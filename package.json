@@ -19,6 +19,7 @@
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-prettier": "^8.4.0",
         "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-promise": "^6.0.0",
         "eslint-plugin-unicorn": "^41.0.0",
         "eslint-scope": "^7.1.1",

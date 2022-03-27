@@ -1,10 +1,8 @@
-import { describe, expect, it } from "vitest";
-import StringUtils from "../string";
+import { describe, expect, it } from 'vitest';
+import StringUtils from '../string';
 
 describe('[StringUtils]', () => {
-
     describe('[isEmptyOrBlank]', () => {
-
         it('Should throw exception if value is not a string', () => {
             expect(() => StringUtils.isEmptyOrBlank(0)).throw('The value must be a string');
         });

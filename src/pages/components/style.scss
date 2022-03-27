@@ -1,7 +1,7 @@
 @import '@/assets/scss/style.scss';
 @import '@/assets/scss/input-password.scss';
 
-// Import Components Scss
+@import '@/assets/scss/input-box.scss';
 
 // page scss
 .header {
@@ -21,4 +21,18 @@
     //Space to put away from other components (optional)
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.container-text-input-box  {
+    min-width: 200px;
+    margin: 20px;
+    margin-bottom: 20px;
+    background-color: $primary-light;
+    color: $other-light;
+}
+
+.text-input-box h3,
+p {
+    margin-left: 10px;
+    margin-top: 10px;
 }
