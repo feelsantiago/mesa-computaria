@@ -6,12 +6,14 @@ fieldset {
     align-items: flex-start;
     min-width: 400px;
 }
+
 label {
     display: flex;
     flex-direction: row;
     align-items: center;
     color: $other-dark;
 }
+
 input {
     position: relative;
     -webkit-appearance: none;
@@ -21,6 +23,7 @@ input {
     box-sizing: content-box;
     overflow: hidden;
 }
+
 input:before {
     content: '';
     display: block;
@@ -30,14 +33,17 @@ input:before {
     border: 1px solid $other-dark;
     transition: 0.2s border-color ease;
 }
+
 input:checked:before {
     border-color: $accent-light;
     transition: 0.5s border-color ease;
 }
+
 input:disabled:before {
     border-color: $accent-light;
     background-color: $accent-light;
 }
+
 input:after {
     content: '';
     display: block;
@@ -52,9 +58,11 @@ input:after {
     border-radius: 100vh;
     transform: translate(-50%, -50%) scale(0);
 }
+
 input[type='checkbox']:before {
     border-radius: 2px;
 }
+
 input[type='checkbox']:after {
     width: 9.3px;
     height: 17px;
@@ -63,17 +71,21 @@ input[type='checkbox']:after {
     background-color: transparent;
     box-shadow: 3px 3px 0px 0px $other-light;
 }
+
 input[type='checkbox']:checked:after {
     -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
     animation: toggleOnCheckbox 0.2s ease forwards;
 }
+
 input[type='checkbox'].filled:before {
     border-radius: 3px;
     transition: 0.2s border-color ease, 0.2s background-color ease;
 }
+
 input[type='checkbox'].filled:checked:not(:disabled):before {
     background-color: $accent-light;
 }
+
 @-webkit-keyframes toggleOnCheckbox {
     0% {
         opacity: 0;
@@ -87,6 +99,7 @@ input[type='checkbox'].filled:checked:not(:disabled):before {
         transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
     }
 }
+
 @keyframes toggleOnCheckbox {
     0% {
         opacity: 0;
