@@ -18,7 +18,12 @@
         "plugin:promise/recommended"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "semi": 2,
         "class-methods-use-this": "off",
         "import/no-extraneous-dependencies": "off",

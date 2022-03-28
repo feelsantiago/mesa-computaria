@@ -2,21 +2,21 @@ import $ from 'jquery';
 
 export default class PasswordInput {
     checkQuery(div, input, icon) {
-      if (div.length === 0) {
-        throw new Error('Failed to query div');
-      }
-      
-      if (input.length === 0) {
-        throw new Error('Failed to query input');
-      }
+        if (div.length === 0) {
+            throw new Error('Failed to query div');
+        }
 
-      if (input.attr('type') !== 'password') {
-        throw new Error('Input query is not password type');
-      }
-   
-      if (icon.length === 0) {
-        throw new Error('Failed to query icon');
-      }
+        if (input.length === 0) {
+            throw new Error('Failed to query input');
+        }
+
+        if (input.attr('type') !== 'password') {
+            throw new Error('Input query is not password type');
+        }
+
+        if (icon.length === 0) {
+            throw new Error('Failed to query icon');
+        }
     }
 
     initFor(queryInput) {
