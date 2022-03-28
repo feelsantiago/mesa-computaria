@@ -18,9 +18,15 @@
         "plugin:promise/recommended"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "semi": 2,
         "class-methods-use-this": "off",
+        "import/prefer-default-export": "off",
         "import/no-extraneous-dependencies": "off",
         "import/no-unresolved": [2, { "ignore": ["\\.html[?]raw$"] }],
         "unicorn/prefer-module": "off",
