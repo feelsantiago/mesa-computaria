@@ -1,16 +1,18 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi, afterEach } from 'vitest';
 import $ from 'jquery';
 import DropdownComponent from '../dropdown.component';
 
 describe('[DropdownComponent]', () => {
+    let dropdown;
+
     beforeEach(() => {
-        $(document.body).html(`
-        <div class="container">
+        const html = $.parseHTML(`
+        <div id="container" class="container">
             <div class="dropdown-place" id="test">
             <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>
-                        <li class="dropdown-item selected" id="select">Select one</li>
+                        <li class="dropdown-item selected" id="selected">Select one</li>
                         <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
                         <li class="dropdown-item" id="vampire">Vampire 5e</li>
                     </ul>
@@ -18,58 +20,44 @@ describe('[DropdownComponent]', () => {
             </div>
         </div>`);
 
-        const button = $('#btn');
-        const list = $('#list');
-        const place = $('#test');
-        const items = $('li');
+        $(document.body).append(html);
 
-        vi.spyOn($.fn, 'init').mockImplementation((query) => {
-            switch (query) {
-                case '.dropdown-bnt':
-                    return button;
-                case '.dropdown-list':
-                    return list;
-                case '#test':
-                    return place;
-                default:
-                    return items;
-            }
-        });
+        dropdown = new DropdownComponent('#test');
+    });
 
-        // eslint-disable-next-line no-unused-vars
-        const dropdown = new DropdownComponent('#test');
+    afterEach(() => {
+        $('#container').remove();
+    });
+
+    it('Should load elements and add events on dropdown instanciation', () => {
+        // instanciar
+        // verificar this.btn, this.list
+        // verificar eventos dos clicks foram adicionados
     });
 
     describe('[addDropdownClickEventListner]', () => {
-        it('Should change a dropdown list style display from none to block', async () => {
-            const resultDisplay = $('.dropdown-list');
-
-            resultDisplay.toggle();
-            $('.dropdown-btn').trigger('click');
-            expect(resultDisplay.attr('style')).toEqual('display: block;');
+        it('Should change a dropdown list style display from none to block', () => {
+            dropdown.list.toggle();
+            dropdown.btn.trigger('click');
+            expect(dropdown.list.attr('style')).toEqual('display: block;');
         });
 
         it('Should change a dropdown list style display from block to none', async () => {
-            const resultDisplay = $('.dropdown-list');
-
-            $('.dropdown-btn').trigger('click');
-            expect(resultDisplay.attr('style')).toEqual('display: none;');
+            dropdown.btn.trigger('click');
+            expect(dropdown.list.attr('style')).toEqual('display: none;');
         });
     });
 
     describe('[addItemClickEventListner]', () => {
-        it('Should remove seleceted class from previus selected item', async () => {
-            const selectedItem = $('.dropdown-item');
+        it('Should change selection to new item and unselect previous one, also apply new selected text to the dropdown and toggle off items list', async () => {
+            const selectedItem = $('#dnd');
+            const previousSelected = $('#selected');
 
-            console.log(selectedItem.attr('class'));
-            console.log($('.dropdown-item').attr('class'));
-
-            $('.dropdown-item').trigger('click');
-
-            console.log(selectedItem.attr('class'));
-            console.log($('.dropdown-item').attr('class'));
-
-            expect(selectedItem.hasClass('selected')).toBeFalsy();
+            selectedItem.trigger('click');
+            expect(selectedItem.hasClass('selected')).toBeTruthy();
+            expect(previousSelected.hasClass('selected')).toBeFalsy();
+            expect(dropdown.btn.text()).toEqual(selectedItem.text());
+            expect(dropdown.list.attr('style')).toEqual('display: none;');
         });
     });
 });

@@ -14,11 +14,11 @@ export default defineConfig({
                 home: {
                     template: './src/layouts/home.layout.html',
                     title: 'HomePage',
-                }, 
+                },
                 components: {
                     template: './src/layouts/home.layout.html',
                     title: 'ComponentsPage',
-                }
+                },
             },
             data: {
                 title: 'HomePage',
@@ -34,11 +34,11 @@ export default defineConfig({
         globals: true,
         reporters: ['verbose'],
         watch: false,
-        environment: "happy-dom",
+        environment: 'jsdom',
         coverage: {
             all: true,
             reporter: ['clover', 'cobertura', 'lcov', 'text'],
             include: ['src'],
-        }
-    }
+        },
+    },
 });
