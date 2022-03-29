@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import $ from 'jquery';
-import { PasswordInputService } from '../password-input.service';
+import { PasswordInputService } from '../password-input.components';
 
 describe('[PasswordInputService]', () => {
     describe('[initFor]', () => {

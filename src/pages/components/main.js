@@ -1,11 +1,10 @@
 import { LayoutProviderService } from '../../services/layout-provider.service';
-import { PasswordInputService } from '../../services/password-input.service';
+import PasswordInput from '../../components/password-input.components';
 
 import './style.scss';
 import page from './index.html?raw';
 
 LayoutProviderService.inject(page)
     .then(() => {
-        // Javascript Code initialization
-        PasswordInputService.initFor('#password');
+        const PasswordInputComponents = new PasswordInput('#password');
 });
