@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi, afterEach } from 'vitest';
+import { beforeEach, describe, expect, it, afterEach } from 'vitest';
 import $ from 'jquery';
 import DropdownComponent from '../dropdown.component';
 
