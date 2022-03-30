@@ -1,5 +1,6 @@
-.dropdown-place {
+.dropdown-container {
     margin: 0;
+    padding: 0;
     width: 100%;
     display: flex;
     position: relative;
@@ -86,3 +87,4 @@
     pointer-events: none;
     color: $other-dark;
 }
+

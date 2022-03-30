@@ -11,4 +11,3 @@ LayoutProviderService.inject(page).then(() => {
     const dropdownGameType = new DropdownComponent('#games');
     PasswordInputService.initFor('#password');
 });
-
