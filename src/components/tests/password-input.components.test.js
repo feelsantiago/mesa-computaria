@@ -94,7 +94,7 @@ describe('[PasswordInputComponents]', () => {
 
             expect(resultType).toBe('text');
             expect(resultIcon).toBe('fa-solid fa-eye');
-            expect(resultInput.is(':focus')).toBe(true);
+            expect(resultInput.is(':focus')).toBeTruthy();
         });
 
         it('Should change text input to password input', () => {
@@ -117,7 +117,7 @@ describe('[PasswordInputComponents]', () => {
 
             expect(resultType).toBe('password');
             expect(resultIcon).toBe('fa-solid fa-eye-slash');
-            expect(resultInput.is(':focus')).toBe(true);
+            expect(resultInput.is(':focus')).toBeTruthy();
         });
     });
 });
