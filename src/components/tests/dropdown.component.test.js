@@ -21,7 +21,6 @@ describe('[DropdownComponent]', () => {
         </div>`);
 
         $(document.body).append(html);
-
         dropdown = new DropdownComponent('#test');
     });
 
@@ -30,12 +29,17 @@ describe('[DropdownComponent]', () => {
     });
 
     it('Should load elements and add events on dropdown instanciation', () => {
-        // instanciar
-        // verificar this.btn, this.list
-        // verificar eventos dos clicks foram adicionados
+        expect(dropdown.btn.length > 0).toBeTruthy();
+        expect(dropdown.list.length > 0).toBeTruthy();
+        expect(dropdown.items.length > 0).toBeTruthy();
+
+        /* eslint-disable no-underscore-dangle */
+        expect($._data(dropdown.btn.get(0), 'events')).toBeDefined();
+        expect($._data(dropdown.items.get(0), 'events')).toBeDefined();
+        /* eslint-anable no-underscore-dangle */
     });
 
-    describe('[addDropdownClickEventListner]', () => {
+    describe('[dropdownClickEvent]', () => {
         it('Should change a dropdown list style display from none to block', () => {
             dropdown.list.toggle();
             dropdown.btn.trigger('click');
@@ -48,8 +52,8 @@ describe('[DropdownComponent]', () => {
         });
     });
 
-    describe('[addItemClickEventListner]', () => {
-        it('Should change selection to new item and unselect previous one, also apply new selected text to the dropdown and toggle off items list', async () => {
+    describe('[itemClickEvent]', () => {
+        it('Should change selection new item and unselect previous one', async () => {
             const selectedItem = $('#dnd');
             const previousSelected = $('#selected');
 
