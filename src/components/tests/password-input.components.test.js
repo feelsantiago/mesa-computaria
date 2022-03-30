@@ -4,8 +4,7 @@ import PasswordInput from '../password-input.components';
 
 describe('[PasswordInputComponents]', () => {
     let PasswordInputComponents;
-
-    describe('[initFor]', () => {
+    describe('[checkQuery]', () => {
         it('Should throw error if query fail or the div element is not finded.', () => {
             const div = `<div id="pass"></div>`;
             $(document.body).html(div);
@@ -56,6 +55,9 @@ describe('[PasswordInputComponents]', () => {
                 PasswordInputComponents = new PasswordInput('#pass');
             }).toThrow('Input query is not password type');
         });
+    });
+
+    describe('[initFor]', () => {
         it('Should add a listener to click event', () => {
             const div = `
                 <div id="pass">
