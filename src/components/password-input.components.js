@@ -6,7 +6,6 @@ export default class PasswordInput {
         this.input = $(`${queryInput} input`);
         this.icon = $(`${queryInput} input+i`);
 
-        this.checkQuery(this.div, this.input, this.icon);
         this.initFor();
     }
 
@@ -29,17 +28,15 @@ export default class PasswordInput {
     }
 
     initFor(queryInput) {
+        this.checkQuery(this.div, this.input, this.icon);
+        
         this.icon.on('click', () => {
             if (this.input.attr('type') === 'password') {
-                this.input.attr('type', 'text');
-                this.icon.removeClass('fa-eye-slash');
-                this.icon.addClass('fa-eye');
-                this.input.trigger('focus');
+                this.input.attr('type', 'text').trigger('focus');
+                this.icon.removeClass('fa-eye-slash').addClass('fa-eye');
             } else {
-                this.input.attr('type', 'password');
-                this.icon.removeClass('fa-eye');
-                this.icon.addClass('fa-eye-slash');
-                this.input.trigger('focus');
+                this.input.attr('type', 'password').trigger('focus');
+                this.icon.removeClass('fa-eye').addClass('fa-eye-slash');
             }
         });
     }
