@@ -1,8 +1,11 @@
 @import '@/assets/scss/style.scss';
+@import '@/assets/scss/input-password.scss';
 
 // Import Components Scss
 @import '@/assets/scss/dropdown.scss';
 
+@import '@/assets/scss/input-box.scss';
+@import '@/assets/scss/checkbox.scss';
 // page scss
 .header {
     display: flex;
@@ -14,7 +17,35 @@
     .container {
         margin: 0;
         padding: 0;
-        display: flex;
         min-width: 170px;
     }
 }
+// Password Box
+.password-box-enter {
+    color: $other-light;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 20px;
+}
+.container-text-input-box {
+    min-width: 200px;
+    margin: 20px;
+    margin-bottom: 20px;
+    background-color: $primary-light;
+    color: $other-light;
+}
+
+.text-input-box h3,
+p {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.container-checkbox-component {
+    min-width: 200px;
+    margin: 20px;
+    margin-bottom: 20px;
+    background-color: $primary-light;
+    color: $other-light;
+}
+

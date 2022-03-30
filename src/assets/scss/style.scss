@@ -1,6 +1,11 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './variables';
 
+// Font Awesome
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+
 // Layouts
 @import './home-layout.scss';
 
