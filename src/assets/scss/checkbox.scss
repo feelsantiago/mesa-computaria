@@ -20,7 +20,7 @@ input {
     -moz-appearance: none;
     appearance: none;
     margin: 8px;
-    box-sizing: content-box;
+    box-sizing: content-box; // This line is bugging input password size
     overflow: hidden;
 }
 
