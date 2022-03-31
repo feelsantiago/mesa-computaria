@@ -2,6 +2,9 @@
     "name": "mesa-computaria",
     "private": true,
     "version": "0.0.0",
+    "exports": {
+        "import": "./esm/index.js"
+    },
     "scripts": {
         "start": "npm run dev",
         "dev": "vite",
@@ -26,6 +29,7 @@
         "eslint-scope": "^7.1.1",
         "eslint-visitor-keys": "^3.3.0",
         "happy-dom": "^2.43.1",
+        "jsdom": "^19.0.0",
         "prettier": "^2.5.1",
         "sass": "^1.49.9",
         "sinon": "^13.0.1",

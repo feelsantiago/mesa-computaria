@@ -20,14 +20,28 @@
         <div class="container-fluid col-md-4 password-box-enter" id="password">
             <i class="fa-solid fa-lock lock-icon"></i>
             <label for="control-label" class="password-label">Senha</label>
-            <input type="password" id="pw-input" class="form-control password-input" placeholder="Senha" required="required">
+            <input
+                type="password"
+                id="pw-input"
+                class="form-control password-input"
+                placeholder="Senha"
+                required="required"
+            />
             <i class="fa-solid fa-eye-slash eye-icon"></i>
         </div>
     </div>
 
-    <div class="row dropdown input">
-        <!-- Dropwdown input -->
-        <p>Dropdwon</p>
+    <div class="row-dropdown-input">
+        <div class="dropdown-container container" id="games">
+            <button type="button" class="dropdown dropdown-btn">Game Type</button>
+            <div class="dropdown dropdown-list">
+                <ul>
+                    <li class="dropdown-item selected">Select one</li>
+                    <li class="dropdown-item">Dugeons&Dragons</li>
+                    <li class="dropdown-item">Vampire 5e</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="row buttons input">
@@ -43,3 +57,4 @@
         </div>
     </div>
 </div>
+
