@@ -14,17 +14,17 @@ label {
     color: $other-dark;
 }
 
-input {
+.input-box, .filled {
     position: relative;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 8px;
-    box-sizing: content-box; // This line is bugging input password size
+    box-sizing: content-box;
     overflow: hidden;
 }
 
-input:before {
+.input-box:before, .filled:before {
     content: '';
     display: block;
     box-sizing: content-box;
@@ -34,17 +34,17 @@ input:before {
     transition: 0.2s border-color ease;
 }
 
-input:checked:before {
+.input-box:checked:before, .filled:checked:before {
     border-color: $accent-light;
     transition: 0.5s border-color ease;
 }
 
-input:disabled:before {
+.input-box:disabled:before, .filled:disabled:before {
     border-color: $accent-light;
     background-color: $accent-light;
 }
 
-input:after {
+.input-box:after, .filled::after {
     content: '';
     display: block;
     position: absolute;
