@@ -4,18 +4,44 @@
     </div>
 
     <div class="row text input">
-        <!-- Text input here -->
+        <div class="container-text-input-box">
+            <h3>Inputs</h3>
+
+            <p>Normal</p>
+
+            <input class="input-box" type="text" placeholder="First name" />
+        </div>
+
         <p>Text</p>
     </div>
 
     <div class="row password input">
-        <!-- Password input here -->
         <p>Password</p>
+        <div class="container-fluid col-md-4 password-box-enter" id="password">
+            <i class="fa-solid fa-lock lock-icon"></i>
+            <label for="control-label" class="password-label">Senha</label>
+            <input
+                type="password"
+                id="pw-input"
+                class="form-control password-input"
+                placeholder="Senha"
+                required="required"
+            />
+            <i class="fa-solid fa-eye-slash eye-icon"></i>
+        </div>
     </div>
 
-    <div class="row dropdown input">
-        <!-- Dropwdown input -->
-        <p>Dropdwon</p>
+    <div class="row-dropdown-input">
+        <div class="dropdown-container container" id="games">
+            <button type="button" class="dropdown dropdown-btn">Game Type</button>
+            <div class="dropdown dropdown-list">
+                <ul>
+                    <li class="dropdown-item selected">Select one</li>
+                    <li class="dropdown-item">Dugeons&Dragons</li>
+                    <li class="dropdown-item">Vampire 5e</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="row buttons input">
@@ -52,5 +78,15 @@
         <button type="button" class="button round accent">
             <span class="button-text">+</span>
         </button>
+        <div class="container-checkbox-component">
+            <p>Checkbox</p>
+            <fieldset id="checkbox-group-filled">
+                <label for="input-checkbox">
+                    <input type="checkbox" id="input-checkbox" name="checkbox-group-filled" class="filled" checked />
+                    <span class="label-text">Lembrar-se</span>
+                </label>
+            </fieldset>
+        </div>
     </div>
 </div>
+
