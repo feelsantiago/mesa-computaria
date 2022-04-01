@@ -3,7 +3,6 @@ import { PasswordInputService } from '../../services/password-input.service';
 
 import DropdownComponent from '../../components/dropdown.component';
 
-import '../../assets/scss/buttons.scss';
 import './style.scss';
 import page from './index.html?raw';
 
