@@ -28,7 +28,7 @@ export default class PasswordInput {
         }
     }
 
-    initFor(queryInput) {
+    initFor() {
         this.icon.on('click', () => {
             if (this.input.attr('type') === 'password') {
                 this.input.attr('type', 'text').trigger('focus');
