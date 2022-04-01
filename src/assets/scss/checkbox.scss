@@ -7,11 +7,15 @@ fieldset {
     min-width: 400px;
 }
 
-label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: $other-dark;
+#checkbox-group-filled {
+    
+    &label{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: $other-dark;
+    }
+    
 }
 
 input {
