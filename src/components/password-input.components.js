@@ -42,7 +42,7 @@ export default class PasswordInput {
     }
 
     validation() {
-        $('#components').html(() => {
+        $('pswd-form').load(() => {
             $('#pswd-input')
                 .on('keyup', () => {
                     const pswd = $(this).val();
