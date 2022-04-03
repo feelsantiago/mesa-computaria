@@ -17,12 +17,35 @@
 
     <div class="row password input">
         <p>Password</p>
-        <div class="container-fluid col-md-4 password-box-enter" id="password">
-            <i class="fa-solid fa-lock lock-icon"></i>
-            <label for="control-label" class="password-label">Senha</label>
-            <input type="password" id="pw-input" class="form-control password-input" placeholder="Senha" required="required">
-            <i class="fa-solid fa-eye-slash eye-icon"></i>
-        </div>
+        <form action="" id="pswd-form" class="form-control">
+            <div class="container form-group pswd-box-enter" >
+                <ul>
+                    <li>
+                        <div id="pswd" class="form-group">
+                            <i class="fa-solid fa-lock lock-icon"></i>
+                            <label for="control-label" class="pswd-label">Senha</label>
+                            <input type="password" id="pswd-input" name="pswd" class="form-control pswd-input" placeholder="Senha">
+                            <i class="fa-solid fa-eye-slash eye-icon"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <button type="button">Entrar</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class=" container form-group pswd-info">
+                <h4>Password must meet the following requirements:</h4>
+                <ul>
+                    <li id="letter" class="invalid">At least <strong>one letter</strong></li>
+                    <li id="capital" class="invalid">At least <strong>one capital letter</strong></li>
+                    <li id="number" class="invalid">At least <strong>one number</strong></li>
+                    <li id="length" class="invalid">Be at least <strong>8 characters</strong></li>
+                </ul>
+            </div>
+            </ul>
+        </form>
     </div>
 
     <div class="row dropdown input">

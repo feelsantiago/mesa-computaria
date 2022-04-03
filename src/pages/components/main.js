@@ -5,5 +5,5 @@ import './style.scss';
 import page from './index.html?raw';
 
 LayoutProviderService.inject(page).then(() => {
-    const PasswordInputComponents = new PasswordInput('#password');
+    const PasswordInputComponents = new PasswordInput('#pswd');
 });

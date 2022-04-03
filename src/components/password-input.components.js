@@ -1,13 +1,14 @@
 import $ from 'jquery';
 
 export default class PasswordInput {
-    constructor(queryInput) {
-        this.div = $(queryInput);
-        this.input = $(`${queryInput} input`);
-        this.icon = $(`${queryInput} input+i`);
+    constructor(queryString) {
+        this.div = $(queryString);
+        this.input = $(`${queryString} input`);
+        this.icon = $(`${queryString} input+i`);
 
         this.checkQuery(this.div, this.input, this.icon);
         this.initFor();
+        this.validation();
     }
 
     checkQuery(div, input, icon) {
@@ -37,6 +38,47 @@ export default class PasswordInput {
                 this.input.attr('type', 'password').trigger('focus');
                 this.icon.removeClass('fa-eye').addClass('fa-eye-slash');
             }
+        });
+    }
+
+    validation() {
+        $('#components').html(() => {
+            $('#pswd-input')
+                .on('keyup', () => {
+                    const pswd = $(this).val();
+
+                    if (pswd.length < 8) {
+                        $('#length').removeClass('valid').addClass('invalid');
+                    } else {
+                        $('#length').removeClass('invalid').addClass('valid');
+                    }
+
+                    if (pswd.test(/[A-z]/)) {
+                        $('#letter').removeClass('invalid').addClass('valid');
+                    } else {
+                        $('#letter').removeClass('valid').addClass('invalid');
+                    }
+
+                    if (pswd.test(/[A-Z]/)) {
+                        $('#capital').removeClass('invalid').addClass('valid');
+                    } else {
+                        $('#capital').removeClass('valid').addClass('invalid');
+                    }
+
+                    if (pswd.test(/\d/)) {
+                        $('#number').removeClass('invalid').addClass('valid');
+                    } else {
+                        $('#number').removeClass('valid').addClass('invalid');
+                    }
+                })
+
+                .on('focus', () => {
+                    $('#pswd-info').show();
+                })
+
+                .on('blur', () => {
+                    $('#pswd-info').hide();
+                });
         });
     }
 }
