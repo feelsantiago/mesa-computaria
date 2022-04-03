@@ -3,12 +3,12 @@ import $ from 'jquery';
 export default class PasswordInput {
     constructor(queryString) {
         this.div = $(queryString);
-        this.input = $(`${queryString} input`);
+        this.input = $(`${queryString} input[type='password']`);
         this.icon = $(`${queryString} input+i`);
 
         this.checkQuery(this.div, this.input, this.icon);
         this.initFor();
-        this.validation();
+        this.verifyPswd();
     }
 
     checkQuery(div, input, icon) {
@@ -41,44 +41,37 @@ export default class PasswordInput {
         });
     }
 
-    validation() {
-        $('pswd-form').load(() => {
-            $('#pswd-input')
-                .on('keyup', () => {
-                    const pswd = $(this).val();
+    verifyPswd() {
+        $('#button').on('click', () => {
+            const pswd = this.input.val();
+            this.input.trigger('focus');
 
-                    if (pswd.length < 8) {
-                        $('#length').removeClass('valid').addClass('invalid');
-                    } else {
-                        $('#length').removeClass('invalid').addClass('valid');
-                    }
+            if (pswd === '') {
+                $('#message').text('Password can not be empty.');
+                return false;
+            }
 
-                    if (pswd.test(/[A-z]/)) {
-                        $('#letter').removeClass('invalid').addClass('valid');
-                    } else {
-                        $('#letter').removeClass('valid').addClass('invalid');
-                    }
+            if (pswd.length < 8) {
+                $('#message').text('Must contain at least 8 characters');
+                return false;
+            }
 
-                    if (pswd.test(/[A-Z]/)) {
-                        $('#capital').removeClass('invalid').addClass('valid');
-                    } else {
-                        $('#capital').removeClass('valid').addClass('invalid');
-                    }
+            if (!/[A-Z]/.test(pswd)) {
+                $('#message').text('Must cointain at least 1 capital letter');
+                return false;
+            }
 
-                    if (pswd.test(/\d/)) {
-                        $('#number').removeClass('invalid').addClass('valid');
-                    } else {
-                        $('#number').removeClass('valid').addClass('invalid');
-                    }
-                })
+            if (!/\d/.test(pswd)) {
+                $('#message').text('Must contain at least 1 number');
+            }
 
-                .on('focus', () => {
-                    $('#pswd-info').show();
-                })
+            if (!/[*@!#%&()^~{}]+/.test(pswd)) {
+                $('#message').text('Must contain at least 1 special character');
+            } else {
+                $('#message').text('Done');
+            }
 
-                .on('blur', () => {
-                    $('#pswd-info').hide();
-                });
+            return true;
         });
     }
 }
