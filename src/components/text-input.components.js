@@ -2,9 +2,9 @@ import $ from 'jquery';
 
 export default class Input {
     
-    construtor(query){
-        this.query = query;
-        $('.input-box');
+    constructor(query){
+        this.query = $(query);
+        this.isValid();
     }
 
     getInput(){
@@ -15,7 +15,20 @@ export default class Input {
         this.query = query;
     }
     
-    
+    isValid(query){
+        query.validate({
+            rules: {
+                text: {
+                    required: true,
+                    minlength: 1
+                }, 
+                email: {
+                    required: true,
+                    email: true
+                }
+            }
+        });
+    }
     
 
 }
