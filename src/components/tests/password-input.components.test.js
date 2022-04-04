@@ -4,7 +4,8 @@ import PasswordInput from '../password-input.components';
 
 describe('[PasswordInputComponents]', () => {
     let PasswordInputComponents;
-    describe('[checkQuery]', () => {
+
+    describe('[hasQuery]', () => {
         it('Should throw error if query fail or the div element is not finded.', () => {
             const div = `<div id="pass"></div>`;
             $(document.body).html(div);
@@ -17,7 +18,9 @@ describe('[PasswordInputComponents]', () => {
         it('Should throw error if query fail or the input element is not finded.', () => {
             const div = `
                 <div id="pass">
-                    <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    <i></i>
+                    <input type="button">
+                    <span></span>
                 </div>
             `;
 
@@ -25,13 +28,15 @@ describe('[PasswordInputComponents]', () => {
 
             expect(() => {
                 PasswordInputComponents = new PasswordInput('#pass');
-            }).toThrow('Failed to query input');
+            }).toThrow('Failed to query input password');
         });
 
         it('Should throw error if query fail or the icon element is not finded.', () => {
             const div = `
                 <div id="pass">
-                    <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
+                    <input type="password">
+                    <input type="button">
+                    <span></span>
                 </div>
             `;
 
@@ -41,14 +46,52 @@ describe('[PasswordInputComponents]', () => {
                 PasswordInputComponents = new PasswordInput('#pass');
             }).toThrow('Failed to query icon');
         });
+
+        it('Should throw error if query fail or the button element is not finded.', () => {
+            const div = `
+                <div id="pass">
+                    <input type="password">
+                    <i></i>
+                    <span></span>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            expect(() => {
+                PasswordInputComponents = new PasswordInput('#pass');
+            }).toThrow('Failed to query input button');
+        });
+
+        it('Should throw error if query fail or the span element is not finded.', () => {
+            const div = `
+                <div id="pass">
+                    <input type="password">
+                    <i></i>
+                    <input type="button">
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            expect(() => {
+                PasswordInputComponents = new PasswordInput('#pass');
+            }).toThrow('Failed to query span');
+        });
     });
 
     describe('[initFor]', () => {
         it('Should add a listener to click event', () => {
             const div = `
                 <div id="pass">
-                    <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
-                    <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    <div>
+                        <input type="password">
+                        <i></i>
+                        <span></span>
+                    </div>
+                    <div>
+                        <input type="button">
+                    </div>
                 </div>
             `;
 
@@ -58,16 +101,22 @@ describe('[PasswordInputComponents]', () => {
             PasswordInputComponents = new PasswordInput('#pass');
 
             expect($.fn.on).toHaveBeenCalledWith('click', expect.anything());
-            expect($.fn.on).toHaveBeenCalledTimes(1);
+            expect($.fn.on).toHaveBeenCalledTimes(2);
         });
 
         it('Should change password input to text input', () => {
             const div = `
-                    <div id="pass">
-                        <input id="input-password" type="password" class="form-control password-input-enter" placeholder="Senha" required="required">
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
+                        <span></span>
                     </div>
-                 `;
+                    <div>
+                        <input type="button">
+                    </div>
+                </div>
+            `;
 
             $(document.body).html(div);
 
@@ -86,8 +135,14 @@ describe('[PasswordInputComponents]', () => {
         it('Should change text input to password input', () => {
             const div = `
                 <div id="pass">
-                    <input id="input-password" type="password" class="form-control password-input" placeholder="Senha" required="required">
-                    <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    <div>
+                        <input id="input-password" type="password">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                        <span></span>
+                    </div>
+                    <div>
+                        <input type="button">
+                    </div>
                 </div>
             `;
 
@@ -105,5 +160,9 @@ describe('[PasswordInputComponents]', () => {
             expect(resultIcon).toBe('fa-solid fa-eye-slash');
             expect(resultInput.is(':focus')).toBeTruthy();
         });
+    });
+
+    describe('[isValid]', () => {
+        // Add test to validations;
     });
 });

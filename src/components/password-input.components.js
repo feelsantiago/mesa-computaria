@@ -8,26 +8,30 @@ export default class PasswordInput {
         this.button = $(`${queryString} input[type='button']`);
         this.span = $(`${queryString} span`);
 
-        this.checkFor(this.div, this.input, this.icon, this.button);
-        this.validateFor();
+        this.hasQuery(this.div, this.input, this.icon, this.button, this.span);
         this.initFor();
+        this.isValid();
     }
 
-    checkFor(div, icon, input, button) {
+    hasQuery(div, input, icon, button, span) {
         if (div.length === 0) {
             throw new Error('Failed to query div');
-        }
-
-        if (icon.length === 0) {
-            throw new Error('Failed to query icon');
         }
 
         if (input.length === 0) {
             throw new Error('Failed to query input password');
         }
 
+        if (icon.length === 0) {
+            throw new Error('Failed to query icon');
+        }
+
         if (button.length === 0) {
             throw new Error('Failed to query input button');
+        }
+
+        if (span.length === 0) {
+            throw new Error('Failed to query span');
         }
     }
 
@@ -43,17 +47,19 @@ export default class PasswordInput {
         });
     }
 
-    validateFor() {
+    isValid() {
         this.button.on('click', () => {
             const pswd = this.input.val();
+
+            this.input.prop('required', true);
 
             const clearText = () => {
                 setTimeout(() => {
                     this.span.text('');
                 }, 2000);
-            };
 
-            this.input.trigger('focus');
+                this.input.trigger('focus');
+            };
 
             if (pswd === '') {
                 this.span.text('Password can not be empty.');
@@ -79,7 +85,7 @@ export default class PasswordInput {
                 return false;
             }
 
-            if (!/[*@!#%&()^~{}]+/.test(pswd)) {
+            if (!/[!#%&()*@^{}~]+/.test(pswd)) {
                 this.span.text('Must contain at least 1 special character');
                 clearText();
                 return false;
