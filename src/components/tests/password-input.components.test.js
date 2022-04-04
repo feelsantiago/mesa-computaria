@@ -41,20 +41,6 @@ describe('[PasswordInputComponents]', () => {
                 PasswordInputComponents = new PasswordInput('#pass');
             }).toThrow('Failed to query icon');
         });
-
-        it('Should check if the input is password type', () => {
-            const div = `
-                <div id="pass">
-                    <input id="input-password" type="text" class="form-control" placeholder="Senha" required="required">
-                </div>
-            `;
-
-            $(document.body).html(div);
-
-            expect(() => {
-                PasswordInputComponents = new PasswordInput('#pass');
-            }).toThrow('Input query is not password type');
-        });
     });
 
     describe('[initFor]', () => {
