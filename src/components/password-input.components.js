@@ -6,13 +6,14 @@ export default class PasswordInput {
         this.input = $(`${queryString} input[type='password']`);
         this.icon = $(`${queryString} input+i`);
         this.button = $(`${queryString} input[type='button']`);
+        this.span = $(`${queryString} span`);
 
-        this.checkQuery(this.div, this.input, this.icon, this.button);
+        this.checkFor(this.div, this.input, this.icon, this.button);
+        this.validateFor();
         this.initFor();
-        this.verifyPswd();
     }
 
-    checkQuery(div, icon, input, button) {
+    checkFor(div, icon, input, button) {
         if (div.length === 0) {
             throw new Error('Failed to query div');
         }
@@ -42,44 +43,44 @@ export default class PasswordInput {
         });
     }
 
-    verifyPswd() {
+    validateFor() {
         this.button.on('click', () => {
             const pswd = this.input.val();
 
             const clearText = () => {
                 setTimeout(() => {
-                    $('#message').text('');
+                    this.span.text('');
                 }, 2000);
-            } 
+            };
 
             this.input.trigger('focus');
 
             if (pswd === '') {
-                $('#message').text('Password can not be empty.');
+                this.span.text('Password can not be empty.');
                 clearText();
                 return false;
             }
 
             if (pswd.length < 8) {
-                $('#message').text('Must contain at least 8 characters');
+                this.span.text('Must contain at least 8 characters');
                 clearText();
                 return false;
             }
 
             if (!/[A-Z]/.test(pswd)) {
-                $('#message').text('Must cointain at least 1 capital letter');
+                this.span.text('Must cointain at least 1 capital letter');
                 clearText();
                 return false;
             }
 
             if (!/\d/.test(pswd)) {
-                $('#message').text('Must contain at least 1 number');
+                this.span.text('Must contain at least 1 number');
                 clearText();
                 return false;
             }
 
             if (!/[*@!#%&()^~{}]+/.test(pswd)) {
-                $('#message').text('Must contain at least 1 special character');
+                this.span.text('Must contain at least 1 special character');
                 clearText();
                 return false;
             }
