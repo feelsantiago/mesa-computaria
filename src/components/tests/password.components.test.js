@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
 import $ from 'jquery';
-import PasswordInput from '../password-input.components';
+import PasswordInput from '../password.components';
 
-describe('[PasswordInputComponents]', () => {
-    let PasswordInputComponents;
+describe('[password]', () => {
+    let password;
 
     describe('[hasQuery]', () => {
         it('Should throw error if query fail or the div element is not finded.', () => {
@@ -11,7 +11,7 @@ describe('[PasswordInputComponents]', () => {
             $(document.body).html(div);
 
             expect(() => {
-                PasswordInputComponents = new PasswordInput('#pazz');
+                password = new PasswordInput('#pazz');
             }).toThrow('Failed to query div');
         });
 
@@ -27,7 +27,7 @@ describe('[PasswordInputComponents]', () => {
             $(document.body).html(div);
 
             expect(() => {
-                PasswordInputComponents = new PasswordInput('#pass');
+                password = new PasswordInput('#pass');
             }).toThrow('Failed to query input password');
         });
 
@@ -43,7 +43,7 @@ describe('[PasswordInputComponents]', () => {
             $(document.body).html(div);
 
             expect(() => {
-                PasswordInputComponents = new PasswordInput('#pass');
+                password = new PasswordInput('#pass');
             }).toThrow('Failed to query icon');
         });
 
@@ -59,7 +59,7 @@ describe('[PasswordInputComponents]', () => {
             $(document.body).html(div);
 
             expect(() => {
-                PasswordInputComponents = new PasswordInput('#pass');
+                password = new PasswordInput('#pass');
             }).toThrow('Failed to query input button');
         });
 
@@ -75,7 +75,7 @@ describe('[PasswordInputComponents]', () => {
             $(document.body).html(div);
 
             expect(() => {
-                PasswordInputComponents = new PasswordInput('#pass');
+                password = new PasswordInput('#pass');
             }).toThrow('Failed to query span');
         });
     });
@@ -120,7 +120,7 @@ describe('[PasswordInputComponents]', () => {
 
             $(document.body).html(div);
 
-            PasswordInputComponents = new PasswordInput('#pass');
+            password = new PasswordInput('#pass');
             $('#icon').trigger('click');
 
             const resultType = $('#input-password').attr('type');
@@ -148,7 +148,7 @@ describe('[PasswordInputComponents]', () => {
 
             $(document.body).html(div);
 
-            PasswordInputComponents = new PasswordInput('#pass');
+            password = new PasswordInput('#pass');
             $('#icon').trigger('click');
             $('#icon').trigger('click');
 
