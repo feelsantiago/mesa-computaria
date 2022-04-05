@@ -3,8 +3,8 @@ import $ from 'jquery';
 export default class PasswordInput {
     constructor(queryString) {
         this.div = $(queryString);
-        this.input = $(`${queryString} input`);
-        this.icon = $(`${queryString} input+i`);
+        this.input = $(`${queryString} input[type="password"]`);
+        this.icon = $(`${queryString} input[type="password"]+i`);
 
         this.valid = false;
         this.enabled = this.input.attr('disabled', false);
