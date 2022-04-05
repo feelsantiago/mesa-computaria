@@ -6,6 +6,10 @@ export default class PasswordInput {
         this.input = $(`${queryString} input`);
         this.icon = $(`${queryString} input+i`);
 
+        this.valid = false;
+        this.enabled = this.input.attr('disabled', false);
+        this.required = this.input.attr('required', true);
+
         this.hasQuery(this.div, this.input, this.icon);
         this.initFor();
     }
@@ -44,35 +48,58 @@ export default class PasswordInput {
         });
     }
 
+    getValid() {
+        return this.valid;
+    }
+
+    setValid(boolean) {
+        this.valid = boolean;
+    }
+
     isValid() {
-        const value = this.input.val();
         // Validate regex: at least 1 capital letter, 1 number, 1 special character, and size 8;
         const validations = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+        const value = this.input.val();
 
         if (validations.test(value)) {
+            this.setValid(true);
+            return this.valid;
+        }
+
+        return this.valid;
+    }
+
+    getEnabled() {
+        return this.enabled;
+    }
+
+    setEnabled(boolean) {
+        this.input.prop('disable', boolean);
+        this.enabled = boolean;
+    }
+
+    isEnabled() {
+        if (this.enabled) {
             return true;
         }
 
         return false;
     }
 
-    isEnable() {
-        if (this.isValid()) {
-            this.input.prop('disabled', true);
-            return true;
-        }
+    getRequired() {
+        return this.required;
+    }
 
-        this.input.prop('disable', false);
-        return false;
+    setRequired(boolean) {
+        this.input.prop('disable', boolean);
+        this.required = boolean;
     }
 
     isRequired() {
-        if (!this.isValid()) {
-            this.input.prop('required', true);
+        if (this.required) {
             return true;
         }
 
-        this.input.prop('required', false);
         return false;
     }
 }
