@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import $ from 'jquery';
 import PasswordInput from '../password.components';
 
-describe('[password]', () => {
+describe('[PasswordComponents]', () => {
     let password;
 
     describe('[hasQuery]', () => {
