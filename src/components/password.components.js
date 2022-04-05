@@ -8,7 +8,6 @@ export default class PasswordInput {
 
         this.hasQuery(this.div, this.input, this.icon);
         this.initFor();
-        this.isValid();
     }
 
     getValue() {
@@ -58,10 +57,22 @@ export default class PasswordInput {
     }
 
     isEnable() {
-        // Enable/disable
+        if (this.isValid()) {
+            this.input.prop('disabled', true);
+            return true;
+        }
+
+        this.input.prop('disable', false);
+        return false;
     }
 
     isRequired() {
-        // Required true or false
+        if (!this.isValid()) {
+            this.input.prop('required', true);
+            return true;
+        }
+
+        this.input.prop('required', false);
+        return false;
     }
 }
