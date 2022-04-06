@@ -1,0 +1,88 @@
+@import './style.scss';
+
+//Border, font, align and shadow >> all buttons
+.button {
+    align-items: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    font-family: $title-text;
+    font-weight: 700;
+    cursor: pointer;
+
+    //Hight and font size >> all square shaped buttons
+    &.text-only,
+    .icont-and-text {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    //Round button dimentions and font size
+    &.round {
+        display: flex;
+        width: 55px;
+        height: 55px;
+        border-radius: 100%;
+        font-size: 48px;
+        max-width: 55px !important;
+    }
+
+    //Text only button dimensions
+    &.text-only {
+        display: flex;
+        width: 325px;
+        border-radius: 20px;
+        max-width: 325px !important;
+        min-width: 100px !important;
+    }
+
+    //Icon and text button dimensions
+    &.icon-and-text {
+        display: inline-flex;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        max-width: 200px !important;
+        min-width: 75px !important;
+    }
+
+    //Accent buttons color
+    &.accent {
+        background-color: $accent-light;
+
+        //Hover color for accent buttons
+        &:hover {
+            background-color: $accent-dark;
+        }
+    }
+
+    //Primary buttons color
+    &.primary {
+        background-color: $primary-light;
+
+        //Hover color for primary buttons
+        &:hover {
+            background-color: $primary-dark;
+        }
+    }
+}
+
+//Button text align
+.button-text {
+    justify-content: center;
+    width: 100%;
+}
+
+//Button icon size and padding
+.button-icon {
+    padding: 0 20px;
+    font-size: 1.5em;
+}
+
+//Button text and icon color
+.button-text,
+.button-icon {
+    color: $other-light;
+}
