@@ -19,8 +19,6 @@ describe('[PasswordComponents]', () => {
             const div = `
                 <div id="pass">
                     <i></i>
-                    <input type="button">
-                    <span></span>
                 </div>
             `;
 
@@ -35,8 +33,6 @@ describe('[PasswordComponents]', () => {
             const div = `
                 <div id="pass">
                     <input type="password">
-                    <input type="button">
-                    <span></span>
                 </div>
             `;
 
@@ -45,38 +41,6 @@ describe('[PasswordComponents]', () => {
             expect(() => {
                 password = new PasswordInput('#pass');
             }).toThrow('Failed to query icon');
-        });
-
-        it('Should throw error if query fail or the button element is not finded.', () => {
-            const div = `
-                <div id="pass">
-                    <input type="password">
-                    <i></i>
-                    <span></span>
-                </div>
-            `;
-
-            $(document.body).html(div);
-
-            expect(() => {
-                password = new PasswordInput('#pass');
-            }).toThrow('Failed to query input button');
-        });
-
-        it('Should throw error if query fail or the span element is not finded.', () => {
-            const div = `
-                <div id="pass">
-                    <input type="password">
-                    <i></i>
-                    <input type="button">
-                </div>
-            `;
-
-            $(document.body).html(div);
-
-            expect(() => {
-                password = new PasswordInput('#pass');
-            }).toThrow('Failed to query span');
         });
     });
 
@@ -87,10 +51,6 @@ describe('[PasswordComponents]', () => {
                     <div>
                         <input type="password">
                         <i></i>
-                        <span></span>
-                    </div>
-                    <div>
-                        <input type="button">
                     </div>
                 </div>
             `;
@@ -98,10 +58,10 @@ describe('[PasswordComponents]', () => {
             $(document.body).html(div);
 
             vi.spyOn($.fn, 'on');
-            PasswordInputComponents = new PasswordInput('#pass');
+            password = new PasswordInput('#pass');
 
             expect($.fn.on).toHaveBeenCalledWith('click', expect.anything());
-            expect($.fn.on).toHaveBeenCalledTimes(2);
+            expect($.fn.on).toHaveBeenCalledTimes(1);
         });
 
         it('Should change password input to text input', () => {
@@ -110,10 +70,6 @@ describe('[PasswordComponents]', () => {
                     <div>
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                        <span></span>
-                    </div>
-                    <div>
-                        <input type="button">
                     </div>
                 </div>
             `;
@@ -138,10 +94,6 @@ describe('[PasswordComponents]', () => {
                     <div>
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                        <span></span>
-                    </div>
-                    <div>
-                        <input type="button">
                     </div>
                 </div>
             `;
@@ -162,7 +114,188 @@ describe('[PasswordComponents]', () => {
         });
     });
 
-    describe('[isValid]', () => {
-        // Add test to validations;
+    describe('[Getters and Setters]', () => {
+        it('Should get input value', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            // Lefting a spyOn
+            password = new PasswordInput('#pass');
+            password.getValue();
+
+            const inputValue = $('#input-password').val();
+
+            expect(password.getValue()).toBe(inputValue);
+        });
+
+        it('Should set input value', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.setValue('test');
+
+            const inputValue = $('#input-password').val();
+
+            expect(inputValue).toBe('test');
+        });
+
+        it('Should get disabled property', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.getDisabled();
+
+            const inputProperty = $('#input-password').prop('disable');
+
+            expect(inputProperty).toBeFalsy();
+        });
+
+        it('Should set disabled property', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.setDisabled(true);
+
+            const inputProperty = $('#input-password').prop('disable');
+
+            expect(inputProperty).toBeTruthy();
+        });
+
+        it('Should get required property', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password" required>
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.getRequired();
+
+            const inputProperty = $('#input-password').prop('required');
+
+            expect(inputProperty).toBeTruthy();
+        });
+
+        it('Should get required property', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password" required>
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.setRequired(false);
+
+            const inputProperty = $('#input-password').prop('required');
+
+            expect(inputProperty).toBeFalsy();
+        });
+    });
+
+    describe('[isProperty]', () => {
+        it('Should check if input value is valid', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.setValue('T4st&validations');
+
+            const isValid = password.isValid();
+
+            expect(isValid).toBeTruthy();
+        });
+
+        it('Should check if input has disabled property', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password">
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.isDisabled();
+
+            const inputProperty = $('#input-password').prop('disable');
+
+            expect(inputProperty).toBeFalsy();
+        });
+
+        it('Should check if input has required property', () => {
+            const div = `
+                <div id="pass">
+                    <div>
+                        <input id="input-password" type="password" required>
+                        <i id="icon" class="fa-solid fa-eye-slash"></i>
+                    </div>
+                </div>
+            `;
+
+            $(document.body).html(div);
+
+            password = new PasswordInput('#pass');
+            password.isRequired();
+
+            const inputProperty = $('#input-password').prop('required');
+
+            expect(inputProperty).toBeTruthy();
+        });
     });
 });

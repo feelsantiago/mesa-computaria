@@ -53,7 +53,7 @@ export default class PasswordInput {
         const validations = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/; 
 
         if (validations.test(this.input.val())) {
-            this.setValid(true);
+            this.valid = true;
             return this.valid;
         }
 
@@ -70,7 +70,7 @@ export default class PasswordInput {
     }
 
     isDisabled() {
-        if (this.input.prop('disabled', true)) {
+        if (this.input.prop('disabled')) {
             this.disabled = true;
             return this.disabled;
         }
@@ -88,7 +88,7 @@ export default class PasswordInput {
     }
 
     isRequired() {
-        if (this.input.prop('required', false)) {
+        if (!this.input.prop('required')) {
             this.required = false;
             return this.required;
         }
