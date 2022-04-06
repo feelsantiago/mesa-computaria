@@ -7,8 +7,8 @@ describe('[DropdownComponent]', () => {
 
     beforeEach(() => {
         const html = $.parseHTML(`
-        <div id="container" class="container">
-            <div class="dropdown-place" id="test">
+        <div class="row-dropdown-input container" id="test">
+            <fieldset class="dropdown-container">
             <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>
@@ -17,7 +17,7 @@ describe('[DropdownComponent]', () => {
                         <li class="dropdown-item" id="vampire">Vampire 5e</li>
                     </ul>
                 </div>
-            </div>
+            </fieldset>
         </div>`);
 
         $(document.body).append(html);
@@ -25,7 +25,7 @@ describe('[DropdownComponent]', () => {
     });
 
     afterEach(() => {
-        $('#container').remove();
+        $('#test').remove();
     });
 
     it('Should load elements and add events on dropdown instanciation', () => {
@@ -62,6 +62,41 @@ describe('[DropdownComponent]', () => {
             expect(previousSelected.hasClass('selected')).toBeFalsy();
             expect(dropdown.btn.text()).toEqual(selectedItem.text());
             expect(dropdown.list.attr('style')).toEqual('display: none;');
+        });
+    });
+
+    describe('[getSelectedItem]', () => {
+        it('Should return HTML text value from current selected item', async () => {
+            const PreviousSelected = $('#selected');
+            const dnd = $('#dnd');
+            const vamp = $('#vampire');
+
+            expect(dropdown.getSelectedItem()).toEqual(PreviousSelected.text());
+            dnd.trigger('click');
+            expect(dropdown.getSelectedItem()).toEqual(dnd.text());
+            vamp.trigger('click');
+            expect(dropdown.getSelectedItem()).toEqual(vamp.text());
+        });
+    });
+
+    describe('[checkQuery]', () => {
+        it('Should verify if dropdown elements are correctly required from the DOM', async () => {
+            expect(dropdown.checkQuery()).toBeTruthy();
+
+            const otherDropdown = new DropdownComponent('#fake');
+            expect(otherDropdown.checkQuery()).toBeFalsy();
+        });
+    });
+
+    describe('[enabledState]', () => {
+        it('Should return enabled state default or which one was set on', async () => {
+            expect(dropdown.isEnabled()).toBeTruthy();
+
+            dropdown.setDisabled();
+            expect(dropdown.isEnabled()).toBeFalsy();
+
+            dropdown.setEnabled();
+            expect(dropdown.isEnabled()).toBeTruthy();
         });
     });
 });

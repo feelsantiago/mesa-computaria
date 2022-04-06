@@ -6,30 +6,47 @@ export default class DropdownComponent {
 
         this.dropdownContainer = $(`${query} .dropdown-container`);
         this.btn = $(`${query} .dropdown-btn`);
-        this.items = $(`${query} .dropdown-item`);
         this.list = $(`${query} .dropdown-list`);
+        this.items = $(`${query} .dropdown-item`);
         this.selectedItem = $(`${query} .selected`);
 
-        this.enabled = this.dropdownContainer.attr('disabled');
+        this.enabled = true;
 
         this.addDropdownClickEventListner();
         this.addItemClickEventListner();
     }
 
-    setEnabled(boolean) {
-        this.enabled = this.dropdownContainer.prop('disabled', boolean);
-        if (boolean) {
-            this.dropdownContainer.removeClass('disabled');
-        } else {
-            this.dropdownContainer.addClass('disabled');
-        }
+    getSelectedItem() {
+        return this.selectedItem.text();
     }
 
-    isEnabled() {
-        if (this.enabled.attr('disabled')) {
+    checkQuery() {
+        if (
+            this.query.length === 0 ||
+            this.dropdownContainer.length === 0 ||
+            this.btn.length === 0 ||
+            this.list.length === 0 ||
+            this.items.length === 0
+        ) {
             return false;
         }
         return true;
+    }
+
+    setEnabled() {
+        this.enabled = this.dropdownContainer.prop('disabled', false);
+        this.dropdownContainer.removeClass('disabled');
+        this.enabled = true;
+    }
+
+    setDisabled() {
+        this.enabled = this.dropdownContainer.prop('disabled', true);
+        this.dropdownContainer.addClass('disabled');
+        this.enabled = false;
+    }
+
+    isEnabled() {
+        return this.enabled;
     }
 
     addDropdownClickEventListner() {
