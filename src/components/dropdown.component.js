@@ -1,16 +1,21 @@
 import $ from 'jquery';
 
 export default class DropdownComponent {
-    constructor(query) {
+    constructor(query, required = true) {
         this.query = query;
+        this.required = required;
 
-        this.dropdownContainer = $(`${query} .dropdown-container`);
+        this.container = $(`${query} .dropdown-container`);
         this.btn = $(`${query} .dropdown-btn`);
         this.list = $(`${query} .dropdown-list`);
         this.items = $(`${query} .dropdown-item`);
         this.selectedItem = $(`${query} .selected`);
 
-        this.enabled = true;
+        this.disabled = false;
+        this.valid = false;
+
+        this.defaultText = this.btn.text();
+        this.unselectedDefaultText = this.selectedItem.text();
 
         this.addDropdownClickEventListner();
         this.addItemClickEventListner();
@@ -20,33 +25,26 @@ export default class DropdownComponent {
         return this.selectedItem.text();
     }
 
-    checkQuery() {
-        if (
-            this.query.length === 0 ||
-            this.dropdownContainer.length === 0 ||
-            this.btn.length === 0 ||
-            this.list.length === 0 ||
-            this.items.length === 0
-        ) {
-            return false;
-        }
-        return true;
+    isDisabled() {
+        return this.disabled;
     }
 
-    setEnabled() {
-        this.enabled = this.dropdownContainer.prop('disabled', false);
-        this.dropdownContainer.removeClass('disabled');
-        this.enabled = true;
+    isValid() {
+        return this.valid;
     }
 
-    setDisabled() {
-        this.enabled = this.dropdownContainer.prop('disabled', true);
-        this.dropdownContainer.addClass('disabled');
-        this.enabled = false;
+    enable() {
+        this.container.prop('disabled', false);
+        this.disabled = this.container.is(':disabled');
     }
 
-    isEnabled() {
-        return this.enabled;
+    disable() {
+        this.container.prop('disabled', true);
+        this.disabled = this.container.is(':disabled');
+    }
+
+    validation() {
+        this.valid = this.btn.text() !== this.defaultText;
     }
 
     addDropdownClickEventListner() {
@@ -64,7 +62,12 @@ export default class DropdownComponent {
     }
 
     updateDropdown() {
-        this.btn.html(this.selectedItem.text());
+        if (this.selectedItem.text() === this.unselectedDefaultText) {
+            this.btn.html(this.defaultText);
+        } else {
+            this.btn.html(this.selectedItem.text());
+        }
+        this.validation();
     }
 
     unselectItem() {

@@ -83,8 +83,7 @@
     }
 }
 
-.selected,
-.disabled {
+.selected {
     pointer-events: none !important;
     color: $other-dark;
 }

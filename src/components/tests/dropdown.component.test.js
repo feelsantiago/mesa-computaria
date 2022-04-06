@@ -79,24 +79,15 @@ describe('[DropdownComponent]', () => {
         });
     });
 
-    describe('[checkQuery]', () => {
-        it('Should verify if dropdown elements are correctly required from the DOM', async () => {
-            expect(dropdown.checkQuery()).toBeTruthy();
-
-            const otherDropdown = new DropdownComponent('#fake');
-            expect(otherDropdown.checkQuery()).toBeFalsy();
-        });
-    });
-
     describe('[enabledState]', () => {
         it('Should return enabled state default or which one was set on', async () => {
-            expect(dropdown.isEnabled()).toBeTruthy();
+            expect(dropdown.isDisabled()).toBeFalsy();
 
-            dropdown.setDisabled();
-            expect(dropdown.isEnabled()).toBeFalsy();
+            dropdown.disable();
+            expect(dropdown.isDisabled()).toBeTruthy();
 
-            dropdown.setEnabled();
-            expect(dropdown.isEnabled()).toBeTruthy();
+            dropdown.enable();
+            expect(dropdown.isDisabled()).toBeFalsy();
         });
     });
 });
