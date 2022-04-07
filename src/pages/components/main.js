@@ -8,7 +8,7 @@ import page from './index.html?raw';
 
 LayoutProviderService.inject(page).then(() => {
     // eslint-disable-next-line no-unused-vars
-    const password = new PasswordInput('#pswd');
+    const password = new PasswordInput('#password');
     // eslint-disable-next-line no-unused-vars
     const dropdownGameType = new DropdownComponent('#games');
 });
