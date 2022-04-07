@@ -67,11 +67,10 @@ describe('[DropdownComponent]', () => {
 
     describe('[getSelectedItem]', () => {
         it('Should return HTML text value from current selected item', async () => {
-            const PreviousSelected = $('#selected');
             const dnd = $('#dnd');
             const vamp = $('#vampire');
 
-            expect(dropdown.getSelectedItem()).toEqual(PreviousSelected.text());
+            expect(dropdown.getSelectedItem()).toEqual(dropdown.unselectedDefaultText);
             dnd.trigger('click');
             expect(dropdown.getSelectedItem()).toEqual(dnd.text());
             vamp.trigger('click');

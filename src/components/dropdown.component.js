@@ -34,11 +34,13 @@ export default class DropdownComponent {
     }
 
     enable() {
+        this.container.css('pointer-events', 'auto');
         this.container.prop('disabled', false);
         this.disabled = this.container.is(':disabled');
     }
 
     disable() {
+        this.container.css('pointer-events', 'none');
         this.container.prop('disabled', true);
         this.disabled = this.container.is(':disabled');
     }
