@@ -61,25 +61,25 @@ export default class PasswordInput {
     }
 
     getDisabled() {
-        return this.disabled;
+        return this.input.prop('disabled');
     }
 
     setDisabled(boolean) {
-        this.input.prop('disable', boolean);
+        this.input.prop('disabled', boolean);
         this.disabled = boolean;
     }
 
     isDisabled() {
         if (this.input.prop('disabled')) {
             this.disabled = true;
-            return this.disabled;
+            return this.input.prop('disabled');
         }
 
-        return this.disabled;
+        return this.input.prop('disabled');
     }
 
     getRequired() {
-        return this.required;
+        return this.input.prop('required');
     }
 
     setRequired(boolean) {
