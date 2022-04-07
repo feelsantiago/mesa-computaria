@@ -4,6 +4,7 @@ import DropdownComponent from '../dropdown.component';
 
 describe('[DropdownComponent]', () => {
     let dropdown;
+    let dropdownUnrequired;
 
     beforeEach(() => {
         const html = $.parseHTML(`
@@ -71,15 +72,17 @@ describe('[DropdownComponent]', () => {
             const vamp = $('#vampire');
 
             expect(dropdown.getSelectedItem()).toEqual(dropdown.unselectedDefaultText);
+
             dnd.trigger('click');
             expect(dropdown.getSelectedItem()).toEqual(dnd.text());
+
             vamp.trigger('click');
             expect(dropdown.getSelectedItem()).toEqual(vamp.text());
         });
     });
 
     describe('[enabledState]', () => {
-        it('Should return enabled state default or which one was set on', async () => {
+        it('Should return enabled state default or disalbe if setted', async () => {
             expect(dropdown.isDisabled()).toBeFalsy();
 
             dropdown.disable();
@@ -87,6 +90,51 @@ describe('[DropdownComponent]', () => {
 
             dropdown.enable();
             expect(dropdown.isDisabled()).toBeFalsy();
+        });
+    });
+
+    describe('[requiredState]', () => {
+        const otherDropdown = $.parseHTML(`      
+        <div class="row-dropdown-input container" id="testUnrequired">
+            <fieldset class="dropdown-container">
+                <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
+                <div class="dropdown dropdown-list" id="list" style="display: block;">
+                    <ul>
+                        <li class="dropdown-item selected" id="selected">Select one</li>
+                        <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
+                        <li class="dropdown-item" id="vampire">Vampire 5e</li>
+                     </ul>
+                </div>
+            </fieldset>
+        </div>`);
+
+        $(document.body).append(otherDropdown);
+        dropdownUnrequired = new DropdownComponent('#testUnrequired', false);
+
+        it('Should be default required or unrequired if set false on instantiation', async () => {
+            expect(dropdown.required).toBeTruthy();
+            expect(dropdownUnrequired.required).toBeFalsy();
+        });
+
+        $('#testUnrequired').remove();
+    });
+
+    describe('[validState]', () => {
+        it('Should be default invalid util an item be selected', async () => {
+            const selectOne = $('#selected');
+            const dnd = $('#dnd');
+            const vamp = $('#vampire');
+
+            expect(dropdown.isValid()).toBeFalsy();
+
+            dnd.trigger('click');
+            expect(dropdown.isValid()).toBeTruthy();
+
+            vamp.trigger('click');
+            expect(dropdown.isValid()).toBeTruthy();
+
+            selectOne.trigger('click');
+            expect(dropdown.isValid()).toBeFalsy();
         });
     });
 });
