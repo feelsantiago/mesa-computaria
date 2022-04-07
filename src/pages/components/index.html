@@ -17,7 +17,7 @@
 
     <div class="row password input" id="pswd">
         <p>Password</p>
-        <div class="container-fluid pswd-box" >
+        <div class="container-fluid password-box-enter" id="password">
             <i class="fa-solid fa-lock lock-icon"></i>
             <label for="control-label" class="pswd-label">Senha</label>
             <input type="password" class="form-control pswd-input" placeholder="Senha" required>
@@ -25,13 +25,53 @@
         </div>
     </div>
 
-    <div class="row dropdown input">
-        <!-- Dropwdown input -->
-        <p>Dropdwon</p>
+    <div class="row-dropdown-input">
+        <div class="dropdown-container container" id="games">
+            <button type="button" class="dropdown dropdown-btn">Game Type</button>
+            <div class="dropdown dropdown-list">
+                <ul>
+                    <li class="dropdown-item selected">Select one</li>
+                    <li class="dropdown-item">Dugeons&Dragons</li>
+                    <li class="dropdown-item">Vampire 5e</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="row buttons input">
         <!-- Buttons input -->
+        <p>Buttons</p>
+        
+        <!-- Button containing only text accent color -->
+        <button type="button" class="button text-only accent">
+            <span class="button-text">Entrar</span>
+        </button>
+
+        <!-- Button containing only text primary color -->
+        <button type="button" class="button text-only primary">
+            <span class="button-text">Entrar</span>
+        </button>
+        
+        <!-- Button containing text and icon accent color -->
+        <button type="button" class="button icon-and-text accent">
+            <span class="button-icon">
+                <img src="/src/assets/images/Icon-Jogos.png">
+            </span>
+            <span class="button-text">Jogos</span>
+        </button>
+        
+        <!-- Button containing text and icon primary color -->
+        <button type="button" class="button icon-and-text primary">
+            <span class="button-icon">
+                <img src="/src/assets/images/Icon-Usuarios.png">
+            </span>
+            <span class="button-text">Usuários</span>
+        </button>
+
+        <!-- Round button accent color -->
+        <button type="button" class="button round accent">
+            <span class="button-text">+</span>
+        </button>
         <div class="container-checkbox-component">
             <p>Checkbox</p>
             <fieldset id="checkbox-group-filled">
@@ -43,3 +83,4 @@
         </div>
     </div>
 </div>
+

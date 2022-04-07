@@ -2,19 +2,23 @@
     "name": "mesa-computaria",
     "private": true,
     "version": "0.0.0",
+    "exports": {
+        "import": "./esm/index.js"
+    },
     "scripts": {
         "start": "npm run dev",
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
         "lint": "eslint \"{src,apps,libs,test}/**/*.js\" --fix",
-        "test": "vitest",
-        "test:coverage": "vitest run --coverage"
+        "test": "cross-env NODE_ENV=test vitest",
+        "test:coverage": " cross-env NODE_ENV=test vitest run --coverage"
     },
     "devDependencies": {
         "@babel/core": "^7.17.5",
         "@babel/eslint-parser": "^7.17.0",
         "c8": "^7.11.0",
+        "cross-env": "^7.0.3",
         "eslint": "^8.10.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-prettier": "^8.4.0",
@@ -25,6 +29,7 @@
         "eslint-scope": "^7.1.1",
         "eslint-visitor-keys": "^3.3.0",
         "happy-dom": "^2.43.1",
+        "jsdom": "^19.0.0",
         "prettier": "^2.5.1",
         "sass": "^1.49.9",
         "sinon": "^13.0.1",
