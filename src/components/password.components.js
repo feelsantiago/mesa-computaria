@@ -39,7 +39,7 @@ export default class PasswordInput {
             }
         });
     }
-    
+
     getValue() {
         return this.input.val();
     }
@@ -50,7 +50,7 @@ export default class PasswordInput {
 
     isValid() {
         // Validate regex: 1 capital letter, 1 number, 1 special character, and size 8;
-        const validations = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/; 
+        const validations = /^(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&()*,.:<>?@^{|}])[\d!"#$%&()*,.:<>?@A-Z^a-z{|}]{8,}$/;
 
         if (validations.test(this.input.val())) {
             this.valid = true;
@@ -72,10 +72,10 @@ export default class PasswordInput {
     isDisabled() {
         if (this.input.prop('disabled')) {
             this.disabled = true;
-            return this.input.prop('disabled');
+            return this.disabled;
         }
 
-        return this.input.prop('disabled');
+        return this.disabled;
     }
 
     getRequired() {
