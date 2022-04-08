@@ -17,8 +17,8 @@ export default class DropdownComponent {
         this.defaultText = this.btn.text();
         this.unselectedDefaultText = this.selectedItem.text();
 
-        this.addDropdownClickEventListner();
-        this.addItemClickEventListner();
+        this.addDropdownClickEventListener();
+        this.addItemClickEventListener();
     }
 
     getSelectedItem() {
@@ -49,13 +49,13 @@ export default class DropdownComponent {
         this.valid = this.btn.text() !== this.defaultText;
     }
 
-    addDropdownClickEventListner() {
+    addDropdownClickEventListener() {
         this.btn.on('click', () => {
             this.list.toggle();
         });
     }
 
-    addItemClickEventListner() {
+    addItemClickEventListener() {
         this.items.on('click', (event) => {
             this.unselectItem();
             this.selectItem(event.currentTarget);
