@@ -66,6 +66,26 @@ describe('[DropdownComponent]', () => {
         });
     });
 
+    describe('[setSelection]', () => {
+        it('Should set one of dropdown items selected via code', async () => {
+            const selectOne = $('#selected');
+            const dnd = $('#dnd');
+            const vamp = $('#vampire');
+
+            dropdown.setSelection('Dugeons&Dragons');
+            expect(dropdown.btn.text()).toEqual(dropdown.getSelectedItem());
+            expect(dnd.hasClass('selected')).toBeTruthy();
+
+            dropdown.setSelection('Vampire 5e');
+            expect(dropdown.btn.text()).toEqual(dropdown.getSelectedItem());
+            expect(vamp.hasClass('selected')).toBeTruthy();
+
+            dropdown.setSelection('Select one');
+            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
+            expect(selectOne.hasClass('selected')).toBeTruthy();
+        });
+    });
+
     describe('[getSelectedItem]', () => {
         it('Should return HTML text value from current selected item', async () => {
             const dnd = $('#dnd');

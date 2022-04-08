@@ -21,6 +21,15 @@ export default class DropdownComponent {
         this.addItemClickEventListener();
     }
 
+    setSelection(item) {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const element of this.items) {
+            if (element.textContent === item) {
+                this.select(element);
+            }
+        }
+    }
+
     getSelectedItem() {
         return this.selectedItem.text();
     }
@@ -57,18 +66,19 @@ export default class DropdownComponent {
 
     addItemClickEventListener() {
         this.items.on('click', (event) => {
-            this.unselectItem();
-            this.selectItem(event.currentTarget);
+            this.select(event.currentTarget);
             this.list.toggle();
         });
     }
 
-    updateDropdown() {
-        if (this.selectedItem.text() === this.unselectedDefaultText) {
+    update(selectedItem) {
+        this.unselectItem();
+        if (selectedItem === this.unselectedDefaultText) {
             this.btn.html(this.defaultText);
         } else {
-            this.btn.html(this.selectedItem.text());
+            this.btn.html(selectedItem);
         }
+        this.selectedItem.addClass('selected');
         this.validation();
     }
 
@@ -76,9 +86,8 @@ export default class DropdownComponent {
         this.items.removeClass('selected');
     }
 
-    selectItem(item) {
+    select(item) {
         this.selectedItem = $(item);
-        this.selectedItem.addClass('selected');
-        this.updateDropdown();
+        this.update(this.selectedItem.text());
     }
 }
