@@ -5,7 +5,7 @@ import PasswordInput from '../password.components';
 describe('[PasswordComponents]', () => {
     let password;
 
-    describe('[hasQuery]', () => {
+    describe('[checkQuery]', () => {
         it('Should throw error if query fail or the div element is not finded.', () => {
             const div = `<div id="pass"></div>`;
             $(document.body).html(div);
