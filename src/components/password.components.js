@@ -9,7 +9,7 @@ export default class PasswordInput {
         this.valid = valid;
 
         this.checkQuery(this.div, this.input, this.icon);
-        this.initFor();
+        this.onClick();
     }
 
     checkQuery(div, input, icon) {
@@ -26,7 +26,7 @@ export default class PasswordInput {
         }
     }
 
-    initFor() {
+    onClick() {
         this.icon.on('click', () => {
             if (this.input.attr('type') === 'password') {
                 this.input.attr('type', 'text').trigger('focus');
@@ -61,16 +61,18 @@ export default class PasswordInput {
 
     setDisabled(boolean) {
         this.input.prop('disabled', boolean);
+
+        if (this.input.prop('disabled')) {
+            this.icon.off('click');
+        }
     }
 
     isDisabled() {
         if (this.input.prop('disabled')) {
-            this.input.prop('disable', true);
-            return this.input.prop('disabled');
+            return true;
         }
 
-        this.input.prop('disabled', false);
-        return this.input.prop('disabled');
+        return false;
     }
 
     setRequired(boolean) {
@@ -78,12 +80,10 @@ export default class PasswordInput {
     }
 
     isRequired() {
-        if (!this.input.prop('required')) {
-            this.input.prop('required', false);
-            return this.input.prop('required');
+        if (this.input.prop('required')) {
+            return true;
         }
 
-        this.input.prop('required', true);
-        return this.input.prop('required');
+        return false;
     }
 }

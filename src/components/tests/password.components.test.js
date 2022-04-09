@@ -44,7 +44,7 @@ describe('[PasswordComponents]', () => {
         });
     });
 
-    describe('[initFor]', () => {
+    describe('[onClick]', () => {
         it('Should add a listener to click event', () => {
             const div = `
                 <div id="pass">
@@ -130,7 +130,7 @@ describe('[PasswordComponents]', () => {
             password = new PasswordInput('#pass');
             password.setValue('Password!123');
 
-            expect(password.getValue()).toEqual('Password!123');
+            expect(password.getValue()).toBe('Password!123');
         });
 
         it('Should set input value', () => {
@@ -150,7 +150,7 @@ describe('[PasswordComponents]', () => {
 
             const inputValue = $('#input-password').val();
 
-            expect(inputValue).toEqual('Password!123');
+            expect(inputValue).toBe('Password!123');
         });
 
         it('Should set disabled property', () => {
@@ -169,7 +169,9 @@ describe('[PasswordComponents]', () => {
             password.setDisabled(true);
 
             const inputProperty = $('#input-password').prop('disabled');
+            const onClick = $('#icon').off('click');
 
+            expect(onClick).toBeTruthy();
             expect(inputProperty).toBeTruthy();
         });
 
