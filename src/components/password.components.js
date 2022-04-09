@@ -1,20 +1,18 @@
 import $ from 'jquery';
 
 export default class PasswordInput {
-    constructor(queryString, valid = false, required = true, disabled = false) {
+    constructor(queryString, valid = false) {
         this.div = $(queryString);
         this.input = $(`${queryString} input[type="password"]`);
         this.icon = $(`${queryString} input[type="password"]+i`);
 
         this.valid = valid;
-        this.disabled = disabled;
-        this.required = required;
 
-        this.hasQuery(this.div, this.input, this.icon);
+        this.checkQuery(this.div, this.input, this.icon);
         this.initFor();
     }
 
-    hasQuery(div, input, icon) {
+    checkQuery(div, input, icon) {
         if (div.length === 0) {
             throw new Error('Failed to query div');
         }
@@ -57,42 +55,35 @@ export default class PasswordInput {
             return this.valid;
         }
 
+        this.valid = false;
         return this.valid;
-    }
-
-    getDisabled() {
-        return this.input.prop('disabled');
     }
 
     setDisabled(boolean) {
         this.input.prop('disabled', boolean);
-        this.disabled = boolean;
     }
 
     isDisabled() {
         if (this.input.prop('disabled')) {
-            this.disabled = true;
-            return this.disabled;
+            this.input.prop('disable', true);
+            return this.input.prop('disabled');
         }
 
-        return this.disabled;
-    }
-
-    getRequired() {
-        return this.input.prop('required');
+        this.input.prop('disabled', false);
+        return this.input.prop('disabled');
     }
 
     setRequired(boolean) {
         this.input.prop('required', boolean);
-        this.required = boolean;
     }
 
     isRequired() {
         if (!this.input.prop('required')) {
-            this.required = false;
-            return this.required;
+            this.input.prop('required', false);
+            return this.input.prop('required');
         }
 
-        return this.required;
+        this.input.prop('required', true);
+        return this.input.prop('required');
     }
 }

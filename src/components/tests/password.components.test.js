@@ -153,23 +153,6 @@ describe('[PasswordComponents]', () => {
             expect(inputValue).toEqual('Password!123');
         });
 
-        it('Should get disabled property', () => {
-            const div = `
-                <div id="pass">
-                    <div>
-                        <input id="input-password" type="password">
-                        <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
-                </div>
-            `;
-
-            $(document.body).html(div);
-
-            password = new PasswordInput('#pass');
-
-            expect(password.getDisabled()).toBeFalsy();
-        });
-
         it('Should set disabled property', () => {
             const div = `
                 <div id="pass">
@@ -188,23 +171,6 @@ describe('[PasswordComponents]', () => {
             const inputProperty = $('#input-password').prop('disabled');
 
             expect(inputProperty).toBeTruthy();
-        });
-
-        it('Should get required property', () => {
-            const div = `
-                <div id="pass">
-                    <div>
-                        <input id="input-password" type="password" required>
-                        <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
-                </div>
-            `;
-
-            $(document.body).html(div);
-
-            password = new PasswordInput('#pass');
-
-            expect(password.getRequired()).toBeTruthy();
         });
 
         it('Should set required property', () => {
