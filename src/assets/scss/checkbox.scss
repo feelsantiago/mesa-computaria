@@ -7,7 +7,7 @@ fieldset {
     min-width: 400px;
 }
 
-#checkbox-group-filled {
+.filled {
     
     &label{
         display: flex;
@@ -18,7 +18,7 @@ fieldset {
     
 }
 
-input {
+.container-checkbox-component, .filled {
     position: relative;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -28,7 +28,7 @@ input {
     overflow: hidden;
 }
 
-input:before {
+.container-checkbox-component:before, .filled:before {
     content: '';
     display: block;
     box-sizing: content-box;
@@ -38,17 +38,17 @@ input:before {
     transition: 0.2s border-color ease;
 }
 
-input:checked:before {
+.container-checkbox-component:checked:before, .filled:checked:before {
     border-color: $accent-light;
     transition: 0.5s border-color ease;
 }
 
-input:disabled:before {
+.container-checkbox-component:disabled:before, .filled:disabled:before {
     border-color: $accent-light;
     background-color: $accent-light;
 }
 
-input:after {
+.container-checkbox-component:after, .filled::after {
     content: '';
     display: block;
     position: absolute;
@@ -63,11 +63,11 @@ input:after {
     transform: translate(-50%, -50%) scale(0);
 }
 
-input[type='checkbox']:before {
+.container-checkbox-component[type='checkbox']:before {
     border-radius: 2px;
 }
 
-input[type='checkbox']:after {
+.container-checkbox-component[type='checkbox']:after {
     width: 9.3px;
     height: 17px;
     border-radius: 0;
@@ -76,17 +76,17 @@ input[type='checkbox']:after {
     box-shadow: 3px 3px 0px 0px $other-light;
 }
 
-input[type='checkbox']:checked:after {
+.container-checkbox-component[type='checkbox']:checked:after {
     -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
     animation: toggleOnCheckbox 0.2s ease forwards;
 }
 
-input[type='checkbox'].filled:before {
+.container-checkbox-component[type='checkbox'].filled:before {
     border-radius: 3px;
     transition: 0.2s border-color ease, 0.2s background-color ease;
 }
 
-input[type='checkbox'].filled:checked:not(:disabled):before {
+.container-checkbox-component[type='checkbox'].filled:checked:not(:disabled):before {
     background-color: $accent-light;
 }
 

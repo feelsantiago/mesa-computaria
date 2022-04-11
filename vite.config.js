@@ -34,7 +34,7 @@ export default defineConfig({
         globals: true,
         reporters: ['verbose'],
         watch: false,
-        environment: 'happy-dom',
+        environment: 'jsdom',
         coverage: {
             all: true,
             reporter: ['clover', 'cobertura', 'lcov', 'text'],

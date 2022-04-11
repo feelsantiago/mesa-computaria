@@ -25,6 +25,7 @@
             }
         ],
         "semi": 2,
+        "no-else-return": ["error", {"allowElseIf": true}],
         "class-methods-use-this": "off",
         "import/prefer-default-export": "off",
         "import/no-extraneous-dependencies": "off",
