@@ -1,0 +1,100 @@
+@import './style.scss';
+
+.card {
+ position: relative;
+ height: fit-content;
+ min-width: fit-content;
+ display: flex;
+ border: none;
+ border-radius: 30px;
+ outline: none;
+ background-color: $primary-dark;
+ box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+ cursor: pointer;
+
+ &.game {
+  max-width: 400px;
+  padding: 25px;
+ }
+
+ &.player {
+  max-width: 300px;
+  padding: 20px;
+ }
+}
+
+.notification-icon {
+ text-align: center;
+ position: absolute;
+ top: -5px;
+ right: -5px;
+ border-radius: 100%;
+ width: 30px;
+ height: 30px;
+ outline: none;
+ overflow: hidden;
+ background-color: $accent-light;
+}
+
+.circle-icon {
+ position: absolute;
+ right: 25px;
+ width: 20px;
+ height: 20px;
+ border-radius: 100%;
+ background-color: $other-green;
+}
+
+.game-name, .player-name {
+ font-family: $title-text;
+ font-weight: 700;
+ color: $other-light;
+padding-bottom: 15px;
+}
+
+.game-name {
+ font-size: 24px;
+}
+.player-name {
+ font-size: 18px;
+}
+
+
+.next-game {
+ color: $other-dark;
+ font-family: $general-text;
+ font-weight: 400;
+ font-size: 18px;
+}
+
+.date, .day {
+ color: $accent-light;
+}
+
+.game-stats, .player-stats {
+ display: flex;
+ flex-flow: row wrap;
+ justify-content: space-between;
+ color: $accent-light;
+ font-family: $general-text;
+ font-weight: 400;
+}
+
+.game-stats {
+padding-top: 15px;
+font-size: 20px;
+}
+.player-stats {
+padding-top: 25px;
+font-size: 15px;
+}
+
+.card-icon{
+ position: relative;
+ bottom: 3px;
+}
+
+.king-icon{
+ position: relative;
+ bottom: 6px;
+}
