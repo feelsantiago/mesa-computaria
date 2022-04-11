@@ -44,7 +44,7 @@ describe('[PasswordComponents]', () => {
         });
     });
 
-    describe('[onClick]', () => {
+    describe('[addClickEvent]', () => {
         it('Should add a listener to click event', () => {
             const div = `
                 <div id="pass">
@@ -153,7 +153,7 @@ describe('[PasswordComponents]', () => {
             expect(inputValue).toBe('Password!123');
         });
 
-        it('Should set disabled property', () => {
+        it('Should set disabled property and change his state', () => {
             const div = `
                 <div id="pass">
                     <div>
@@ -169,13 +169,14 @@ describe('[PasswordComponents]', () => {
             password.setDisabled(true);
 
             const inputProperty = $('#input-password').prop('disabled');
-            const onClick = $('#icon').off('click');
+            const removeClickEvent = $('#icon').off('click');
 
-            expect(onClick).toBeTruthy();
+            expect(password.disabled).toBeTruthy();
+            expect(removeClickEvent).toBeTruthy();
             expect(inputProperty).toBeTruthy();
         });
 
-        it('Should set required property', () => {
+        it('Should set required property and change his state', () => {
             const div = `
                 <div id="pass">
                     <div>
@@ -192,12 +193,13 @@ describe('[PasswordComponents]', () => {
 
             const inputProperty = $('#input-password').prop('required');
 
+            expect(password.required).toBeFalsy();
             expect(inputProperty).toBeFalsy();
         });
     });
 
-    describe('[isProperty]', () => {
-        it('Should check if input value is valid', () => {
+    describe('[isValid]', () => {
+        it('Should check if input value is valid and keep its state', () => {
             const div = `
                 <div id="pass">
                     <div>
@@ -212,12 +214,13 @@ describe('[PasswordComponents]', () => {
             password = new PasswordInput('#pass');
             password.setValue('T4st&val');
 
-            const isValid = password.isValid();
-
-            expect(isValid).toBeTruthy();
+            expect(password.isValid()).toBeTruthy();
+            expect(password.valid).toBeTruthy();
         });
+    });
 
-        it('Should check if input has disabled property', () => {
+    describe('[isDisabled]', () => {
+        it('Should check if input has disabled property and keep its state', () => {
             const div = `
                 <div id="pass">
                     <div>
@@ -232,9 +235,12 @@ describe('[PasswordComponents]', () => {
             password = new PasswordInput('#pass');
 
             expect(password.isDisabled()).toBeTruthy();
+            expect(password.disabled).toBeTruthy();
         });
+    });
 
-        it('Should check if input has required property', () => {
+    describe('[isRequired]', () => {
+        it('Should check if input has required property and keep its state', () => {
             const div = `
                 <div id="pass">
                     <div>
@@ -249,6 +255,7 @@ describe('[PasswordComponents]', () => {
             password = new PasswordInput('#pass');
 
             expect(password.isRequired()).toBeTruthy();
+            expect(password.required).toBeTruthy();
         });
     });
 });

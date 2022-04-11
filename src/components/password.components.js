@@ -1,15 +1,17 @@
 import $ from 'jquery';
 
 export default class PasswordInput {
-    constructor(queryString, valid = false) {
+    constructor(queryString, valid = false, disabled = false, required = true) {
         this.div = $(queryString);
         this.input = $(`${queryString} input[type="password"]`);
         this.icon = $(`${queryString} input[type="password"]+i`);
 
         this.valid = valid;
+        this.disabled = disabled;
+        this.required = required;
 
         this.checkQuery(this.div, this.input, this.icon);
-        this.onClick();
+        this.addClickEvent();
     }
 
     checkQuery(div, input, icon) {
@@ -26,7 +28,7 @@ export default class PasswordInput {
         }
     }
 
-    onClick() {
+    addClickEvent() {
         this.icon.on('click', () => {
             if (this.input.attr('type') === 'password') {
                 this.input.attr('type', 'text').trigger('focus');
@@ -61,6 +63,7 @@ export default class PasswordInput {
 
     setDisabled(boolean) {
         this.input.prop('disabled', boolean);
+        this.disabled = boolean;
 
         if (this.input.prop('disabled')) {
             this.icon.off('click');
@@ -69,21 +72,26 @@ export default class PasswordInput {
 
     isDisabled() {
         if (this.input.prop('disabled')) {
-            return true;
+            this.disabled = true;
+            return this.disabled;
         }
 
-        return false;
+        this.disabled = false;
+        return this.disabled;
     }
 
     setRequired(boolean) {
         this.input.prop('required', boolean);
+        this.required = boolean;
     }
 
     isRequired() {
-        if (this.input.prop('required')) {
-            return true;
+        if (!this.input.prop('required')) {
+            this.required = false;
+            return this.required;
         }
 
-        return false;
+        this.required = true;
+        return this.required;
     }
 }
