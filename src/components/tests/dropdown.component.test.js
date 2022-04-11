@@ -55,13 +55,13 @@ describe('[DropdownComponent]', () => {
 
     describe('[itemClickEvent]', () => {
         it('Should change selection new item and unselect previous one', async () => {
-            const selectedItem = $('#dnd');
+            const option = $('#dnd');
             const previousSelected = $('#selected');
 
-            selectedItem.trigger('click');
-            expect(selectedItem.hasClass('selected')).toBeTruthy();
+            option.trigger('click');
+            expect(option.hasClass('selected')).toBeTruthy();
             expect(previousSelected.hasClass('selected')).toBeFalsy();
-            expect(dropdown.btn.text()).toEqual(selectedItem.text());
+            expect(dropdown.btn.text()).toEqual(option.text());
             expect(dropdown.list.attr('style')).toEqual('display: none;');
         });
     });
@@ -72,6 +72,10 @@ describe('[DropdownComponent]', () => {
             const dnd = $('#dnd');
             const vamp = $('#vampire');
 
+            expect(() => {
+                dropdown.setSelection('Bla bla bla');
+            }).toThrow('Not find');
+
             dropdown.setSelection('Dugeons&Dragons');
             expect(dropdown.btn.text()).toEqual(dropdown.getSelectedItem());
             expect(dnd.hasClass('selected')).toBeTruthy();
@@ -81,8 +85,23 @@ describe('[DropdownComponent]', () => {
             expect(vamp.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Select one');
-            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
+            expect(dropdown.btn.text()).toEqual(dropdown._defaultText);
             expect(selectOne.hasClass('selected')).toBeTruthy();
+        });
+    });
+
+    describe('[unselect]', () => {
+        it('should set default to the dropdown', async () => {
+            const dnd = $('#dnd');
+            const vamp = $('#vampire');
+
+            dnd.trigger('click');
+            dropdown.unselect();
+            expect(dropdown.btn.text()).toEqual(dropdown._defaultText);
+
+            vamp.trigger('click');
+            dropdown.unselect();
+            expect(dropdown.btn.text()).toEqual(dropdown._defaultText);
         });
     });
 
@@ -91,7 +110,7 @@ describe('[DropdownComponent]', () => {
             const dnd = $('#dnd');
             const vamp = $('#vampire');
 
-            expect(dropdown.getSelectedItem()).toEqual(dropdown.unselectedDefaultText);
+            expect(dropdown.getSelectedItem()).toEqual(dropdown._defaultOption);
 
             dnd.trigger('click');
             expect(dropdown.getSelectedItem()).toEqual(dnd.text());
@@ -114,29 +133,33 @@ describe('[DropdownComponent]', () => {
     });
 
     describe('[requiredState]', () => {
-        const otherDropdown = $.parseHTML(`      
-        <div class="row-dropdown-input container" id="testUnrequired">
-            <fieldset class="dropdown-container">
-                <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
-                <div class="dropdown dropdown-list" id="list" style="display: block;">
-                    <ul>
-                        <li class="dropdown-item selected" id="selected">Select one</li>
-                        <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
-                        <li class="dropdown-item" id="vampire">Vampire 5e</li>
-                     </ul>
-                </div>
-            </fieldset>
-        </div>`);
+        beforeEach(() => {
+            const otherDropdown = $.parseHTML(`      
+            <div class="row-dropdown-input container" id="testUnrequired">
+                <fieldset class="dropdown-container">
+                    <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
+                    <div class="dropdown dropdown-list" id="list" style="display: block;">
+                        <ul>
+                            <li class="dropdown-item selected" id="selected">Select one</li>
+                            <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
+                            <li class="dropdown-item" id="vampire">Vampire 5e</li>
+                         </ul>
+                    </div>
+                </fieldset>
+            </div>`);
 
-        $(document.body).append(otherDropdown);
-        dropdownUnrequired = new DropdownComponent('#testUnrequired', false);
+            $(document.body).append(otherDropdown);
+            dropdownUnrequired = new DropdownComponent('#testUnrequired', false);
+        });
+
+        afterEach(() => {
+            $('#testUnrequired').remove();
+        });
 
         it('Should be default required or unrequired if set false on instantiation', async () => {
             expect(dropdown.required).toBeTruthy();
             expect(dropdownUnrequired.required).toBeFalsy();
         });
-
-        $('#testUnrequired').remove();
     });
 
     describe('[validState]', () => {
@@ -148,6 +171,7 @@ describe('[DropdownComponent]', () => {
             expect(dropdown.isValid()).toBeFalsy();
 
             dnd.trigger('click');
+            console.log(dropdown.getSelectedItem());
             expect(dropdown.isValid()).toBeTruthy();
 
             vamp.trigger('click');
