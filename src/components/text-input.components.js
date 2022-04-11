@@ -22,11 +22,11 @@ export default class TextInput {
     }
 
     getTextValid() {
-        return this.textValid;
+        return this.textValid.val();
     }
 
     setTextValid(text) {
-        this.textValid = text;
+        this.textValid = this.textInput.val(text);
     }
 
     isTextValid() {
@@ -34,7 +34,7 @@ export default class TextInput {
             throw new Error('write any thing');
         }
 
-        return this.textValid;
+        return this.textValid.val();
     }
 
     isTextEnable() {
