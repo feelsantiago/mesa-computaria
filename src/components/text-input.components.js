@@ -34,7 +34,7 @@ export default class TextInput {
             throw new Error('write any thing');
         }
 
-        return this.textValid.val();
+        return this.textInput.val();
     }
 
     isTextEnable() {
