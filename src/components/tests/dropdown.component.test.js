@@ -171,7 +171,6 @@ describe('[DropdownComponent]', () => {
             expect(dropdown.isValid()).toBeFalsy();
 
             dnd.trigger('click');
-            console.log(dropdown.getSelectedItem());
             expect(dropdown.isValid()).toBeTruthy();
 
             vamp.trigger('click');
