@@ -1,14 +1,15 @@
 import $ from 'jquery';
 
 export default class PasswordInput {
-    constructor(queryString, valid = false, disabled = false, required = true) {
+    constructor(queryString, required = true) {
         this.div = $(queryString);
         this.input = $(`${queryString} input[type="password"]`);
         this.icon = $(`${queryString} input[type="password"]+i`);
 
-        this.valid = valid;
-        this.disabled = disabled;
+        this.value = '';
         this.required = required;
+        this.valid = false;
+        this.disabled = false;
 
         this.checkQuery(this.div, this.input, this.icon);
         this.addClickEvent();
@@ -28,27 +29,33 @@ export default class PasswordInput {
         }
     }
 
+    showValue() {
+        this.input.attr('type', 'text').trigger('focus');
+        this.icon.removeClass('fa-eye-slash').addClass('fa-eye');
+    }
+
+    hideValue() {
+        this.input.attr('type', 'password').trigger('focus');
+        this.icon.removeClass('fa-eye').addClass('fa-eye-slash');
+    }
+
     addClickEvent() {
         this.icon.on('click', () => {
             if (this.input.attr('type') === 'password') {
-                this.input.attr('type', 'text').trigger('focus');
-                this.icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                this.showValue();
             } else {
-                this.input.attr('type', 'password').trigger('focus');
-                this.icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                this.hideValue();
             }
         });
     }
 
-    getValue() {
-        return this.input.val();
-    }
-
     setValue(string) {
         this.input.val(string);
+        this.value = this.input.val();
+        this.valid = this.validate();
     }
 
-    isValid() {
+    validate() {
         // Validate regex: 1 capital letter, 1 number, 1 special character, and size 8;
         const validations = /^(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&()*,.:<>?@^{|}])[\d!"#$%&()*,.:<>?@A-Z^a-z{|}]{8,}$/;
 
@@ -61,37 +68,20 @@ export default class PasswordInput {
         return this.valid;
     }
 
-    setDisabled(boolean) {
-        this.input.prop('disabled', boolean);
-        this.disabled = boolean;
-
-        if (this.input.prop('disabled')) {
-            this.icon.off('click');
-        }
+    enable() {
+        this.input.prop('disabled', false);
+        this.addClickEvent();
+        this.disabled = false;
     }
 
-    isDisabled() {
-        if (this.input.prop('disabled')) {
-            this.disabled = true;
-            return this.disabled;
-        }
-
-        this.disabled = false;
-        return this.disabled;
+    disable() {
+        this.input.prop('disabled', true);
+        this.icon.off('click');
+        this.disabled = true;
     }
 
     setRequired(boolean) {
         this.input.prop('required', boolean);
         this.required = boolean;
-    }
-
-    isRequired() {
-        if (!this.input.prop('required')) {
-            this.required = false;
-            return this.required;
-        }
-
-        this.required = true;
-        return this.required;
     }
 }
