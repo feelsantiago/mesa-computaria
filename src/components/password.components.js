@@ -59,7 +59,7 @@ export default class PasswordInput {
         // Validate regex: 1 capital letter, 1 number, 1 special character, and size 8;
         const validations = /^(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&()*,.:<>?@^{|}])[\d!"#$%&()*,.:<>?@A-Z^a-z{|}]{8,}$/;
 
-        if (validations.test(this.input.val())) {
+        if (validations.test(this.value)) {
             this.valid = true;
             return this.valid;
         }
