@@ -74,18 +74,18 @@ describe('[DropdownComponent]', () => {
 
             expect(() => {
                 dropdown.setSelection('Bla bla bla');
-            }).toThrow('Not find');
+            }).toThrow('Bla bla bla are not included in this dropdown');
 
             dropdown.setSelection('Dugeons&Dragons');
-            expect(dropdown.btn.text()).toEqual(dropdown.getSelectedItem());
+            expect(dropdown.btn.text()).toEqual(dropdown.selected());
             expect(dnd.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Vampire 5e');
-            expect(dropdown.btn.text()).toEqual(dropdown.getSelectedItem());
+            expect(dropdown.btn.text()).toEqual(dropdown.selected());
             expect(vamp.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Select one');
-            expect(dropdown.btn.text()).toEqual(dropdown._defaultText);
+            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
             expect(selectOne.hasClass('selected')).toBeTruthy();
         });
     });
@@ -97,38 +97,38 @@ describe('[DropdownComponent]', () => {
 
             dnd.trigger('click');
             dropdown.unselect();
-            expect(dropdown.btn.text()).toEqual(dropdown._defaultText);
+            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
 
             vamp.trigger('click');
             dropdown.unselect();
-            expect(dropdown.btn.text()).toEqual(dropdown._defaultText);
+            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
         });
     });
 
-    describe('[getSelectedItem]', () => {
+    describe('[selected]', () => {
         it('Should return HTML text value from current selected item', async () => {
             const dnd = $('#dnd');
             const vamp = $('#vampire');
 
-            expect(dropdown.getSelectedItem()).toEqual(dropdown._defaultOption);
+            expect(dropdown.selected()).toEqual(dropdown.defaultOption);
 
             dnd.trigger('click');
-            expect(dropdown.getSelectedItem()).toEqual(dnd.text());
+            expect(dropdown.selected()).toEqual(dnd.text());
 
             vamp.trigger('click');
-            expect(dropdown.getSelectedItem()).toEqual(vamp.text());
+            expect(dropdown.selected()).toEqual(vamp.text());
         });
     });
 
     describe('[enabledState]', () => {
         it('Should return enabled state default or disalbe if setted', async () => {
-            expect(dropdown.isDisabled()).toBeFalsy();
+            expect(dropdown.disabled).toBeFalsy();
 
             dropdown.disable();
-            expect(dropdown.isDisabled()).toBeTruthy();
+            expect(dropdown.disabled).toBeTruthy();
 
             dropdown.enable();
-            expect(dropdown.isDisabled()).toBeFalsy();
+            expect(dropdown.disabled).toBeFalsy();
         });
     });
 
@@ -168,16 +168,16 @@ describe('[DropdownComponent]', () => {
             const dnd = $('#dnd');
             const vamp = $('#vampire');
 
-            expect(dropdown.isValid()).toBeFalsy();
+            expect(dropdown.valid).toBeFalsy();
 
             dnd.trigger('click');
-            expect(dropdown.isValid()).toBeTruthy();
+            expect(dropdown.valid).toBeTruthy();
 
             vamp.trigger('click');
-            expect(dropdown.isValid()).toBeTruthy();
+            expect(dropdown.valid).toBeTruthy();
 
             selectOne.trigger('click');
-            expect(dropdown.isValid()).toBeFalsy();
+            expect(dropdown.valid).toBeFalsy();
         });
     });
 });
