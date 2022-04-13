@@ -30,7 +30,7 @@ export default class DropdownComponent {
             }
         }
         if (notFound) {
-            throw new DropdownOptionNotFound(`${item} are not included in this dropdown`);
+            throw new DropdownOptionNotFound(item);
         }
     }
 
