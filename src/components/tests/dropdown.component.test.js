@@ -182,7 +182,7 @@ describe('[DropdownComponent]', () => {
     });
 
     describe('[list]', () => {
-        it.only('should return a list of options in the dropdown', async () => {
+        it('should return a list of options in the dropdown', async () => {
             expect(dropdown.list()).toContain('Select one');
             expect(dropdown.list()).toContain('Dugeons&Dragons');
             expect(dropdown.list()).toContain('Vampire 5e');
