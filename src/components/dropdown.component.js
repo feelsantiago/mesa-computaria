@@ -8,22 +8,31 @@ export default class DropdownComponent {
         this.disabled = false;
         this.valid = false;
 
-        this.container = $(`${query} .dropdown-container`);
-        this.btn = $(`${query} .dropdown-btn`);
-        this.list = $(`${query} .dropdown-list`);
-        this.items = $(`${query} .dropdown-item`);
-        this.currentSelected = $(`${query} .selected`);
+        this._container = $(`${query} .dropdown-container`);
+        this._btn = $(`${query} .dropdown-btn`);
+        this._list = $(`${query} .dropdown-list`);
+        this._items = $(`${query} .dropdown-item`);
+        this._currentSelected = $(`${query} .selected`);
 
-        this.defaultText = this.btn.text();
-        this.defaultOption = this.currentSelected.text();
+        this.selected = this._currentSelected.text();
+        this.defaultText = this._btn.text();
+        this.defaultOption = this._currentSelected.text();
 
         this._addDropdownClickEventListener();
         this._addItemClickEventListener();
     }
 
+    list() {
+        const dropdownList = [];
+        for (const element of this._items) {
+            dropdownList.push(element.textContent);
+        }
+        return dropdownList;
+    }
+
     setSelection(item) {
         let notFound = true;
-        for (const element of this.items) {
+        for (const element of this._items) {
             if (element.textContent.toLowerCase() === item.toLowerCase()) {
                 notFound = false;
                 this._select(element);
@@ -34,43 +43,40 @@ export default class DropdownComponent {
         }
     }
 
-    selected() {
-        return this.currentSelected.text();
-    }
-
     enable() {
-        this.container.css('pointer-events', 'auto');
-        this.container.prop('disabled', false);
-        this.disabled = this.container.is(':disabled');
+        this._container.css('pointer-events', 'auto');
+        this._container.prop('disabled', false);
+        this.disabled = this._container.is(':disabled');
     }
 
     disable() {
-        this.container.css('pointer-events', 'none');
-        this.container.prop('disabled', true);
-        this.disabled = this.container.is(':disabled');
+        this._container.css('pointer-events', 'none');
+        this._container.prop('disabled', true);
+        this.disabled = this._container.is(':disabled');
     }
 
     _addDropdownClickEventListener() {
-        this.btn.on('click', () => {
-            this.list.toggle();
+        this._btn.on('click', () => {
+            this._list.toggle();
         });
     }
 
     _addItemClickEventListener() {
-        this.items.on('click', (event) => {
+        this._items.on('click', (event) => {
             this._select(event.currentTarget);
-            this.list.toggle();
+            this._list.toggle();
         });
     }
 
     _select(item) {
-        this.currentSelected = $(item);
-        this._update(this.selected());
+        this._currentSelected = $(item);
+        this.selected = this._currentSelected.text();
+        this._update(this.selected);
     }
 
     _update(selection) {
-        this.items.removeClass('selected');
-        this.currentSelected.addClass('selected');
+        this._items.removeClass('selected');
+        this._currentSelected.addClass('selected');
         this._change(selection);
         this.validation();
     }
@@ -81,14 +87,14 @@ export default class DropdownComponent {
 
     _change(text) {
         if (text === this.defaultOption) {
-            this.btn.html(this.defaultText);
+            this._btn.html(this.defaultText);
         } else {
-            this.btn.html(text);
+            this._btn.html(text);
         }
     }
 
     validation() {
-        this.valid = this.btn.text() !== this.defaultText;
+        this.valid = this._btn.text() !== this.defaultText;
         return this._valid;
     }
 }

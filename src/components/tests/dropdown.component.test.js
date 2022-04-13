@@ -30,26 +30,26 @@ describe('[DropdownComponent]', () => {
     });
 
     it('Should load elements and add events on dropdown instanciation', () => {
-        expect(dropdown.btn.length > 0).toBeTruthy();
-        expect(dropdown.list.length > 0).toBeTruthy();
-        expect(dropdown.items.length > 0).toBeTruthy();
+        expect(dropdown._btn.length > 0).toBeTruthy();
+        expect(dropdown._list.length > 0).toBeTruthy();
+        expect(dropdown._items.length > 0).toBeTruthy();
 
         /* eslint-disable no-underscore-dangle */
-        expect($._data(dropdown.btn.get(0), 'events')).toBeDefined();
-        expect($._data(dropdown.items.get(0), 'events')).toBeDefined();
+        expect($._data(dropdown._btn.get(0), 'events')).toBeDefined();
+        expect($._data(dropdown._items.get(0), 'events')).toBeDefined();
         /* eslint-anable no-underscore-dangle */
     });
 
     describe('[dropdownClickEvent]', () => {
         it('Should change a dropdown list style display from none to block', () => {
-            dropdown.list.toggle();
-            dropdown.btn.trigger('click');
-            expect(dropdown.list.attr('style')).toEqual('display: block;');
+            dropdown._list.toggle();
+            dropdown._btn.trigger('click');
+            expect(dropdown._list.attr('style')).toEqual('display: block;');
         });
 
         it('Should change a dropdown list style display from block to none', async () => {
-            dropdown.btn.trigger('click');
-            expect(dropdown.list.attr('style')).toEqual('display: none;');
+            dropdown._btn.trigger('click');
+            expect(dropdown._list.attr('style')).toEqual('display: none;');
         });
     });
 
@@ -61,8 +61,8 @@ describe('[DropdownComponent]', () => {
             option.trigger('click');
             expect(option.hasClass('selected')).toBeTruthy();
             expect(previousSelected.hasClass('selected')).toBeFalsy();
-            expect(dropdown.btn.text()).toEqual(option.text());
-            expect(dropdown.list.attr('style')).toEqual('display: none;');
+            expect(dropdown._btn.text()).toEqual(option.text());
+            expect(dropdown._list.attr('style')).toEqual('display: none;');
         });
     });
 
@@ -77,15 +77,15 @@ describe('[DropdownComponent]', () => {
             }).toThrow('Bla bla bla are not included in this dropdown');
 
             dropdown.setSelection('Dugeons&Dragons');
-            expect(dropdown.btn.text()).toEqual(dropdown.selected());
+            expect(dropdown._btn.text()).toEqual(dropdown.selected);
             expect(dnd.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Vampire 5e');
-            expect(dropdown.btn.text()).toEqual(dropdown.selected());
+            expect(dropdown._btn.text()).toEqual(dropdown.selected);
             expect(vamp.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Select one');
-            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown.defaultText);
             expect(selectOne.hasClass('selected')).toBeTruthy();
         });
     });
@@ -97,11 +97,11 @@ describe('[DropdownComponent]', () => {
 
             dnd.trigger('click');
             dropdown.unselect();
-            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown.defaultText);
 
             vamp.trigger('click');
             dropdown.unselect();
-            expect(dropdown.btn.text()).toEqual(dropdown.defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown.defaultText);
         });
     });
 
@@ -110,13 +110,13 @@ describe('[DropdownComponent]', () => {
             const dnd = $('#dnd');
             const vamp = $('#vampire');
 
-            expect(dropdown.selected()).toEqual(dropdown.defaultOption);
+            expect(dropdown.selected).toEqual(dropdown.defaultOption);
 
             dnd.trigger('click');
-            expect(dropdown.selected()).toEqual(dnd.text());
+            expect(dropdown.selected).toEqual(dnd.text());
 
             vamp.trigger('click');
-            expect(dropdown.selected()).toEqual(vamp.text());
+            expect(dropdown.selected).toEqual(vamp.text());
         });
     });
 
@@ -178,6 +178,15 @@ describe('[DropdownComponent]', () => {
 
             selectOne.trigger('click');
             expect(dropdown.valid).toBeFalsy();
+        });
+    });
+
+    describe('[list]', () => {
+        it.only('should return a list of options in the dropdown', async () => {
+            expect(dropdown.list()).toContain('Select one');
+            expect(dropdown.list()).toContain('Dugeons&Dragons');
+            expect(dropdown.list()).toContain('Vampire 5e');
+            expect(dropdown.list()).toContain('Select one', 'Dugeons&Dragons', 'Vampire 5e');
         });
     });
 });
