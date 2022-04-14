@@ -25,6 +25,8 @@
             }
         ],
         "semi": 2,
+        "no-restricted-syntax": "off",
+        "no-underscore-dangle": "off",
         "no-else-return": ["error", {"allowElseIf": true}],
         "class-methods-use-this": "off",
         "import/prefer-default-export": "off",
