@@ -1,5 +1,5 @@
+import { describe, expect, it } from 'vitest';
 import $ from 'jquery';
-
 import EmailTextInput from '../text-input-email.components';
 
 describe('[Email input tests]', () => {
