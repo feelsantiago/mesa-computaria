@@ -70,7 +70,7 @@ export default class PasswordInput {
     enable() {
         this._input.prop('disabled', false);
         this.disabled = this._input.is(':disabled');
-        this.addClickEvent();
+        this._addClickEvent();
     }
 
     disable() {
