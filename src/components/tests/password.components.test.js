@@ -146,11 +146,13 @@ describe('[PasswordComponents]', () => {
             $(document.body).html(div);
 
             password = new PasswordInput('#pass');
-            password.setValue('Password!123');
+            password.setValue('Password123');
 
             const inputValue = $('#input-password').val();
 
-            expect(inputValue).toBe('Password!123');
+            expect(inputValue).toBe('Password123');
+            expect(password.value).toBe('Password123');
+            expect(password.valid).toBeFalsy();
         });
 
         it('Should disable input and keep its state', () => {
