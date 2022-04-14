@@ -44,7 +44,7 @@ describe('[PasswordComponents]', () => {
         });
     });
 
-    describe('[_addClickEvent]', () => {
+    describe('[addClickEvent]', () => {
         it('Should add a listener to click event', () => {
             const div = `
                 <div id="pass">

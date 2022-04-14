@@ -12,7 +12,7 @@ export default class PasswordInput {
         this.disabled = false;
 
         this._checkQuery(this._div, this._input, this._icon);
-        this._addClickEvent();
+        this.addClickEvent();
     }
 
     _checkQuery(div, input, icon) {
@@ -39,7 +39,7 @@ export default class PasswordInput {
         this._icon.removeClass('fa-eye').addClass('fa-eye-slash');
     }
 
-    _addClickEvent() {
+    addClickEvent() {
         this._icon.on('click', () => {
             if (this._input.attr('type') === 'password') {
                 this.showValue();
@@ -49,14 +49,8 @@ export default class PasswordInput {
         });
     }
 
-    _removeClickEvent() {
+    removeClickEvent() {
         this._icon.off('click');
-    }
-
-    setValue(string) {
-        this._input.val(string);
-        this.value = this._input.val();
-        this.valid = this.validate();
     }
 
     validate() {
@@ -74,13 +68,19 @@ export default class PasswordInput {
     enable() {
         this._input.prop('disabled', false);
         this.disabled = this._input.is(':disabled');
-        this._addClickEvent();
+        this.addClickEvent();
     }
 
     disable() {
         this._input.prop('disabled', true);
         this.disabled = this._input.is(':disabled');
-        this._removeClickEvent();
+        this.removeClickEvent();
+    }
+
+    setValue(string) {
+        this._input.val(string);
+        this.value = this._input.val();
+        this.valid = this.validate();
     }
 
     setRequired(boolean) {
