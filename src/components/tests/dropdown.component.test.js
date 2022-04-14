@@ -10,7 +10,7 @@ describe('[DropdownComponent]', () => {
         const html = $.parseHTML(`
         <div class="row-dropdown-input container" id="test">
             <fieldset class="dropdown-container">
-            <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
+            <button type="button" class="dropdown dropdown-btn" id="btn"></button>
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>
                         <li class="dropdown-item selected" id="selected">Select one</li>
@@ -22,7 +22,7 @@ describe('[DropdownComponent]', () => {
         </div>`);
 
         $(document.body).append(html);
-        dropdown = new DropdownComponent('#test');
+        dropdown = new DropdownComponent('#test', 'Game Type');
     });
 
     afterEach(() => {
@@ -85,7 +85,7 @@ describe('[DropdownComponent]', () => {
             expect(vamp.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Select one');
-            expect(dropdown._btn.text()).toEqual(dropdown._placeholder);
+            expect(dropdown._btn.text()).toEqual(dropdown.placeholder);
             expect(selectOne.hasClass('selected')).toBeTruthy();
         });
     });
@@ -97,11 +97,11 @@ describe('[DropdownComponent]', () => {
 
             dnd.trigger('click');
             dropdown.unselect();
-            expect(dropdown._btn.text()).toEqual(dropdown._placeholder);
+            expect(dropdown._btn.text()).toEqual(dropdown.placeholder);
 
             vamp.trigger('click');
             dropdown.unselect();
-            expect(dropdown._btn.text()).toEqual(dropdown._placeholder);
+            expect(dropdown._btn.text()).toEqual(dropdown.placeholder);
         });
     });
 
@@ -149,7 +149,7 @@ describe('[DropdownComponent]', () => {
             </div>`);
 
             $(document.body).append(otherDropdown);
-            dropdownUnrequired = new DropdownComponent('#testUnrequired', false);
+            dropdownUnrequired = new DropdownComponent('#testUnrequired', 'Game type', false);
         });
 
         afterEach(() => {

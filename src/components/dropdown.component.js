@@ -2,9 +2,10 @@ import $ from 'jquery';
 import DropdownOptionNotFound from '../shared/erros/dropdow-option-not-found.erros';
 
 export default class DropdownComponent {
-    constructor(query, required = true) {
+    constructor(query, placeholder, required = true) {
         this.query = query;
         this.required = required;
+        this.placeholder = placeholder;
         this.disabled = false;
         this.valid = false;
 
@@ -15,9 +16,9 @@ export default class DropdownComponent {
         this._currentSelected = $(`${query} .selected`);
 
         this.selected = this._currentSelected.text();
-        this._placeholder = this._btn.text();
         this.defaultOption = this._currentSelected.text();
 
+        this._btn.html(this.placeholder);
         this._addDropdownClickEventListener();
         this._addItemClickEventListener();
     }
@@ -87,14 +88,14 @@ export default class DropdownComponent {
 
     _change(text) {
         if (text === this.defaultOption) {
-            this._btn.html(this._placeholder);
+            this._btn.html(this.placeholder);
         } else {
             this._btn.html(text);
         }
     }
 
     validation() {
-        this.valid = this._btn.text() !== this._placeholder;
+        this.valid = this._btn.text() !== this.placeholder;
         return this._valid;
     }
 }
