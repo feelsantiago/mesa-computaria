@@ -70,33 +70,35 @@ describe('[TextInput]', () => {
         expect(input.disabled).toBeFalsy();
     });
 
-    it('Should get input text value is not valid', () => {
-        const div = `
+    describe('[validState]', () => {
+        it('Should get input text value is not valid', () => {
+            const div = `
             <div class="container-text-input-box">
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </div>`;
 
-        $(document.body).html(div);
+            $(document.body).html(div);
 
-        input = new TextInput('.container-text-input-box');
-        input.setInput('');
+            input = new TextInput('.container-text-input-box');
+            input.setInput('');
 
-        expect(input.isTextValid()).toBeFalsy();
-    });
+            expect(input.isTextValid()).toBeFalsy();
+        });
 
-    it('Should get input text value is valid', () => {
-        const div = `
+        it('Should get input text value is valid', () => {
+            const div = `
             <div class="container-text-input-box">  
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </div>`;
 
-        $(document.body).html(div);
+            $(document.body).html(div);
 
-        input = new TextInput('.container-text-input-box');
-        input.setInput('Abcdieop');
+            input = new TextInput('.container-text-input-box');
+            input.setInput('Abcdieop');
 
-        expect(input.isTextValid()).toBeTruthy();
+            expect(input.isTextValid()).toBeTruthy();
+        });
     });
 });
