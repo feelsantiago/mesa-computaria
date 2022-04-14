@@ -15,19 +15,19 @@ export default class DropdownComponent {
         this._currentSelected = $(`${query} .selected`);
 
         this.selected = this._currentSelected.text();
-        this.defaultText = this._btn.text();
+        this._defaultText = this._btn.text();
         this.defaultOption = this._currentSelected.text();
 
         this._addDropdownClickEventListener();
         this._addItemClickEventListener();
     }
 
-    list() {
-        const dropdownList = [];
+    options() {
+        const dropdownOptions = [];
         for (const element of this._items) {
-            dropdownList.push(element.textContent);
+            dropdownOptions.push(element.textContent);
         }
-        return dropdownList;
+        return dropdownOptions;
     }
 
     setSelection(item) {
@@ -87,14 +87,14 @@ export default class DropdownComponent {
 
     _change(text) {
         if (text === this.defaultOption) {
-            this._btn.html(this.defaultText);
+            this._btn.html(this._defaultText);
         } else {
             this._btn.html(text);
         }
     }
 
     validation() {
-        this.valid = this._btn.text() !== this.defaultText;
+        this.valid = this._btn.text() !== this._defaultText;
         return this._valid;
     }
 }

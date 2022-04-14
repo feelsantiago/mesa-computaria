@@ -85,7 +85,7 @@ describe('[DropdownComponent]', () => {
             expect(vamp.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Select one');
-            expect(dropdown._btn.text()).toEqual(dropdown.defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown._defaultText);
             expect(selectOne.hasClass('selected')).toBeTruthy();
         });
     });
@@ -97,11 +97,11 @@ describe('[DropdownComponent]', () => {
 
             dnd.trigger('click');
             dropdown.unselect();
-            expect(dropdown._btn.text()).toEqual(dropdown.defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown._defaultText);
 
             vamp.trigger('click');
             dropdown.unselect();
-            expect(dropdown._btn.text()).toEqual(dropdown.defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown._defaultText);
         });
     });
 
@@ -181,12 +181,12 @@ describe('[DropdownComponent]', () => {
         });
     });
 
-    describe('[list]', () => {
+    describe('[options]', () => {
         it('should return a list of options in the dropdown', async () => {
-            expect(dropdown.list()).toContain('Select one');
-            expect(dropdown.list()).toContain('Dugeons&Dragons');
-            expect(dropdown.list()).toContain('Vampire 5e');
-            expect(dropdown.list()).toContain('Select one', 'Dugeons&Dragons', 'Vampire 5e');
+            expect(dropdown.options()).toContain('Select one');
+            expect(dropdown.options()).toContain('Dugeons&Dragons');
+            expect(dropdown.options()).toContain('Vampire 5e');
+            expect(dropdown.options()).toContain('Select one', 'Dugeons&Dragons', 'Vampire 5e');
         });
     });
 });
