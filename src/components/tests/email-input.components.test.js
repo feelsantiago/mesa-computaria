@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import EmailTextInput from '../text-input-email.componentss';
+import EmailTextInput from '../text-input-email.components';
 
 describe('[Email input tests]', () => {
     let input;
