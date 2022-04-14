@@ -85,7 +85,7 @@ describe('[DropdownComponent]', () => {
             expect(vamp.hasClass('selected')).toBeTruthy();
 
             dropdown.setSelection('Select one');
-            expect(dropdown._btn.text()).toEqual(dropdown._defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown._placeholder);
             expect(selectOne.hasClass('selected')).toBeTruthy();
         });
     });
@@ -97,11 +97,11 @@ describe('[DropdownComponent]', () => {
 
             dnd.trigger('click');
             dropdown.unselect();
-            expect(dropdown._btn.text()).toEqual(dropdown._defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown._placeholder);
 
             vamp.trigger('click');
             dropdown.unselect();
-            expect(dropdown._btn.text()).toEqual(dropdown._defaultText);
+            expect(dropdown._btn.text()).toEqual(dropdown._placeholder);
         });
     });
 

@@ -15,7 +15,7 @@ export default class DropdownComponent {
         this._currentSelected = $(`${query} .selected`);
 
         this.selected = this._currentSelected.text();
-        this._defaultText = this._btn.text();
+        this._placeholder = this._btn.text();
         this.defaultOption = this._currentSelected.text();
 
         this._addDropdownClickEventListener();
@@ -87,14 +87,14 @@ export default class DropdownComponent {
 
     _change(text) {
         if (text === this.defaultOption) {
-            this._btn.html(this._defaultText);
+            this._btn.html(this._placeholder);
         } else {
             this._btn.html(text);
         }
     }
 
     validation() {
-        this.valid = this._btn.text() !== this._defaultText;
+        this.valid = this._btn.text() !== this._placeholder;
         return this._valid;
     }
 }
