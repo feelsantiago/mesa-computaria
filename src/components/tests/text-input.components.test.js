@@ -1,6 +1,6 @@
 import $ from 'jquery';
 // eslint-disable-next-line import/extensions
-import TextInput from '../text-input.components.js';
+import TextInput from '../text-input.components';
 // eslint-disable-next-line import/extensions
 
 describe('[TextInput]', () => {
