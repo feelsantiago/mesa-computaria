@@ -115,7 +115,7 @@ describe('[PasswordComponents]', () => {
     });
 
     describe('[Getters and Setters]', () => {
-        it('Should get input value', () => {
+        it('Should set and get input value', () => {
             const div = `
                 <div id="pass">
                     <div>
@@ -130,10 +130,10 @@ describe('[PasswordComponents]', () => {
             password = new PasswordInput('#pass');
             password.setValue('Password!123');
 
-            expect(password.getValue()).toBe('Password!123');
+            expect(password.value).toBe('Password!123');
         });
 
-        it('Should set input value', () => {
+        it('Should set disabled property and click icon event', () => {
             const div = `
                 <div id="pass">
                     <div>
@@ -146,33 +146,13 @@ describe('[PasswordComponents]', () => {
             $(document.body).html(div);
 
             password = new PasswordInput('#pass');
-            password.setValue('Password!123');
-
-            const inputValue = $('#input-password').val();
-
-            expect(inputValue).toBe('Password!123');
-        });
-
-        it('Should set disabled property and change his state', () => {
-            const div = `
-                <div id="pass">
-                    <div>
-                        <input id="input-password" type="password">
-                        <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
-                </div>
-            `;
-
-            $(document.body).html(div);
-
-            password = new PasswordInput('#pass');
-            password.setDisabled(true);
+            password.disable();
 
             const inputProperty = $('#input-password').prop('disabled');
-            const removeClickEvent = $('#icon').off('click');
+            const disableClickEvent = $('#icon').off('click');
 
             expect(password.disabled).toBeTruthy();
-            expect(removeClickEvent).toBeTruthy();
+            expect(disableClickEvent).toBeTruthy();
             expect(inputProperty).toBeTruthy();
         });
 

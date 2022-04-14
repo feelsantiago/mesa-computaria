@@ -2,20 +2,20 @@ import $ from 'jquery';
 
 export default class PasswordInput {
     constructor(queryString, required = true) {
-        this.div = $(queryString);
-        this.input = $(`${queryString} input[type="password"]`);
-        this.icon = $(`${queryString} input[type="password"]+i`);
+        this._div = $(queryString);
+        this._input = $(`${queryString} input[type="password"]`);
+        this._icon = $(`${queryString} input[type="password"]+i`);
 
         this.value = '';
         this.required = required;
         this.valid = false;
         this.disabled = false;
 
-        this.checkQuery(this.div, this.input, this.icon);
-        this.addClickEvent();
+        this._checkQuery(this._div, this._input, this._icon);
+        this._addClickEvent();
     }
 
-    checkQuery(div, input, icon) {
+    _checkQuery(div, input, icon) {
         if (div.length === 0) {
             throw new Error('Failed to query div');
         }
@@ -30,18 +30,18 @@ export default class PasswordInput {
     }
 
     showValue() {
-        this.input.attr('type', 'text').trigger('focus');
-        this.icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        this._input.attr('type', 'text').trigger('focus');
+        this._icon.removeClass('fa-eye-slash').addClass('fa-eye');
     }
 
     hideValue() {
-        this.input.attr('type', 'password').trigger('focus');
-        this.icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        this._input.attr('type', 'password').trigger('focus');
+        this._icon.removeClass('fa-eye').addClass('fa-eye-slash');
     }
 
-    addClickEvent() {
-        this.icon.on('click', () => {
-            if (this.input.attr('type') === 'password') {
+    _addClickEvent() {
+        this._icon.on('click', () => {
+            if (this._input.attr('type') === 'password') {
                 this.showValue();
             } else {
                 this.hideValue();
@@ -50,38 +50,37 @@ export default class PasswordInput {
     }
 
     setValue(string) {
-        this.input.val(string);
-        this.value = this.input.val();
+        this._input.val(string);
+        this.value = this._input.val();
         this.valid = this.validate();
     }
 
     validate() {
         // Validate regex: 1 capital letter, 1 number, 1 special character, and size 8;
         const validations = /^(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&()*,.:<>?@^{|}])[\d!"#$%&()*,.:<>?@A-Z^a-z{|}]{8,}$/;
+        this.valid = false;
 
         if (validations.test(this.value)) {
             this.valid = true;
-            return this.valid;
         }
 
-        this.valid = false;
         return this.valid;
     }
 
     enable() {
-        this.input.prop('disabled', false);
+        this._input.prop('disabled', false);
+        this.disabled = this._input.is(':disabled');
         this.addClickEvent();
-        this.disabled = false;
     }
 
     disable() {
-        this.input.prop('disabled', true);
-        this.icon.off('click');
-        this.disabled = true;
+        this._input.prop('disabled', true);
+        this.disabled = this._input.is(':disabled');
+        this._input.off('click');
     }
 
     setRequired(boolean) {
-        this.input.prop('required', boolean);
+        this._input.prop('required', boolean);
         this.required = boolean;
     }
 }
