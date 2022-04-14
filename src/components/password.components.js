@@ -49,6 +49,10 @@ export default class PasswordInput {
         });
     }
 
+    _removeClickEvent() {
+        this._icon.off('click');
+    }
+
     setValue(string) {
         this._input.val(string);
         this.value = this._input.val();
@@ -76,7 +80,7 @@ export default class PasswordInput {
     disable() {
         this._input.prop('disabled', true);
         this.disabled = this._input.is(':disabled');
-        this._icon.off('click');
+        this._removeClickEvent();
     }
 
     setRequired(boolean) {
