@@ -76,7 +76,7 @@ export default class PasswordInput {
     disable() {
         this._input.prop('disabled', true);
         this.disabled = this._input.is(':disabled');
-        this._input.off('click');
+        this._icon.off('click');
     }
 
     setRequired(boolean) {
