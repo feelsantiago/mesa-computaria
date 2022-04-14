@@ -1,57 +1,22 @@
-/* eslint-disable unicorn/better-regex */
 import $ from 'jquery';
 import TextInput from './text-input.components';
+import InvalidEmail from '../shared/erros/text-input-email.erros';
 
 export default class EmailTextInput extends TextInput {
-    constructor(stringQuery, textEnable = false, required = true) {
-        super(stringQuery, textEnable, required);
-        this.emailInput = $(`${stringQuery} input[type="email"]`);
+    constructor(stringQuery, required = true, textValid = false, disabled = false) {
+        super(stringQuery, required, textValid, disabled);
+        this._textInput = $(`${stringQuery} input[type="email"]`);
     }
 
-    getEmailInput() {
-        return this.emailInput.val();
-    }
-
-    setEmailInput(value) {
-        this.emailInput = this.emailInput.val(value);
-    }
-
-    isValidEmail() {
+    isTextValid() {
         // Regex with a email form
-        // eslint-disable-next-line no-useless-escape
-        // eslint-disable-next-line unicorn/better-regex
-        // eslint-disable-next-line no-useless-escape
         const EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (!EmailRegex.test(this.emailInput.val())) {
-            throw new Error('not a valid e-mail address');
+        if (!EmailRegex.test(this._textInput.val())) {
+            this.textValid = false;
+            throw new InvalidEmail(this._textInput.val());
         } else {
-            return true;
+            this._textValid = true;
+            return this._textValid;
         }
-    }
-
-    getRequired() {
-        return this.emailInput.prop('required');
-    }
-
-    setRequired(boolean) {
-        this.emailInput.prop('required', boolean);
-        this.required = boolean;
-    }
-
-    isRequired() {
-        if (!this.emailInput.prop('required')) {
-            this.required = false;
-            return this.required;
-        }
-
-        return this.required;
-    }
-
-    isEmailEnable() {
-        if (!this.emailInput.prop('disabled')) {
-            return true;
-        }
-
-        return false;
     }
 }
