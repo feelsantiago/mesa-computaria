@@ -124,8 +124,8 @@ describe('[Email input tests]', () => {
         input.setInput('rodrigo@gmail');
 
         expect(() => {
-            throw new Error('not a valid e-mail address');
-        }).toThrow('not a valid e-mail address');
+            throw new Error('rodrigo@gmail not a valid e-mail address');
+        }).toThrow('rodrigo@gmail not a valid e-mail address');
     });
 
     it('Should check if input email is not valid', () => {
@@ -142,8 +142,8 @@ describe('[Email input tests]', () => {
         input.setInput('rodrigo.com');
 
         expect(() => {
-            throw new Error('not a valid e-mail address');
-        }).toThrow('not a valid e-mail address');
+            throw new Error('rodrigo.com not a valid e-mail address');
+        }).toThrow('rodrigo.com not a valid e-mail address');
     });
 
     it('Should check if input email is not valid', () => {
@@ -160,7 +160,7 @@ describe('[Email input tests]', () => {
         input.setInput('rodrigo@g.com');
 
         expect(() => {
-            throw new Error('not a valid e-mail address');
-        }).toThrow('not a valid e-mail address');
+            throw new Error('rodrigo@g.com not a valid e-mail address');
+        }).toThrow('rodrigo@g.com not a valid e-mail address');
     });
 });
