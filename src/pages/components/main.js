@@ -17,5 +17,5 @@ LayoutProviderService.inject(page).then(() => {
     const validateTextInput = new TextInput('.container-text-input-box');
     validateTextInput.isTextValid();
     const validateEmailInput = new EmailTextInput('.container-text-input-box');
-    
+    validateEmailInput.isTextValid();
 });
