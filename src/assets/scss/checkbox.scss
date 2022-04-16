@@ -1,4 +1,4 @@
-.container-checkbox-component{
+.container-checkbox{
     &.checkbox-group-filled {
         border: none;
         display: flex;
@@ -20,7 +20,7 @@
     
 }
 
-.container-checkbox-component, .filled {
+.container-checkbox, .filled {
     position: relative;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -30,7 +30,7 @@
     overflow: hidden;
 }
 
-.container-checkbox-component:before, .filled:before {
+.container-checkbox:before, .filled:before {
     content: '';
     display: block;
     box-sizing: content-box;
@@ -40,17 +40,17 @@
     transition: 0.2s border-color ease;
 }
 
-.container-checkbox-component:checked:before, .filled:checked:before {
+.container-checkbox:checked:before, .filled:checked:before {
     border-color: $accent-light;
     transition: 0.5s border-color ease;
 }
 
-.container-checkbox-component:disabled:before, .filled:disabled:before {
+.container-checkbox:disabled:before, .filled:disabled:before {
     border-color: $accent-light;
     background-color: $accent-light;
 }
 
-.container-checkbox-component:after, .filled::after {
+.container-checkbox:after, .filled::after {
     content: '';
     display: block;
     position: absolute;
@@ -65,11 +65,11 @@
     transform: translate(-50%, -50%) scale(0);
 }
 
-.container-checkbox-component[type='checkbox']:before {
+.container-checkbox[type='checkbox']:before {
     border-radius: 2px;
 }
 
-.container-checkbox-component[type='checkbox']:after {
+.container-checkbox[type='checkbox']:after {
     width: 9.3px;
     height: 17px;
     border-radius: 0;
@@ -78,17 +78,17 @@
     box-shadow: 3px 3px 0px 0px $other-light;
 }
 
-.container-checkbox-component[type='checkbox']:checked:after {
+.container-checkbox[type='checkbox']:checked:after {
     -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
     animation: toggleOnCheckbox 0.2s ease forwards;
 }
 
-.container-checkbox-component[type='checkbox'].filled:before {
+.container-checkbox[type='checkbox'].filled:before {
     border-radius: 3px;
     transition: 0.2s border-color ease, 0.2s background-color ease;
 }
 
-.container-checkbox-component[type='checkbox'].filled:checked:not(:disabled):before {
+.container-checkbox[type='checkbox'].filled:checked:not(:disabled):before {
     background-color: $accent-light;
 }
 
