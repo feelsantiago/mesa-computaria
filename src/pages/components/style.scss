@@ -27,8 +27,7 @@
     }
 }
 
-// Password Box
-.password-box-enter {
+.password-box, .date-box {
     background-color: $primary-dark;
     color: $other-light;
     box-shadow: 2px 2px 4px rgba(27, 15, 15, 0.1);
