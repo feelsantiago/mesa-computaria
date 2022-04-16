@@ -1,16 +1,15 @@
 import $ from 'jquery';
 import Component from './component';
 
-export default class CheckBoxComponent extends Component {
+export default class CheckboxComponent extends Component {
     constructor(query, label, required = true) {
         super(query, required);
         this.valid = false;
 
         this._filled = $(`${query} .filled`);
-        this._checkboxContent = $(`${query} .checkbox-group-filled`);
-        this._labelText = $(`${query} .label-text`);
+        this._label = $(`${query} .label-text`);
 
-        this._labelText.html(label);
+        this._label.html(label);
         this._addClickEventListner();
     }
 

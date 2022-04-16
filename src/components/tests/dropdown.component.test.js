@@ -34,10 +34,8 @@ describe('[DropdownComponent]', () => {
         expect(dropdown._list.length > 0).toBeTruthy();
         expect(dropdown._items.length > 0).toBeTruthy();
 
-        /* eslint-disable no-underscore-dangle */
         expect($._data(dropdown._btn.get(0), 'events')).toBeDefined();
         expect($._data(dropdown._items.get(0), 'events')).toBeDefined();
-        /* eslint-anable no-underscore-dangle */
     });
 
     describe('[dropdownClickEvent]', () => {
