@@ -8,7 +8,7 @@ import page from './index.html?raw';
 
 LayoutProviderService.inject(page).then(() => {
     // eslint-disable-next-line no-unused-vars
-    const checkboxRemeberMe = new CheckBoxComponent('#remeberMe');
+    const checkboxRemeberMe = new CheckBoxComponent('#remeberMe', 'lembre-se');
     // eslint-disable-next-line no-unused-vars
     const dropdownGameType = new DropdownComponent('#games', 'Game Type');
 

@@ -8,8 +8,8 @@ describe('[DropdownComponent]', () => {
 
     beforeEach(() => {
         const html = $.parseHTML(`
-        <div class="row-dropdown-input container" id="test">
-            <fieldset class="dropdown-container">
+        <div class="row-dropdown-input" id="test">
+            <fieldset class="dropdown-container container">
             <button type="button" class="dropdown dropdown-btn" id="btn"></button>
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>
@@ -135,8 +135,8 @@ describe('[DropdownComponent]', () => {
     describe('[requiredState]', () => {
         beforeEach(() => {
             const otherDropdown = $.parseHTML(`      
-            <div class="row-dropdown-input container" id="testUnrequired">
-                <fieldset class="dropdown-container">
+            <div class="row-dropdown-input " id="testUnrequired">
+                <fieldset class="dropdown-container container">
                     <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
                     <div class="dropdown dropdown-list" id="list" style="display: block;">
                         <ul>

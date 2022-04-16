@@ -1,41 +1,30 @@
 import $ from 'jquery';
+import Component from './component';
 
-export default class CheckBoxComponent {
-    constructor(query, required = false) {
-        this.query = query;
-        this.required = required;
+export default class CheckBoxComponent extends Component {
+    constructor(query, label, required = true) {
+        super(query, required);
         this.valid = false;
-        this.disabled = false;
 
         this._filled = $(`${query} .filled`);
         this._checkboxContent = $(`${query} .checkbox-group-filled`);
+        this._labelText = $(`${query} .label-text`);
 
-        this._addClickEventListnet();
+        this._labelText.html(label);
+        this._addClickEventListner();
     }
 
-    validate() {
-        this.valid = this._filled.attr('toggle');
+    toggle() {
+        this._filled.trigger('click');
     }
 
-    checked() {
-        console.log(this._filled.is('checked'));
-    }
-
-    disable() {
-        this._checkboxContent.css('pointer-events', 'none');
-        this._checkboxContent.prop('disabled', true);
-        this.disabled = this._checkboxContent.is(':disabled');
-    }
-
-    enable() {
-        this._checkboxContent.css('pointer-eventes', 'auto');
-        this._checkboxContent.prop('disabled', false);
-        this.disabled = this._checkboxContent.is(':disabled');
-    }
-
-    _addClickEventListnet() {
+    _addClickEventListner() {
         this._filled.on('click', () => {
-            console.log(this._filled.attr('checked'));
+            this._validate();
         });
+    }
+
+    _validate() {
+        this.valid = this._filled.is(':checked');
     }
 }
