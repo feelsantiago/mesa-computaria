@@ -101,5 +101,20 @@ describe('[TextInput]', () => {
 
             expect(input.isTextValid()).toBeTruthy();
         });
+
+        it('Should get input text value is valid', () => {
+            const div = `
+            <div class="container-text-input-box">  
+                <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
+                <input class="input-box" id="Email" name="email">
+            </div>`;
+
+            $(document.body).html(div);
+
+            input = new TextInput('.container-text-input-box');
+            input.setInput('Ab@di.op');
+
+            expect(input.isTextValid()).toBeTruthy();
+        });
     });
 });
