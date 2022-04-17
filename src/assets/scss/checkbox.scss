@@ -14,7 +14,8 @@ label {
     color: $other-dark;
 }
 
-.input-box, .filled {
+.input-box,
+.filled {
     position: relative;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -24,7 +25,8 @@ label {
     overflow: hidden;
 }
 
-.input-box:before, .filled:before {
+.input-box:before,
+.filled:before {
     content: '';
     display: block;
     box-sizing: content-box;
@@ -34,17 +36,20 @@ label {
     transition: 0.2s border-color ease;
 }
 
-.input-box:checked:before, .filled:checked:before {
+.input-box:checked:before,
+.filled:checked:before {
     border-color: $accent-light;
     transition: 0.5s border-color ease;
 }
 
-.input-box:disabled:before, .filled:disabled:before {
+.input-box:disabled:before,
+.filled:disabled:before {
     border-color: $accent-light;
     background-color: $accent-light;
 }
 
-.input-box:after, .filled::after {
+.input-box:after,
+.filled::after {
     content: '';
     display: block;
     position: absolute;
@@ -113,3 +118,5 @@ input[type='checkbox'].filled:checked:not(:disabled):before {
         transform: translate(-50%, -85%) scale(0.8) rotate(45deg);
     }
 }
+
+// new style classes

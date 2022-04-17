@@ -10,8 +10,10 @@ LayoutProviderService.inject(page).then(() => {
     const dropdownGameType = new DropdownComponent('#games', 'Game Type');
     dropdownGameType.enable();
 
-    const checkboxRememberMe = new CheckboxComponent('#remeberMe', 'lembre-se');
+    const checkboxRememberMe = new CheckboxComponent('#remeber', 'lembre-se');
     checkboxRememberMe.enable();
+    checkboxRememberMe.disable();
+    checkboxRememberMe.setCheck();
 
     PasswordInputService.initFor('#password');
 });
