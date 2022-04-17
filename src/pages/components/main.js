@@ -12,8 +12,6 @@ LayoutProviderService.inject(page).then(() => {
 
     const checkboxRememberMe = new CheckboxComponent('#remeber', 'lembre-se');
     checkboxRememberMe.enable();
-    checkboxRememberMe.disable();
-    checkboxRememberMe.setCheck();
 
     PasswordInputService.initFor('#password');
 });

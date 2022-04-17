@@ -6,30 +6,30 @@ export default class CheckboxComponent extends Component {
         super(query, required);
         this.valid = false;
 
-        this._square = $(`${query} .checkbox-square`);
+        this._checkbox = $(`${query} .checkbox`);
         this._label = $(`${query} .checkbox-label`);
 
         this._label.html(label);
         this._addClickEventListner();
     }
 
-    setCheck() {
-        this._square.prop('checked', true);
+    setChecked() {
+        this._checkbox.prop('checked', true);
         this._validate();
     }
 
-    setUncheck() {
-        this._square.prop('checked', false);
+    setUnchecked() {
+        this._checkbox.prop('checked', false);
         this._validate();
     }
 
     _addClickEventListner() {
-        this._square.on('click', () => {
+        this._checkbox.on('click', () => {
             this._validate();
         });
     }
 
     _validate() {
-        this.valid = this._square.is(':checked');
+        this.valid = this._checkbox.is(':checked');
     }
 }

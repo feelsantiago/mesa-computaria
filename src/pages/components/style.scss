@@ -27,6 +27,17 @@
     }
 }
 
+.row-checkbox {
+    margin: 0;
+    padding: 0;
+
+    .container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}
+
 // Password Box
 .password-box-enter {
     background-color: $primary-dark;

@@ -120,3 +120,42 @@ input[type='checkbox'].filled:checked:not(:disabled):before {
 }
 
 // new style classes
+
+.checkbox {
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+
+.checkbox {
+    content: '';
+    display: block;
+    box-sizing: content-box;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $other-dark;
+    transition: 0.2s border-color ease;
+
+    &-container {
+        position: relative;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    &-label {
+        position: relative;
+        border: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        color: $other-dark;
+    }
+}
+

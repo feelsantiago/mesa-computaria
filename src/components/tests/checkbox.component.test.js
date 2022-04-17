@@ -4,45 +4,71 @@ import CheckboxComponent from '../checkbox.component';
 
 describe('[CheckBoxComponente]', () => {
     let checkbox;
+    let checkboxUnrequired;
 
     beforeEach(() => {
         const html = $.parseHTML(`
         <div class="row-checkbox" id="test">
             <fieldset class="checkbox-container container">
-                <input type="checkbox" class="checkbox-square" />
+                <input type="checkbox" class="checkbox" />
                 <p class="checkbox-label"></p>
             </fieldset>
         </div>`);
 
         $(document.body).append(html);
-        checkbox = new CheckboxComponent('#test', 'lembre-se', true);
+        checkbox = new CheckboxComponent('#test', 'lembre-se');
     });
 
     afterEach(() => {
         $('#test').remove();
     });
 
-    it.only(['Should load elements and add events on checkbox instanciation'], () => {
-        expect(checkbox._square.length > 0).toBeTruthy();
+    it(['Should load elements and add events on checkbox instanciation'], () => {
+        expect(checkbox._checkbox.length > 0).toBeTruthy();
         expect(checkbox._label.length > 0).toBeTruthy();
 
-        expect($._data(checkbox._square.get(0), 'events')).toBeDefined();
+        expect($._data(checkbox._checkbox.get(0), 'events')).toBeDefined();
     });
 
     describe('[checkboxClickEvent]', () => {
-        it('Should toggle checked state', async () => {
-            expect(checkbox._filled.is(':checked')).toBeFalsy();
-            checkbox.setCheck();
-            expect(checkbox._filled.is(':checked')).toBeTruthy();
-            checkbox.setUncheck();
-            expect(checkbox._filled.is(':checked')).toBeFalsy();
+        it('Should mark checked when click in the unchecked box', async () => {
+            expect(checkbox._checkbox.is(':checked')).toBeFalsy();
+            checkbox._checkbox.trigger('click');
+            expect(checkbox._checkbox.is(':checked')).toBeTruthy();
+        });
+
+        it('Should unmark checked when click in the checked box', async () => {
+            checkbox._checkbox.trigger('click');
+            expect(checkbox._checkbox.is(':checked')).toBeTruthy();
+
+            checkbox._checkbox.trigger('click');
+            expect(checkbox._checkbox.is(':checked')).toBeFalsy();
         });
 
         it('Should change valid state based on checked true or false', async () => {
             expect(checkbox.valid).toBeFalsy();
-            checkbox.setCheck();
+
+            checkbox._checkbox.trigger('click');
             expect(checkbox.valid).toBeTruthy();
-            checkbox.setUncheck();
+
+            checkbox._checkbox.trigger('click');
+            expect(checkbox.valid).toBeFalsy();
+        });
+    });
+
+    describe('[setChecked]', () => {
+        it('Should mark checked in the checkbox', async () => {
+            checkbox.setChecked();
+            expect(checkbox.valid).toBeTruthy();
+        });
+    });
+
+    describe('[setUnchecked]', () => {
+        it('Should mark unchecked in the checkbox', async () => {
+            checkbox.setChecked();
+            expect(checkbox.valid).toBeTruthy();
+
+            checkbox.setUnchecked();
             expect(checkbox.valid).toBeFalsy();
         });
     });
@@ -56,6 +82,53 @@ describe('[CheckBoxComponente]', () => {
 
             checkbox.enable();
             expect(checkbox.disabled).toBeFalsy();
+        });
+
+        it('Should mark checked only by the setChecked method', async () => {
+            checkbox.disable();
+
+            checkbox._checkbox.trigger('click');
+            expect(checkbox.valid).toBeFalsy();
+
+            checkbox.setChecked();
+            expect(checkbox.valid).toBeTruthy();
+        });
+
+        it('Should mark unchecked only by the setUnchecked method', async () => {
+            checkbox._checkbox.trigger('click');
+            expect(checkbox.valid).toBeTruthy();
+
+            checkbox.disable();
+
+            checkbox._checkbox.trigger('click');
+            expect(checkbox.valid).toBeTruthy();
+
+            checkbox.setUnchecked();
+            expect(checkbox.valid).toBeFalsy();
+        });
+    });
+
+    describe('[requiredState]', () => {
+        beforeEach(() => {
+            const html = $.parseHTML(`
+            <div class="row-checkbox" id="unrequired">
+                <fieldset class="checkbox-container container">
+                    <input type="checkbox" class="checkbox" />
+                    <p class="checkbox-label"></p>
+                </fieldset>
+            </div>`);
+
+            $(document.body).append(html);
+            checkboxUnrequired = new CheckboxComponent('#unrequired', 'lembre-se', false);
+        });
+
+        afterEach(() => {
+            $('#unrequired').remove();
+        });
+
+        it('Should be default required or unrequired if set false on instantiation', async () => {
+            expect(checkbox.required).toBeTruthy();
+            expect(checkboxUnrequired.required).toBeFalsy();
         });
     });
 });
