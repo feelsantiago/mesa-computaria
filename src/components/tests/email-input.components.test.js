@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import $ from 'jquery';
 import EmailTextInput from '../text-input-email.components';
+import InvalidEmail from '../../shared/erros/text-input-email.erros';
 
 describe('[Email input tests]', () => {
     let input;
@@ -105,9 +106,23 @@ describe('[Email input tests]', () => {
 
         input = new EmailTextInput('.container-text-input-box');
 
-        input.setInput('rodrigo@gmail.com');
+        expect(input.isTextValid('rodrigo@gmail.com')).toBeTruthy();
+    });
 
-        expect(input.isTextValid()).toBeTruthy();
+    it('Should check if input email is not valid', () => {
+        const div = `
+            <div class="container-text-input-box">           
+                <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
+                <input class="input-box" id="Email" name="email" type="email" >
+            </div>`;
+
+        $(document.body).html(div);
+
+        input = new EmailTextInput('.container-text-input-box');
+
+        input.setInput('abcgde');
+
+        expect(input._textValid).toBeFalsy();
     });
 
     it('Should check if input email is not valid', () => {
@@ -121,10 +136,8 @@ describe('[Email input tests]', () => {
 
         input = new EmailTextInput('.container-text-input-box');
 
-        input.setInput('rodrigo@gmail');
-
         expect(() => {
-            throw new Error('rodrigo@gmail not a valid e-mail address');
+            input.isTextValid('rodrigo@gmail');
         }).toThrow('rodrigo@gmail not a valid e-mail address');
     });
 
@@ -139,28 +152,8 @@ describe('[Email input tests]', () => {
 
         input = new EmailTextInput('.container-text-input-box');
 
-        input.setInput('rodrigo.com');
-
         expect(() => {
-            throw new Error('rodrigo.com not a valid e-mail address');
+            input.isTextValid('rodrigo.com');
         }).toThrow('rodrigo.com not a valid e-mail address');
-    });
-
-    it('Should check if input email is not valid', () => {
-        const div = `
-            <div class="container-text-input-box">          
-                <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
-                <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
-
-        $(document.body).html(div);
-
-        input = new EmailTextInput('.container-text-input-box');
-
-        input.setInput('rodrigo@g.com');
-
-        expect(() => {
-            throw new Error('rodrigo@g.com not a valid e-mail address');
-        }).toThrow('rodrigo@g.com not a valid e-mail address');
     });
 });
