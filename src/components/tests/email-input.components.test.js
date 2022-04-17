@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import $ from 'jquery';
 import EmailTextInput from '../text-input-email.components';
-import InvalidEmail from '../../shared/erros/text-input-email.erros';
 
 describe('[Email input tests]', () => {
     let input;
