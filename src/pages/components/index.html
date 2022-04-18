@@ -15,19 +15,20 @@
         <p>Text</p>
     </div>
 
-    <form class="form-control date-password">
-        <div class="container-fluid form-group password-box" id="password">
-            <i class="fa fa-lock icon lock"></i>
-            <label for="control-label" class="password-label">Senha</label>
-            <input type="password" id="pw-input" class="form-control password-input" placeholder="Senha" required="required"/>
-            <i class="fa fa-eye-slash icon eye"></i>
-        </div>
-
-        <div class="container-fluid form-group date-box" id="date">    
-            <input type="text" name="date" id="date" class="date-input" placeholder="Next Game">
-            <i class="fa fa-calendar icon calendar" aria-hidden="true"></i>
-        </div>
-    </form>
+    <div class="container">
+        <form class="form-control date-password-box">
+            <div class="form-group password-box" id="password">
+                <i class="fa fa-lock icon lock"></i>
+                <label class="standard-label">Senha</label>
+                <input type="password" class="form-control password-input standard-input" placeholder="Senha" required="required"/>
+                <i class="fa fa-eye-slash icon eye"></i>
+            </div>
+            <div class="form-group date-box" id="date">
+                <input type="date" class="date-input standard-input">
+                <small class="standard-label next-game">Próximo jogo:</small>
+            </div>
+        </form>
+    </div>
 
 
     <div class="row-dropdown-input container" id="games">
