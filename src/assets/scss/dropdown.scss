@@ -84,6 +84,6 @@
 }
 
 .selected {
-    pointer-events: none;
+    pointer-events: none !important;
     color: $other-dark;
 }
