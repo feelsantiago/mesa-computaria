@@ -3,12 +3,12 @@ import $ from 'jquery';
 import PasswordInput from '../password.components';
 
 describe('[PasswordComponents]', () => {
-    let password;
-
     describe('[_checkQuery]', () => {
         it('Should throw error if query fail or the div element is not finded.', () => {
             const div = `<div id="pass"></div>`;
             $(document.body).html(div);
+
+            let password;
 
             expect(() => {
                 password = new PasswordInput('#pazz');
@@ -24,6 +24,8 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
+            let password;
+
             expect(() => {
                 password = new PasswordInput('#pass');
             }).toThrow('Failed to query input password');
@@ -37,6 +39,8 @@ describe('[PasswordComponents]', () => {
             `;
 
             $(document.body).html(div);
+
+            let password;
 
             expect(() => {
                 password = new PasswordInput('#pass');
@@ -58,7 +62,7 @@ describe('[PasswordComponents]', () => {
             $(document.body).html(div);
 
             vi.spyOn($.fn, 'on');
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
 
             expect($.fn.on).toHaveBeenCalledWith('click', expect.anything());
             expect($.fn.on).toHaveBeenCalledTimes(1);
@@ -76,7 +80,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             $('#icon').trigger('click');
 
             const resultType = $('#input-password').attr('type');
@@ -100,7 +104,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             $('#icon').trigger('click');
             $('#icon').trigger('click');
 
@@ -127,7 +131,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             password.setValue('Password!123');
 
             expect(password.value).toBe('Password!123');
@@ -145,7 +149,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             password.setValue('Password123');
 
             const inputValue = $('#input-password').val();
@@ -167,7 +171,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             password.disable();
 
             const inputDisabled = $('#input-password').prop('disabled');
@@ -188,7 +192,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             password.enable();
 
             const inputDisabled = $('#input-password').prop('disabled');
@@ -209,7 +213,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             password.setRequired(false);
 
             const inputRequired = $('#input-password').prop('required');
@@ -232,7 +236,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
-            password = new PasswordInput('#pass');
+            const password = new PasswordInput('#pass');
             password.setValue('T4st&value!');
 
             expect(password.validate()).toBeTruthy();
