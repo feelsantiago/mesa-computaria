@@ -7,7 +7,7 @@ describe('[PasswordComponents]', () => {
         it('Should throw error if query fail or the div element is not finded.', () => {
             const div = `<div id="pass"></div>`;
             $(document.body).html(div);
-
+            // eslint-disable-next-line no-unused-vars
             let password;
 
             expect(() => {
@@ -23,7 +23,7 @@ describe('[PasswordComponents]', () => {
             `;
 
             $(document.body).html(div);
-
+            // eslint-disable-next-line no-unused-vars
             let password;
 
             expect(() => {
@@ -39,7 +39,7 @@ describe('[PasswordComponents]', () => {
             `;
 
             $(document.body).html(div);
-
+            // eslint-disable-next-line no-unused-vars
             let password;
 
             expect(() => {
@@ -62,6 +62,7 @@ describe('[PasswordComponents]', () => {
             $(document.body).html(div);
 
             vi.spyOn($.fn, 'on');
+            // eslint-disable-next-line no-unused-vars
             const password = new PasswordInput('#pass');
 
             expect($.fn.on).toHaveBeenCalledWith('click', expect.anything());
@@ -80,6 +81,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
+            // eslint-disable-next-line no-unused-vars
             const password = new PasswordInput('#pass');
             $('#icon').trigger('click');
 
@@ -104,6 +106,7 @@ describe('[PasswordComponents]', () => {
 
             $(document.body).html(div);
 
+            // eslint-disable-next-line no-unused-vars
             const password = new PasswordInput('#pass');
             $('#icon').trigger('click');
             $('#icon').trigger('click');

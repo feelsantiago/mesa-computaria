@@ -11,4 +11,3 @@ LayoutProviderService.inject(page).then(() => {
     // eslint-disable-next-line no-unused-vars
     const dropdownGameType = new DropdownComponent('#games', 'Game Type');
 });
-
