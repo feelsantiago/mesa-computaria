@@ -84,7 +84,7 @@ describe('[CheckBoxComponente]', () => {
             expect(checkbox.disabled).toBeFalsy();
         });
 
-        it('Should mark checked only by the setChecked method', async () => {
+        it('Should allow mark checked only by the setChecked method', async () => {
             checkbox.disable();
 
             checkbox._checkbox.trigger('click');
@@ -94,7 +94,7 @@ describe('[CheckBoxComponente]', () => {
             expect(checkbox.valid).toBeTruthy();
         });
 
-        it('Should mark unchecked only by the setUnchecked method', async () => {
+        it('Should allow mark unchecked only by the setUnchecked method', async () => {
             checkbox._checkbox.trigger('click');
             expect(checkbox.valid).toBeTruthy();
 
