@@ -15,8 +15,16 @@
     justify-content: center;
 }
 
-.home-background {
-    overflow: scroll;
+// Password Box
+.password-box {
+    font-family: $general-text;
+    color: $other-light;
+    background-color: $primary-dark;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    //Space to put away from other components (optional)
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .row-dropdown-input {

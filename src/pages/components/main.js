@@ -1,5 +1,5 @@
 import { LayoutProviderService } from '../../services/layout-provider.service';
-import { PasswordInputService } from '../../services/password-input.service';
+import PasswordInput from '../../components/password.components';
 import CheckboxComponent from '../../components/checkbox.component';
 import DropdownComponent from '../../components/dropdown.component';
 
@@ -13,5 +13,6 @@ LayoutProviderService.inject(page).then(() => {
     const checkboxRememberMe = new CheckboxComponent('#remeber', 'lembre-se');
     checkboxRememberMe.enable();
 
-    PasswordInputService.initFor('#password');
+    // eslint-disable-next-line no-unused-vars
+    const password = new PasswordInput('#password');
 });
