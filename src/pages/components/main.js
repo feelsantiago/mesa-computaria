@@ -18,4 +18,3 @@ LayoutProviderService.inject(page).then(() => {
     // eslint-disable-next-line no-unused-vars
     const validateEmailInput = new EmailTextInput('.container-text-input-box');
 });
-
