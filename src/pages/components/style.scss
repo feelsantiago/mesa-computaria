@@ -15,6 +15,18 @@
     justify-content: center;
 }
 
+// Password Box 
+.password-box {
+    font-family: $general-text;
+    color: $other-light;
+    background-color: $primary-dark;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    //Space to put away from other components (optional)
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .row-dropdown-input {
     margin: 0;
     padding: 0;
@@ -25,17 +37,6 @@
         width: 100%;
         min-width: 170px;
     }
-}
-
-// Password Box
-.password-box-enter {
-    background-color: $primary-dark;
-    color: $other-light;
-    box-shadow: 2px 2px 4px rgba(27, 15, 15, 0.1);
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    min-width: 200px;
 }
 
 .container-text-input-box {
@@ -59,4 +60,3 @@ p {
     background-color: $primary-light;
     color: $other-light;
 }
-
