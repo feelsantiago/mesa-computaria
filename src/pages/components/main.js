@@ -7,12 +7,12 @@ import './style.scss';
 import page from './index.html?raw';
 
 LayoutProviderService.inject(page).then(() => {
-    const dropdownGameType = new DropdownComponent('#games', 'Game Type');
-    dropdownGameType.enable();
+    const password = new PasswordInput('#password');
+    password.enable();
 
     const checkboxRememberMe = new CheckboxComponent('#remeber', 'lembre-se');
     checkboxRememberMe.enable();
 
-    const password = new PasswordInput('#password');
-    password.enable();
+    const dropdownGameType = new DropdownComponent('#games', 'Game Type');
+    dropdownGameType.enable();
 });

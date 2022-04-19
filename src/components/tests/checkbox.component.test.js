@@ -45,31 +45,41 @@ describe('[CheckBoxComponente]', () => {
             expect(checkbox._checkbox.is(':checked')).toBeFalsy();
         });
 
-        it('Should change valid state based on checked true or false', async () => {
-            expect(checkbox.valid).toBeFalsy();
+        it('Should change checked state based on checked true or false', async () => {
+            expect(checkbox.checked).toBeFalsy();
 
             checkbox._checkbox.trigger('click');
-            expect(checkbox.valid).toBeTruthy();
+            expect(checkbox.checked).toBeTruthy();
 
             checkbox._checkbox.trigger('click');
-            expect(checkbox.valid).toBeFalsy();
+            expect(checkbox.checked).toBeFalsy();
+        });
+    });
+
+    describe('[setLabel]', () => {
+        it('Should override the checkbox text label', async () => {
+            expect(checkbox.text).toEqual('lembre-se');
+
+            checkbox.setLabel('Remember-me');
+
+            expect(checkbox.text).toEqual('Remember-me');
         });
     });
 
     describe('[setChecked]', () => {
         it('Should mark checked in the checkbox', async () => {
             checkbox.setChecked();
-            expect(checkbox.valid).toBeTruthy();
+            expect(checkbox.checked).toBeTruthy();
         });
     });
 
     describe('[setUnchecked]', () => {
         it('Should mark unchecked in the checkbox', async () => {
             checkbox.setChecked();
-            expect(checkbox.valid).toBeTruthy();
+            expect(checkbox.checked).toBeTruthy();
 
             checkbox.setUnchecked();
-            expect(checkbox.valid).toBeFalsy();
+            expect(checkbox.checked).toBeFalsy();
         });
     });
 
@@ -88,23 +98,23 @@ describe('[CheckBoxComponente]', () => {
             checkbox.disable();
 
             checkbox._checkbox.trigger('click');
-            expect(checkbox.valid).toBeFalsy();
+            expect(checkbox.checked).toBeFalsy();
 
             checkbox.setChecked();
-            expect(checkbox.valid).toBeTruthy();
+            expect(checkbox.checked).toBeTruthy();
         });
 
         it('Should allow mark unchecked only by the setUnchecked method', async () => {
             checkbox._checkbox.trigger('click');
-            expect(checkbox.valid).toBeTruthy();
+            expect(checkbox.checked).toBeTruthy();
 
             checkbox.disable();
 
             checkbox._checkbox.trigger('click');
-            expect(checkbox.valid).toBeTruthy();
+            expect(checkbox.checked).toBeTruthy();
 
             checkbox.setUnchecked();
-            expect(checkbox.valid).toBeFalsy();
+            expect(checkbox.checked).toBeFalsy();
         });
     });
 
