@@ -13,6 +13,6 @@ LayoutProviderService.inject(page).then(() => {
     const checkboxRememberMe = new CheckboxComponent('#remeber', 'lembre-se');
     checkboxRememberMe.enable();
 
-    // eslint-disable-next-line no-unused-vars
     const password = new PasswordInput('#password');
+    password.enable();
 });

@@ -22,7 +22,8 @@
         align-items: center;
         margin: 0;
         padding: 0;
-        height: 50px;
+        bottom: 1rem;
+        height: 25px;
         background-color: $primary-light;
     }
 
@@ -104,9 +105,12 @@
     }
 }
 
+/*
+
 label {
     display: flex;
     flex-direction: row;
     align-items: center;
     color: $other-dark;
 }
+*/
