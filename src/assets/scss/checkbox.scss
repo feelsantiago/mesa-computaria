@@ -1,94 +1,79 @@
-fieldset {
-    border: none;
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    align-items: flex-start;
-    min-width: 400px;
-}
-
-label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: $other-dark;
-}
-
-.input-box,
-.filled {
+.checkbox {
     position: relative;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 8px;
     box-sizing: content-box;
     overflow: hidden;
 }
 
-.input-box:before,
-.filled:before {
-    content: '';
+.checkbox {
+    padding: 0;
+    margin: 0;
     display: block;
-    box-sizing: content-box;
-    width: 16px;
-    height: 16px;
-    border: 1px solid $other-dark;
-    transition: 0.2s border-color ease;
-}
-
-.input-box:checked:before,
-.filled:checked:before {
-    border-color: $accent-light;
-    transition: 0.5s border-color ease;
-}
-
-.input-box:disabled:before,
-.filled:disabled:before {
-    border-color: $accent-light;
-    background-color: $accent-light;
-}
-
-.input-box:after,
-.filled::after {
-    content: '';
-    display: block;
-    position: absolute;
-    box-sizing: content-box;
-    top: 50%;
-    left: 50%;
-    transform-origin: 50% 50%;
-    background-color: $other-light;
-    width: 16px;
-    height: 16px;
-    border-radius: 100vh;
-    transform: translate(-50%, -50%) scale(0);
-}
-
-input[type='checkbox']:before {
     border-radius: 2px;
-}
 
-input[type='checkbox']:after {
-    width: 9.3px;
-    height: 17px;
-    border-radius: 0;
-    transform: translate(-50%, -85%) scale(0) rotate(45deg);
-    background-color: transparent;
-    box-shadow: 3px 3px 0px 0px $other-light;
-}
+    &-container {
+        position: relative;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        height: 50px;
+        background-color: $primary-light;
+    }
 
-input[type='checkbox']:checked:after {
-    -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
-    animation: toggleOnCheckbox 0.2s ease forwards;
-}
+    &-label {
+        position: relative;
+        border: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        left: 10px;
+        color: $other-dark;
+    }
 
-input[type='checkbox'].filled:before {
-    border-radius: 3px;
-    transition: 0.2s border-color ease, 0.2s background-color ease;
-}
+    &::before {
+        content: '';
+        display: block;
+        box-sizing: content-box;
+        width: 16px;
+        height: 16px;
+        border: 1px solid $other-dark;
+        transition: 0.2s border ease, 0.2s background-color ease;
+    }
 
-input[type='checkbox'].filled:checked:not(:disabled):before {
-    background-color: $accent-light;
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        box-sizing: content-box;
+        top: 50%;
+        left: 50%;
+        transform-origin: 50% 50%;
+        width: 9.3px;
+        height: 17px;
+
+        transform: translate(-50%, -85%) scale(0) rotate(45deg);
+        background-color: transparent;
+        box-shadow: 3px 3px 0px 0px $other-light;
+    }
+
+    &:checked {
+        &::before {
+            border-color: $accent-light;
+            background-color: $accent-light;
+        }
+
+        &::after {
+            -webkit-animation: toggleOnCheckbox 0.2s ease forwards;
+            animation: toggleOnCheckbox 0.2s ease forwards;
+        }
+    }
 }
 
 @-webkit-keyframes toggleOnCheckbox {
@@ -119,43 +104,9 @@ input[type='checkbox'].filled:checked:not(:disabled):before {
     }
 }
 
-// new style classes
-
-.checkbox {
-    position: relative;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    box-sizing: content-box;
-    overflow: hidden;
+label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $other-dark;
 }
-
-.checkbox {
-    content: '';
-    display: block;
-    box-sizing: content-box;
-    width: 16px;
-    height: 16px;
-    border: 1px solid $other-dark;
-    transition: 0.2s border-color ease;
-
-    &-container {
-        position: relative;
-        border: none;
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-    }
-
-    &-label {
-        position: relative;
-        border: none;
-        display: flex;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        color: $other-dark;
-    }
-}
-
