@@ -51,8 +51,8 @@ describe('[TextInput]', () => {
         $(document.body).html(div);
 
         input = new TextInput('.container-text-input-box');
-
-        expect(input.isRequired()).toBeTruthy();
+        const inputTextProperty = $('#Text-input-box').prop('required');
+        expect(inputTextProperty).toBeTruthy();
     });
 
     it('Should check if input text has disabled property', () => {
@@ -84,7 +84,7 @@ describe('[TextInput]', () => {
             input = new TextInput('.container-text-input-box');
             input.setInput('');
 
-            expect(input.isTextValid()).toBeFalsy();
+            expect(input.isValid()).toBeFalsy();
         });
 
         it('Should get input text value is valid', () => {
@@ -99,7 +99,7 @@ describe('[TextInput]', () => {
             input = new TextInput('.container-text-input-box');
             input.setInput('Abcdieop');
 
-            expect(input.isTextValid()).toBeTruthy();
+            expect(input.isValid()).toBeTruthy();
         });
 
         it('Should get input text value is valid', () => {
@@ -114,7 +114,7 @@ describe('[TextInput]', () => {
             input = new TextInput('.container-text-input-box');
             input.setInput('Ab@di.op');
 
-            expect(input.isTextValid()).toBeTruthy();
+            expect(input.isValid()).toBeTruthy();
         });
     });
 });

@@ -20,14 +20,4 @@ export default class Input {
         this._textInput.prop('required', boolean);
         this.required = boolean;
     }
-
-    isRequired() {
-        if (!this._textInput.prop('required')) {
-            this.required = false;
-            return this.required;
-        }
-
-        this.required = true;
-        return this.required;
-    }
 }

@@ -14,7 +14,7 @@ export default class TextInput extends Input {
         this._textInput = this._textInput.val(value);
     }
 
-    isTextValid() {
+    isValid() {
         if (this._textInput.val() === '') {
             this._textValid = false;
             return this._textValid;

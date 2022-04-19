@@ -47,8 +47,8 @@ describe('[Email input tests]', () => {
         $(document.body).html(div);
 
         input = new EmailTextInput('.container-text-input-box');
-
-        expect(input.isRequired()).toBeTruthy();
+        const inputTextProperty = $('#Email').prop('required');
+        expect(inputTextProperty).toBeTruthy();
     });
 
     it('Should check if input email has disabled property', () => {
@@ -104,8 +104,8 @@ describe('[Email input tests]', () => {
         $(document.body).html(div);
 
         input = new EmailTextInput('.container-text-input-box');
-
-        expect(input.isTextValid('rodrigo@gmail.com')).toBeTruthy();
+        input.setInput('rodrigo@gmail.com');
+        expect(input.isValid()).toBeTruthy();
     });
 
     it('Should check if input email is not valid', () => {
@@ -134,9 +134,9 @@ describe('[Email input tests]', () => {
         $(document.body).html(div);
 
         input = new EmailTextInput('.container-text-input-box');
-
+        input.setInput('rodrigo@gmail');
         expect(() => {
-            input.isTextValid('rodrigo@gmail');
+            input.isValid();
         }).toThrow('rodrigo@gmail not a valid e-mail address');
     });
 
@@ -150,9 +150,9 @@ describe('[Email input tests]', () => {
         $(document.body).html(div);
 
         input = new EmailTextInput('.container-text-input-box');
-
+        input.setInput('rodrigo.com');
         expect(() => {
-            input.isTextValid('rodrigo.com');
+            input.isValid();
         }).toThrow('rodrigo.com not a valid e-mail address');
     });
 });
