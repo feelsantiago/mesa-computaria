@@ -1,6 +1,7 @@
 import { LayoutProviderService } from '../../services/layout-provider.service';
 import TextInput from '../../components/text-input.components';
 import EmailTextInput from '../../components/text-input-email.components';
+import PasswordInput from '../../components/password.components';
 
 import DropdownComponent from '../../components/dropdown.component';
 
