@@ -84,7 +84,7 @@ describe('[TextInput]', () => {
             input = new TextInput('.container-text-input-box');
             input.setInput('');
 
-            expect(input.isValid()).toBeFalsy();
+            expect(input.validate()).toBeFalsy();
         });
 
         it('Should get input text value is valid', () => {
@@ -99,7 +99,7 @@ describe('[TextInput]', () => {
             input = new TextInput('.container-text-input-box');
             input.setInput('Abcdieop');
 
-            expect(input.isValid()).toBeTruthy();
+            expect(input.validate()).toBeTruthy();
         });
 
         it('Should get input text value is valid', () => {
@@ -114,7 +114,7 @@ describe('[TextInput]', () => {
             input = new TextInput('.container-text-input-box');
             input.setInput('Ab@di.op');
 
-            expect(input.isValid()).toBeTruthy();
+            expect(input.validate()).toBeTruthy();
         });
     });
 });

@@ -105,7 +105,22 @@ describe('[Email input tests]', () => {
 
         input = new EmailTextInput('.container-text-input-box');
         input.setInput('rodrigo@gmail.com');
-        expect(input.isValid()).toBeTruthy();
+        expect(input.validate()).toBeTruthy();
+    });
+
+    it('Should check if textValid email is true', () => {
+        const div = `
+            <div class="container-text-input-box">           
+                <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
+                <input class="input-box" id="Email" name="email" type="email" >
+            </div>`;
+
+        $(document.body).html(div);
+
+        input = new EmailTextInput('.container-text-input-box');
+        input.setInput('rodrigo@gmail.com');
+        input.validate();
+        expect(input._textValid).toBeTruthy();
     });
 
     it('Should check if input email is not valid', () => {
@@ -136,7 +151,7 @@ describe('[Email input tests]', () => {
         input = new EmailTextInput('.container-text-input-box');
         input.setInput('rodrigo@gmail');
         expect(() => {
-            input.isValid();
+            input.validate();
         }).toThrow('rodrigo@gmail not a valid e-mail address');
     });
 
@@ -152,7 +167,7 @@ describe('[Email input tests]', () => {
         input = new EmailTextInput('.container-text-input-box');
         input.setInput('rodrigo.com');
         expect(() => {
-            input.isValid();
+            input.validate();
         }).toThrow('rodrigo.com not a valid e-mail address');
     });
 });

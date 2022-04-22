@@ -8,9 +8,9 @@ export default class EmailTextInput extends TextInput {
         this._textInput = $(`${stringQuery} input[type="email"]`);
     }
 
-    isValid() {
+    validate() {
         // Regex with a email form
-        const EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        const EmailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (!EmailRegex.test(this._textInput.val())) {
             this._textValid = false;
             throw new InvalidEmail(this._textInput.val());

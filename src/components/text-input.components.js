@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Input from './input-components';
+
 export default class TextInput extends Input {
     constructor(stringQuery, required = true, disabled = false) {
         super(disabled, required);
@@ -14,7 +15,7 @@ export default class TextInput extends Input {
         this._textInput = this._textInput.val(value);
     }
 
-    isValid() {
+    validate() {
         if (this._textInput.val() === '') {
             this._textValid = false;
             return this._textValid;
