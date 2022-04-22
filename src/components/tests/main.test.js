@@ -1,11 +1,11 @@
-import { beforeEach, afterEach, describe, it } from 'vitest';
+import { beforeEach, afterEach, describe, it, expect } from 'vitest';
 import $ from 'jquery';
-import { instanciatePassword, instanciateCheckbox, instanciateDropdown } from '../../pages/components/main';
+import { instantiatePassword, instantiateCheckbox, instantiateDropdown } from '../../pages/components/main';
 
 describe('[main]', () => {
     beforeEach(() => {
         const html = $.parseHTML(`
-        <div id="passowrdTest">
+        <div id="passwordTest">
             <div>
                 <input id="input-password" type="password">
                 <i id="icon" class="fa-solid fa-eye-slash"></i>
@@ -25,7 +25,7 @@ describe('[main]', () => {
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>
                         <li class="dropdown-item selected" id="selected">Select one</li>
-                        <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
+                        <li class="dropdown-item" id="dnd">Dungeons&Dragons</li>
                         <li class="dropdown-item" id="vampire">Vampire 5e</li>
                     </ul>
                 </div>
@@ -36,16 +36,28 @@ describe('[main]', () => {
     });
 
     afterEach(() => {
-        $('#passowrdTest').remove();
+        $('#passwordTest').remove();
         $('#checkboxTest').remove();
         $('#dropdownTest').remove();
     });
 
-    describe('[instanciation]', () => {
-        it('Should instanciate a new objects', async () => {
-            console.log(instanciatePassword('#passowrdTest'));
-            console.log(instanciateCheckbox('#checkboxTest'));
-            console.log(instanciateDropdown('#dropdownTest'));
+    describe('[instantiation]', () => {
+        it('Should instantiate a new objects', async () => {
+            const password = instantiatePassword('#passwordTest');
+            const checkbox = instantiateCheckbox('#checkboxTest', 'remember');
+            const dropdown = instantiateDropdown('#dropdownTest', 'Game Type');
+
+            expect(password.required).toBeTruthy();
+            expect(password.valid).toBeFalsy();
+            expect(password.disabled).toBeFalsy();
+
+            expect(checkbox.required).toBeTruthy();
+            expect(checkbox.valid).toBeFalsy();
+            expect(checkbox.disabled).toBeFalsy();
+
+            expect(dropdown.required).toBeTruthy();
+            expect(dropdown.valid).toBeFalsy();
+            expect(dropdown.disabled).toBeFalsy();
         });
     });
 });

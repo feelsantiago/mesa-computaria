@@ -9,16 +9,19 @@ import page from './index.html?raw';
 export function instantiatePassword(stringID) {
     const password = new PasswordInput(stringID);
     password.enable();
+    return password;
 }
 
 export function instantiateCheckbox(stringID, stringLabel) {
-    const checkbox = CheckboxComponent(stringID, stringLabel);
+    const checkbox = new CheckboxComponent(stringID, stringLabel);
     checkbox.enable();
+    return checkbox;
 }
 
 export function instantiateDropdown(stringID, stringPlaceholder) {
-    const dropdown = DropdownComponent(stringID, stringPlaceholder);
+    const dropdown = new DropdownComponent(stringID, stringPlaceholder);
     dropdown.enable();
+    return dropdown;
 }
 
 LayoutProviderService.inject(page, () => {
