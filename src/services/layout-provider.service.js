@@ -6,7 +6,7 @@ export default class LayoutProvider {
         const isTestEnvironment = process.env.NODE_ENV === 'test';
         if (overrideTestEnvironment || !isTestEnvironment) {
             if (!StringUtils.isEmptyOrBlank(page)) {
-                $(() => $('#app').html(page));
+                $('#app').html(page);
             }
 
             if (callback) {
