@@ -26,6 +26,6 @@ export function instantiateDropdown(stringID, stringPlaceholder) {
 
 LayoutProviderService.inject(page, () => {
     instantiatePassword('#password');
-    instantiateCheckbox('#remeber', 'lembre-se');
+    instantiateCheckbox('#remember', 'lembre-se');
     instantiateDropdown('#games', 'Game Type');
 });
