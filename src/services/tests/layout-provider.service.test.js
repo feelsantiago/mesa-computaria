@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import $ from 'jquery';
 import { LayoutProviderService } from '../layout-provider.service';
-import { TestEnvironmentError } from '../../utils/errors';
 
 describe('[LayoutProviderService]', () => {
     describe('[inject]', () => {
@@ -23,22 +22,6 @@ describe('[LayoutProviderService]', () => {
                 expect(error).toBeInstanceOf(Error);
                 expect(error.message).toBeDefined();
             }
-        });
-
-        it('Should throw error if running in test environment', () => {
-            try {
-                LayoutProviderService.inject('test page content');
-            } catch (error) {
-                expect(error).toBeDefined();
-                expect(error).toBeInstanceOf(TestEnvironmentError);
-            }
-        });
-
-        it('Should not call callback in test environments', () => {
-            const callback = vi.fn();
-            LayoutProviderService.inject('test page content', callback, true);
-
-            expect(callback).not.toHaveBeenCalled();
         });
     });
 });
