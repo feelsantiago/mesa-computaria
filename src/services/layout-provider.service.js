@@ -3,9 +3,10 @@ import StringUtils from '../utils/string';
 
 export default class LayoutProvider {
     inject(page, callback, overrideTestEnvironment = false) {
-        if (overrideTestEnvironment || !process.env.NODE_ENV === 'test') {
+        const isTestEnvironment = process.env.NODE_ENV === 'test';
+        if (overrideTestEnvironment || !isTestEnvironment) {
             if (!StringUtils.isEmptyOrBlank(page)) {
-                $('#app').html(page);
+                $(() => $('#app').html(page));
             }
 
             if (callback) {
