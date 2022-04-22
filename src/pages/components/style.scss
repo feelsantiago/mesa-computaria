@@ -15,7 +15,7 @@
     justify-content: center;
 }
 
-// Password Box 
+// Password Box
 .password-box {
     font-family: $general-text;
     color: $other-light;
@@ -39,6 +39,28 @@
     }
 }
 
+.row-checkbox {
+    margin: 0;
+    padding: 0;
+
+    .container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}
+
+// Password Box
+.password-box-enter {
+    background-color: $primary-dark;
+    color: $other-light;
+    box-shadow: 2px 2px 4px rgba(27, 15, 15, 0.1);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-width: 200px;
+}
+
 .container-text-input-box {
     min-width: 200px;
     margin: 20px;
@@ -60,3 +82,4 @@ p {
     background-color: $primary-light;
     color: $other-light;
 }
+
