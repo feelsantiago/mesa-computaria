@@ -66,19 +66,38 @@ describe('[CheckBoxComponente]', () => {
         });
     });
 
-    describe('[setChecked]', () => {
+    describe('[check]', () => {
         it('Should mark checked in the checkbox', async () => {
-            checkbox.setChecked();
+            checkbox.check();
             expect(checkbox.checked).toBeTruthy();
         });
     });
 
-    describe('[setUnchecked]', () => {
+    describe('[uncheck]', () => {
         it('Should mark unchecked in the checkbox', async () => {
-            checkbox.setChecked();
+            checkbox.check();
             expect(checkbox.checked).toBeTruthy();
 
-            checkbox.setUnchecked();
+            checkbox.uncheck();
+            expect(checkbox.checked).toBeFalsy();
+        });
+    });
+
+    describe('[toggle]', () => {
+        it('Should toggle checked or unchecked state ', async () => {
+            checkbox.toggle();
+            expect(checkbox.checked).toBeTruthy();
+            checkbox.toggle();
+            expect(checkbox.checked).toBeFalsy();
+
+            checkbox.check();
+            expect(checkbox.checked).toBeTruthy();
+            checkbox.toggle();
+            expect(checkbox.checked).toBeFalsy();
+
+            checkbox.toggle();
+            expect(checkbox.checked).toBeTruthy();
+            checkbox.uncheck();
             expect(checkbox.checked).toBeFalsy();
         });
     });
@@ -94,17 +113,17 @@ describe('[CheckBoxComponente]', () => {
             expect(checkbox.disabled).toBeFalsy();
         });
 
-        it('Should allow mark checked only by the setChecked method', async () => {
+        it('Should allow mark checked only by the check method', async () => {
             checkbox.disable();
 
             checkbox._checkbox.trigger('click');
             expect(checkbox.checked).toBeFalsy();
 
-            checkbox.setChecked();
+            checkbox.check();
             expect(checkbox.checked).toBeTruthy();
         });
 
-        it('Should allow mark unchecked only by the setUnchecked method', async () => {
+        it('Should allow mark unchecked only by the uncheck method', async () => {
             checkbox._checkbox.trigger('click');
             expect(checkbox.checked).toBeTruthy();
 
@@ -113,7 +132,7 @@ describe('[CheckBoxComponente]', () => {
             checkbox._checkbox.trigger('click');
             expect(checkbox.checked).toBeTruthy();
 
-            checkbox.setUnchecked();
+            checkbox.uncheck();
             expect(checkbox.checked).toBeFalsy();
         });
     });

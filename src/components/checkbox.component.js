@@ -19,19 +19,32 @@ export default class CheckboxComponent extends Component {
         this._label.html(text);
     }
 
-    setChecked() {
+    check() {
         this._checkbox.prop('checked', true);
-        this.checked = this._checkbox.is(':checked');
+        this._update();
     }
 
-    setUnchecked() {
+    uncheck() {
         this._checkbox.prop('checked', false);
-        this.checked = this._checkbox.is(':checked');
+        this._update();
+    }
+
+    toggle() {
+        if (this._checkbox.is(':checked')) {
+            this._checkbox.prop('checked', false);
+        } else {
+            this._checkbox.prop('checked', true);
+        }
+        this._update();
     }
 
     _addEventClickListner() {
         this._checkbox.on('click', () => {
-            this.checked = this._checkbox.is(':checked');
+            this._update();
         });
+    }
+
+    _update() {
+        this.checked = this._checkbox.is(':checked');
     }
 }

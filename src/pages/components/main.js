@@ -6,13 +6,27 @@ import DropdownComponent from '../../components/dropdown.component';
 import './style.scss';
 import page from './index.html?raw';
 
-LayoutProviderService.inject(page).then(() => {
-    const password = new PasswordInput('#password');
+export function instanciatePassword(stringID) {
+    const password = new PasswordInput(stringID);
     password.enable();
+}
 
-    const checkboxRememberMe = new CheckboxComponent('#remeber', 'lembre-se');
-    checkboxRememberMe.enable();
+export function instanciateCheckbox(stringID, stringLabel) {
+    const checkbox = CheckboxComponent(stringID, stringLabel);
+    checkbox.enable();
+}
 
-    const dropdownGameType = new DropdownComponent('#games', 'Game Type');
-    dropdownGameType.enable();
-});
+export function instanciateDropdown(stringID, stringPlaceholder) {
+    const dropdown = DropdownComponent(stringID, stringPlaceholder);
+    dropdown.enable();
+}
+
+LayoutProviderService.inject(page)
+    .then(() => {
+        instanciatePassword('#password');
+
+        instanciateCheckbox('#remeber', 'lembre-se');
+
+        instanciateDropdown('#games', 'Game Type');
+    })
+    .catch(() => {});
