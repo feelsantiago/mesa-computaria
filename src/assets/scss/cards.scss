@@ -11,6 +11,7 @@
  outline: none;
  background-color: $primary-dark;
  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+ margin: 5px;
  cursor: pointer;
 
  //Max width and paddin >> Game card
@@ -50,11 +51,12 @@
 }
 
 //Font family and color >> Card names
-.game-name, .player-name {
+.game-name,
+.player-name {
  font-family: $title-text;
  font-weight: 700;
  color: $other-light;
-padding-bottom: 15px;
+ padding-bottom: 15px;
 }
 
 //Font size >> Game name
@@ -76,12 +78,14 @@ padding-bottom: 15px;
 }
 
 //Font color >> Date and day
-.date, .day {
+.date,
+.day {
  color: $accent-light;
 }
 
 //Spacing, Font and color >>  Stats
-.game-stats, .player-stats {
+.game-stats,
+.player-stats {
  display: flex;
  flex-flow: row wrap;
  justify-content: space-between;
@@ -92,24 +96,24 @@ padding-bottom: 15px;
 
 //Padding and size >> Game stats
 .game-stats {
-padding-top: 15px;
-font-size: 20px;
+ padding-top: 15px;
+ font-size: 20px;
 }
 
 //Padding and size >> Player stats
 .player-stats {
-padding-top: 25px;
-font-size: 15px;
+ padding-top: 25px;
+ font-size: 15px;
 }
 
 //Postion adjustment >> Card icons
-.card-icon{
+.card-icon {
  position: relative;
  bottom: 3px;
 }
 
 //Position adjustment >> King icon
-.king-icon{
+.king-icon {
  position: relative;
  bottom: 6px;
 }
