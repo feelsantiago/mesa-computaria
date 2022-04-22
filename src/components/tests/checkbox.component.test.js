@@ -2,9 +2,9 @@ import { beforeEach, describe, expect, it, afterEach } from 'vitest';
 import $ from 'jquery';
 import CheckboxComponent from '../checkbox.component';
 
-describe('[CheckBoxComponente]', () => {
+describe('[CheckBoxComponent]', () => {
     let checkbox;
-    let checkboxUnrequired;
+    let checkboxNotRequired;
 
     beforeEach(() => {
         const html = $.parseHTML(`
@@ -23,7 +23,7 @@ describe('[CheckBoxComponente]', () => {
         $('#test').remove();
     });
 
-    it(['Should load elements and add events on checkbox instanciation'], () => {
+    it(['Should load elements and add events on checkbox instantiation'], () => {
         expect(checkbox._checkbox.length > 0).toBeTruthy();
         expect(checkbox._label.length > 0).toBeTruthy();
 
@@ -37,7 +37,7 @@ describe('[CheckBoxComponente]', () => {
             expect(checkbox._checkbox.is(':checked')).toBeTruthy();
         });
 
-        it('Should unmark checked when click in the checked box', async () => {
+        it('Should unmarked checked when click in the checked box', async () => {
             checkbox._checkbox.trigger('click');
             expect(checkbox._checkbox.is(':checked')).toBeTruthy();
 
@@ -103,7 +103,7 @@ describe('[CheckBoxComponente]', () => {
     });
 
     describe('[enabledState]', () => {
-        it('Should return enabled state default or disalbe if setted', async () => {
+        it('Should return enabled state default or disabled if settled', async () => {
             expect(checkbox.disabled).toBeFalsy();
 
             checkbox.disable();
@@ -140,7 +140,7 @@ describe('[CheckBoxComponente]', () => {
     describe('[requiredState]', () => {
         beforeEach(() => {
             const html = $.parseHTML(`
-            <div class="row-checkbox" id="unrequired">
+            <div class="row-checkbox" id="notRequired">
                 <fieldset class="checkbox-container container">
                     <input type="checkbox" class="checkbox" />
                     <p class="checkbox-label"></p>
@@ -148,16 +148,16 @@ describe('[CheckBoxComponente]', () => {
             </div>`);
 
             $(document.body).append(html);
-            checkboxUnrequired = new CheckboxComponent('#unrequired', 'lembre-se', false);
+            checkboxNotRequired = new CheckboxComponent('#notRequired', 'lembre-se', false);
         });
 
         afterEach(() => {
             $('#unrequired').remove();
         });
 
-        it('Should be default required or unrequired if set false on instantiation', async () => {
+        it('Should be default required or notRequired if set false on instantiation', async () => {
             expect(checkbox.required).toBeTruthy();
-            expect(checkboxUnrequired.required).toBeFalsy();
+            expect(checkboxNotRequired.required).toBeFalsy();
         });
     });
 });

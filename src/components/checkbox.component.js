@@ -11,7 +11,7 @@ export default class CheckboxComponent extends Component {
         this._label.html(this.text);
         this.checked = this._checkbox.is(':checked');
 
-        this._addEventClickListner();
+        this._addEventClickListener();
     }
 
     setLabel(text) {
@@ -38,7 +38,7 @@ export default class CheckboxComponent extends Component {
         this._update();
     }
 
-    _addEventClickListner() {
+    _addEventClickListener() {
         this._checkbox.on('click', () => {
             this._update();
         });

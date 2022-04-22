@@ -4,7 +4,7 @@ import DropdownComponent from '../dropdown.component';
 
 describe('[DropdownComponent]', () => {
     let dropdown;
-    let dropdownUnrequired;
+    let dropdownNotRequired;
 
     beforeEach(() => {
         const html = $.parseHTML(`
@@ -14,7 +14,7 @@ describe('[DropdownComponent]', () => {
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>
                         <li class="dropdown-item selected" id="selected">Select one</li>
-                        <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
+                        <li class="dropdown-item" id="dnd">Dungeons&Dragons</li>
                         <li class="dropdown-item" id="vampire">Vampire 5e</li>
                     </ul>
                 </div>
@@ -29,7 +29,7 @@ describe('[DropdownComponent]', () => {
         $('#test').remove();
     });
 
-    it('Should load elements and add events on dropdown instanciation', () => {
+    it('Should load elements and add events on dropdown instantiation', () => {
         expect(dropdown._btn.length > 0).toBeTruthy();
         expect(dropdown._list.length > 0).toBeTruthy();
         expect(dropdown._items.length > 0).toBeTruthy();
@@ -74,7 +74,7 @@ describe('[DropdownComponent]', () => {
                 dropdown.setSelection('Bla bla bla');
             }).toThrow('Bla bla bla are not included in this dropdown');
 
-            dropdown.setSelection('Dugeons&Dragons');
+            dropdown.setSelection('Dungeons&Dragons');
             expect(dropdown._btn.text()).toEqual(dropdown.selected);
             expect(dnd.hasClass('selected')).toBeTruthy();
 
@@ -119,7 +119,7 @@ describe('[DropdownComponent]', () => {
     });
 
     describe('[enabledState]', () => {
-        it('Should return enabled state default or disalbe if setted', async () => {
+        it('Should return enabled state default or disabled if settled', async () => {
             expect(dropdown.disabled).toBeFalsy();
 
             dropdown.disable();
@@ -133,13 +133,13 @@ describe('[DropdownComponent]', () => {
     describe('[requiredState]', () => {
         beforeEach(() => {
             const otherDropdown = $.parseHTML(`      
-            <div class="row-dropdown-input " id="testUnrequired">
+            <div class="row-dropdown-input " id="testNotRequired">
                 <fieldset class="dropdown-container container">
                     <button type="button" class="dropdown dropdown-btn" id="btn">Game Type</button>
                     <div class="dropdown dropdown-list" id="list" style="display: block;">
                         <ul>
                             <li class="dropdown-item selected" id="selected">Select one</li>
-                            <li class="dropdown-item" id="dnd">Dugeons&Dragons</li>
+                            <li class="dropdown-item" id="dnd">Dungeons&Dragons</li>
                             <li class="dropdown-item" id="vampire">Vampire 5e</li>
                          </ul>
                     </div>
@@ -147,16 +147,16 @@ describe('[DropdownComponent]', () => {
             </div>`);
 
             $(document.body).append(otherDropdown);
-            dropdownUnrequired = new DropdownComponent('#testUnrequired', 'Game type', false);
+            dropdownNotRequired = new DropdownComponent('#testNotRequired', 'Game type', false);
         });
 
         afterEach(() => {
-            $('#testUnrequired').remove();
+            $('#testNotRequired').remove();
         });
 
-        it('Should be default required or unrequired if set false on instantiation', async () => {
+        it('Should be default required or NotRequired if set false on instantiation', async () => {
             expect(dropdown.required).toBeTruthy();
-            expect(dropdownUnrequired.required).toBeFalsy();
+            expect(dropdownNotRequired.required).toBeFalsy();
         });
     });
 
@@ -182,9 +182,9 @@ describe('[DropdownComponent]', () => {
     describe('[options]', () => {
         it('should return a list of options in the dropdown', async () => {
             expect(dropdown.options()).toContain('Select one');
-            expect(dropdown.options()).toContain('Dugeons&Dragons');
+            expect(dropdown.options()).toContain('Dungeons&Dragons');
             expect(dropdown.options()).toContain('Vampire 5e');
-            expect(dropdown.options()).toContain('Select one', 'Dugeons&Dragons', 'Vampire 5e');
+            expect(dropdown.options()).toContain('Select one', 'Dungeons&Dragons', 'Vampire 5e');
         });
     });
 });
