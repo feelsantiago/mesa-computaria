@@ -16,6 +16,7 @@ LayoutProviderService.inject(page).then(() => {
     const validateEmailInput = new EmailTextInput('.container-text-input-box');
     // eslint-disable-next-line no-unused-vars
     const password = new PasswordInput('#password');
+    password.disabled;
     // eslint-disable-next-line no-unused-vars
     const dropdownGameType = new DropdownComponent('#games', 'Game Type');
 });
