@@ -10,7 +10,7 @@ export default class EmailTextInput extends TextInput {
 
     validate() {
         // Regex with a email form
-        const EmailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const EmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         if (!EmailRegex.test(this._textInput.val())) {
             this._textValid = false;
             throw new InvalidEmail(this._textInput.val());
