@@ -3,15 +3,13 @@
         <h1 class="title">Components</h1>
     </div>
 
-    <div class="row text input" id="text-input" >
+    <div class="row text input">
         <div class="container-text-input-box">
             <h3>Inputs</h3>
 
             <p>Normal</p>
-             <!-- Normal text input -->
-            <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
-             <!-- Email text input -->
-            <input class="input-box" id="My-Email" name="email" type="email" placeholder="Email">
+
+            <input class="input-box" type="text" placeholder="First name" />
         </div>
 
         <p>Text</p>
@@ -22,18 +20,25 @@
         <div class="container-fluid password-box" id="password">
             <i class="fa-solid fa-lock lock-icon"></i>
             <label for="control-label" class="password-label">Senha</label>
-            <input type="password" class="form-control password-input" placeholder="Senha" required>
+            <input type="password" class="form-control password-input" placeholder="Senha" required />
             <i class="fa-solid fa-eye-slash eye-icon"></i>
         </div>
     </div>
 
-    <div class="row-dropdown-input container" id="games">
-        <fieldset class="dropdown-container">
+    <div class="row-checkbox" id="remember">
+        <fieldset class="checkbox-container container">
+            <input type="checkbox" class="checkbox" id="remember-checkbox" />
+            <p class="checkbox-label"></p>
+        </fieldset>
+    </div>
+
+    <div class="row-dropdown-input" id="games">
+        <fieldset class="dropdown-container container">
             <button type="button" class="dropdown dropdown-btn"></button>
             <div class="dropdown dropdown-list">
                 <ul>
                     <li class="dropdown-item selected">Select one</li>
-                    <li class="dropdown-item">Dugeons&Dragons</li>
+                    <li class="dropdown-item">Dungeons&Dragons</li>
                     <li class="dropdown-item">Vampire 5e</li>
                 </ul>
             </div>
@@ -74,15 +79,5 @@
         <button type="button" class="button round accent">
             <span class="button-text">+</span>
         </button>
-        <!-- Check box  -->
-        <div class="container-checkbox">
-            <p>Checkbox</p>
-            <fieldset class="checkbox-group-filled">
-                <label for="input-checkbox">
-                    <input type="checkbox" id="input-checkbox" name="checkbox-group-filled" class="filled" checked />
-                    <span class="label-text">Lembrar-se</span>
-                </label>
-            </fieldset>
-        </div>
     </div>
 </div>

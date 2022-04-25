@@ -1,15 +1,13 @@
 import $ from 'jquery';
 import DropdownOptionNotFound from '../shared/erros/dropdow-option-not-found.erros';
+import Component from './component';
 
-export default class DropdownComponent {
+export default class DropdownComponent extends Component {
     constructor(query, placeholder, required = true) {
-        this.query = query;
-        this.required = required;
+        super(query, required);
         this.placeholder = placeholder;
-        this.disabled = false;
         this.valid = false;
 
-        this._container = $(`${query} .dropdown-container`);
         this._btn = $(`${query} .dropdown-btn`);
         this._list = $(`${query} .dropdown-list`);
         this._items = $(`${query} .dropdown-item`);
@@ -42,18 +40,6 @@ export default class DropdownComponent {
         if (notFound) {
             throw new DropdownOptionNotFound(item);
         }
-    }
-
-    enable() {
-        this._container.css('pointer-events', 'auto');
-        this._container.prop('disabled', false);
-        this.disabled = this._container.is(':disabled');
-    }
-
-    disable() {
-        this._container.css('pointer-events', 'none');
-        this._container.prop('disabled', true);
-        this.disabled = this._container.is(':disabled');
     }
 
     _addDropdownClickEventListener() {

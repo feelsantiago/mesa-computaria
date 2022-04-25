@@ -1,15 +1,17 @@
 import $ from 'jquery';
-import { TestEnvironmentError } from '../utils/errors';
 import StringUtils from '../utils/string';
 
 export default class LayoutProvider {
-    async inject(page, overrideTestEnvironment = false) {
-        if (!overrideTestEnvironment && process.env.NODE_ENV === 'test') {
-            throw new TestEnvironmentError();
-        }
+    inject(page, callback, overrideTestEnvironment = false) {
+        const isTestEnvironment = process.env.NODE_ENV === 'test';
+        if (overrideTestEnvironment || !isTestEnvironment) {
+            if (!StringUtils.isEmptyOrBlank(page)) {
+                $('#app').html(page);
+            }
 
-        if (!StringUtils.isEmptyOrBlank(page)) {
-            $('#app').html(page);
+            if (callback) {
+                callback();
+            }
         }
     }
 }
