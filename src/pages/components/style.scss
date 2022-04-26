@@ -28,12 +28,24 @@
 }
 
 .date-password-box {
+    font-family: $general-text;
+    color: $other-light;
     background-color: $primary-dark;
-    color: $other-dark;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    //Space to put away from other components (optional)
     margin-top: 20px;
     margin-bottom: 20px;
-    min-width: 200px;
+}
+.row-checkbox {
+    margin: 0;
+    padding: 0;
+
+    .container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
 }
 
 .container-text-input-box {
@@ -57,3 +69,4 @@ p {
     background-color: $primary-light;
     color: $other-light;
 }
+
