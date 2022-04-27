@@ -69,10 +69,11 @@
     color: $other-light;
 }
 
-.text-input-box h3,
-p {
-    margin-left: 10px;
-    margin-top: 10px;
+.text-input-box {
+    & p,h3 {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
 }
 
 .container-checkbox-component {
