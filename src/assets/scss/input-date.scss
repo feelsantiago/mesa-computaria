@@ -5,11 +5,10 @@
 @import './components.scss';
 
 .date-box {
-    display: flex;
-    flex-direction: row-reverse;
     margin: 6px;
 
     .date-input {
+        margin-left: 6px;
         padding-left: 15px;
     
         &::-webkit-calendar-picker-indicator {
@@ -23,6 +22,4 @@
 .next-game {
     font-size: 12px;
     position: relative;
-    top: 13px;
-    right: 8px;
 }
