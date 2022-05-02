@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import $ from 'jquery';
-import EmailTextInput from '../text-input-email.components';
+import EmailTextInput from '../email.components';
 
 describe('[Email input tests]', () => {
     let input;
@@ -17,7 +17,7 @@ describe('[Email input tests]', () => {
         input = new EmailTextInput('.container-text-input-box');
         input.setInput('Abcdieop@gmail');
 
-        expect(input._textInput.val()).toEqual('Abcdieop@gmail');
+        expect(input._container.val()).toEqual('Abcdieop@gmail');
     });
 
     it('Should set required property in email input', () => {

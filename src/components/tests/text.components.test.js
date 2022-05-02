@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import $ from 'jquery';
 // eslint-disable-next-line import/extensions
-import TextInput from '../text-input.components';
+import TextInput from '../text.components.js';
 // eslint-disable-next-line import/extensions
 
 describe('[TextInput]', () => {
@@ -20,7 +20,7 @@ describe('[TextInput]', () => {
             input = new TextInput('.container-text-input-box');
             input.setInput('Abcdieop');
 
-            expect(input._textInput.val()).toEqual('Abcdieop');
+            expect(input._container.val()).toEqual('Abcdieop');
         });
     });
 

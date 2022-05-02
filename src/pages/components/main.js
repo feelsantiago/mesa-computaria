@@ -1,8 +1,8 @@
 import { LayoutProviderService } from '../../services/layout-provider.service';
 import PasswordInput from '../../components/password.components';
 import CheckboxComponent from '../../components/checkbox.component';
-import TextInput from '../../components/text-input.components';
-import EmailTextInput from '../../components/text-input-email.components';
+import TextInput from '../../components/text.components';
+import EmailTextInput from '../../components/email.components';
 import DropdownComponent from '../../components/dropdown.component';
 
 import './style.scss';
