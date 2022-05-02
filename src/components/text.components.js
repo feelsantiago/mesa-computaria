@@ -2,8 +2,8 @@ import $ from 'jquery';
 import Component from './component';
 
 export default class TextInput extends Component {
-    constructor(stringQuery, required = true, disabled = false, _container) {
-        super(disabled, required, _container);
+    constructor(stringQuery, _container, required = true, disabled = false) {
+        super(_container, disabled, required);
         this.stringQuery = stringQuery;
 
         this._container = $(`${stringQuery} input[type="text"]`);

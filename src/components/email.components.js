@@ -3,9 +3,9 @@ import TextInput from './text.components';
 import InvalidEmail from '../shared/erros/text-input-email.erros';
 
 export default class EmailTextInput extends TextInput {
-    constructor(stringQuery, required = true, _textValid = false, disabled = false, _container) {
-        super(stringQuery, required, _textValid, disabled, _container);
-        
+    constructor(stringQuery, _container, required = true, _textValid = false, disabled = false) {
+        super(stringQuery, _container, required, _textValid, disabled);
+
         this._container = $(`${stringQuery} input[type="email"]`);
     }
 

@@ -8,12 +8,12 @@ import DropdownComponent from '../../components/dropdown.component';
 import './style.scss';
 import page from './index.html?raw';
 
-export function instantiateTextInput(stringText){
+export function instantiateTextInput(stringText) {
     const textInput = new TextInput(stringText);
     return textInput;
 }
 
-export function instantiateInputEmail(stringEmail){
+export function instantiateInputEmail(stringEmail) {
     const textEmail = new EmailTextInput(stringEmail);
     return textEmail;
 }
