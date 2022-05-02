@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import Component from './component.js';
+import Component from './component';
 
 export default class TextInput extends Component {
     constructor(stringQuery, required = true, disabled = false, _container) {

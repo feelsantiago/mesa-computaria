@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import $ from 'jquery';
 // eslint-disable-next-line import/extensions
-import TextInput from '../text.components.js';
+import TextInput from '../text.components';
 // eslint-disable-next-line import/extensions
 
 describe('[TextInput]', () => {
