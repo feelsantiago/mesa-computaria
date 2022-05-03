@@ -1,15 +1,15 @@
 import $ from 'jquery';
+import Component from './component';
 
-export default class PasswordInput {
-    constructor(queryString, required = true) {
-        this._div = $(queryString);
-        this._input = $(`${queryString} input[type="password"]`);
-        this._icon = $(`${queryString} input[type="password"]+i`);
+export default class PasswordInput extends Component {
+    constructor(query, required = true) {
+        super(query, required);
+        this._div = $(query);
+        this._input = $(`${query} input[type="password"]`);
+        this._icon = $(`${query} input[type="password"]+i`);
 
         this.value = '';
-        this.required = required;
         this.valid = false;
-        this.disabled = false;
 
         this._checkQuery(this._div, this._input, this._icon);
         this._addClickEvent();
@@ -40,17 +40,7 @@ export default class PasswordInput {
     }
 
     _addClickEvent() {
-        this._icon.on('click', () => {
-            if (this._input.attr('type') === 'password') {
-                this.showValue();
-            } else {
-                this.hideValue();
-            }
-        });
-    }
-
-    _removeClickEvent() {
-        this._icon.off('click');
+        this._icon.on('click', () => (this._input.attr('type') === 'password' ? this.showValue() : this.hideValue()));
     }
 
     validate() {
@@ -65,18 +55,6 @@ export default class PasswordInput {
         return this.valid;
     }
 
-    enable() {
-        this._input.prop('disabled', false);
-        this.disabled = this._input.is(':disabled');
-        this._addClickEvent();
-    }
-
-    disable() {
-        this._input.prop('disabled', true);
-        this.disabled = this._input.is(':disabled');
-        this._removeClickEvent();
-    }
-
     setValue(string) {
         this._input.val(string);
         this.value = this._input.val();
@@ -85,6 +63,6 @@ export default class PasswordInput {
 
     setRequired(boolean) {
         this._input.prop('required', boolean);
-        this.required = boolean;
+        this.required = this._input.is(':required');
     }
 }

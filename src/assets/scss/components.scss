@@ -18,7 +18,7 @@
     height: 50px;
     box-shadow: none !important;
 
-    &:focus {
+    &:focus, &:disabled {
         outline: none;
         color: $other-dark;
         background-color: $primary-dark;
