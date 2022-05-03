@@ -8,7 +8,7 @@ export default class PasswordInput extends Component {
         this._input = $(`${query} input[type="password"]`);
         this._icon = $(`${query} input[type="password"]+i`);
 
-        this.value = '';
+        this.value = this._input.val();
         this.valid = false;
 
         this._checkQuery(this._div, this._input, this._icon);
