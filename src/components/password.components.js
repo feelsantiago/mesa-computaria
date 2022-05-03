@@ -57,9 +57,4 @@ export default class PasswordInput extends Component {
         this.value = this._input.val();
         this.valid = this.validate();
     }
-
-    setRequired(boolean) {
-        this._input.prop('required', boolean);
-        this.required = this._input.is(':required');
-    }
 }

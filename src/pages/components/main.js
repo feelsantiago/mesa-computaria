@@ -19,7 +19,7 @@ export function instantiateInputEmail(stringEmail) {
     return textEmail;
 }
 
-export function instantiatePassword(stringID) { 
+export function instantiatePassword(stringID) {
     const password = new PasswordInput(stringID);
     return password;
 }
