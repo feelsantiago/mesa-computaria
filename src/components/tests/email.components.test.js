@@ -1,35 +1,35 @@
 import { describe, expect, it } from 'vitest';
 import $ from 'jquery';
-import EmailTextInput from '../email.components';
+import EmailComponent from '../email.components';
 
 describe('[Email input tests]', () => {
     let input;
 
     it('Should get input value for type email', () => {
-        const div = `
-            <div class="container-text-input-box">           
-                <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
-                <input class="input-box" id="Email" name="email" type="email">
-            </div>`;
+        const fieldset = `
+        <fieldset class="container-text-input-box">           
+            <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
+            <input class="input-box" id="Email" name="email" type="email" >
+        </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
-        input.setInput('Abcdieop@gmail');
+        input = new EmailComponent('.container-text-input-box');
+        input.setValue('Abcdieop@gmail.com');
 
-        expect(input._container.val()).toEqual('Abcdieop@gmail');
+        expect(input.value.val()).toEqual('Abcdieop@gmail.com');
     });
 
     it('Should set required property in email input', () => {
-        const div = `
-            <div class="container-text-input-box">           
+        const fieldset = `
+            <fieldset class="container-text-input-box">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" required>
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
+        input = new EmailComponent('.container-text-input-box');
         input.setRequired(false);
 
         const inputTextProperty = $('#Email').prop('required');
@@ -38,29 +38,29 @@ describe('[Email input tests]', () => {
     });
 
     it('Should check if input-email has required property', () => {
-        const div = `
-            <div class="container-text-input-box">           
+        const fieldset = `
+            <fieldset class="container-text-input-box">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" required>
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
+        input = new EmailComponent('.container-text-input-box');
         const inputTextProperty = $('#Email').prop('required');
         expect(inputTextProperty).toBeTruthy();
     });
 
     it('Should check if input email has disabled property', () => {
-        const div = `
-            <div class="container-text-input-box">           
+        const fieldset = `
+            <fieldset class="container-text-input-box">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" disabled>
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
+        input = new EmailComponent('.container-text-input-box');
         input.disable();
         expect(input.disabled).toBeTruthy();
         input.enable();
@@ -68,106 +68,104 @@ describe('[Email input tests]', () => {
     });
 
     it('Should check if input email no has disabled property', () => {
-        const div = `
-            <div class="container-text-input-box">          
+        const fieldset = `
+            <fieldset class="container-text-input-box">          
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
+        input = new EmailComponent('.container-text-input-box');
         expect(input.disabled).toBeFalsy();
     });
 
     it('Should check if input email no has disabled property', () => {
-        const div = `
-            <div class="container-text-input-box">           
+        const fieldset = `
+            <fieldset class="container-text-input-box">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
+        input = new EmailComponent('.container-text-input-box');
         input.enable();
         expect(input.disabled).toBeFalsy();
     });
 
     it('Should check if input email is valid', () => {
-        const div = `
-            <div class="container-text-input-box">           
+        const fieldset = `
+            <fieldset class="container-text-input-box">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
-        input.setInput('rodrigo@gmail.com');
+        input = new EmailComponent('.container-text-input-box');
+        input.setValue('rodrigo@gmail.com');
         expect(input.validate()).toBeTruthy();
     });
 
     it('Should check if textValid email is true', () => {
-        const div = `
-            <div class="container-text-input-box">           
+        const fieldset = `
+            <fieldset class="container-text-input-box">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
-        input.setInput('rodrigo@gmail.com');
-        input.validate();
-        expect(input._textValid).toBeTruthy();
+        input = new EmailComponent('.container-text-input-box');
+        input.setValue('rodrigo@gmail.com');
+        expect(input.valid).toBeTruthy();
     });
 
     it('Should check if input email is not valid', () => {
-        const div = `
-            <div class="container-text-input-box">           
+        const fieldset = `
+            <fieldset class="container-text-input-box">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
+        input = new EmailComponent('.container-text-input-box');
 
-        input.setInput('abcgde');
-
-        expect(input._textValid).toBeFalsy();
-    });
-
-    it('Should check if input email is not valid', () => {
-        const div = `
-            <div class="container-text-input-box">         
-                <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
-                <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
-
-        $(document.body).html(div);
-
-        input = new EmailTextInput('.container-text-input-box');
-        input.setInput('rodrigo@gmail');
         expect(() => {
-            input.validate();
+            input.setValue('abcgde');
+        }).toThrow('abcgde not a valid e-mail address');
+        expect(input.valid).toBeFalsy();
+    });
+
+    it('Should check if input email is not valid', () => {
+        const fieldset = `
+            <fieldset class="container-text-input-box">         
+                <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
+                <input class="input-box" id="Email" name="email" type="email" >
+            </fieldset>`;
+
+        $(document.body).html(fieldset);
+
+        input = new EmailComponent('.container-text-input-box');
+        expect(() => {
+            input.setValue('rodrigo@gmail');
         }).toThrow('rodrigo@gmail not a valid e-mail address');
     });
 
     it('Should check if input email is not valid', () => {
-        const div = `
-            <div class="container-text-input-box">          
+        const fieldset = `
+            <fieldset class="container-text-input-box">          
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
-            </div>`;
+            </fieldset>`;
 
-        $(document.body).html(div);
+        $(document.body).html(fieldset);
 
-        input = new EmailTextInput('.container-text-input-box');
-        input.setInput('rodrigo.com');
+        input = new EmailComponent('.container-text-input-box');
         expect(() => {
-            input.validate();
+            input.setValue('rodrigo.com');
         }).toThrow('rodrigo.com not a valid e-mail address');
     });
 });
