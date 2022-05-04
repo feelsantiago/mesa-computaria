@@ -1,0 +1,25 @@
+@import './style.scss';
+
+@import './home-layout.scss';
+
+@import './components.scss';
+
+.date-box {
+    margin: 6px;
+
+    .date-input {
+        margin-left: 6px;
+        padding-left: 15px;
+    
+        &::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            position: relative;
+            right: 10px;
+        }
+    }
+}
+
+.date-small {
+    font-size: 12px;
+    position: relative;
+}

@@ -15,13 +15,19 @@
         <p>Text</p>
     </div>
 
-    <div class="row password input">
-        <p>Password</p>
-        <div class="container-fluid password-box" id="password">
-            <i class="fa-solid fa-lock lock-icon"></i>
-            <label for="control-label" class="password-label">Senha</label>
-            <input type="password" class="form-control password-input" placeholder="Senha" required />
-            <i class="fa-solid fa-eye-slash eye-icon"></i>
+    <div class="row-password-input">
+        <div class="password-box" id="password">
+            <i class="fa fa-lock icon icon-lock"></i>
+            <label class="standard-label">Senha</label>
+            <input type="password" class="form-control password-input standard-input" placeholder="Senha" required="required"/>
+            <i class="fa fa-eye-slash icon icon-eye"></i>
+        </div>
+    </div>
+
+    <div class="row-date-input">
+        <div class="date-box" id="date">
+            <small class="standard-label date-small">Próximo jogo:</small>
+            <input type="date" class="date-input standard-input">
         </div>
     </div>
 
