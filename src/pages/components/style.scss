@@ -46,19 +46,21 @@
     }
 }
 
-.container-text-input-box {
-    min-width: 200px;
-    margin: 20px;
-    margin-bottom: 20px;
-    background-color: $primary-light;
-    color: $other-light;
-}
-
-.text-input-box {
-    & p,h3 {
-        margin-left: 10px;
-        margin-top: 10px;
+.row-text-input{
+    & .text-input-container {
+        min-width: 200px;
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: $primary-light;
+        color: $other-light;
     }
+    .text-input-container {
+        & p,h3 {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+    }
+
 }
 
 .container-checkbox-component {
@@ -68,4 +70,3 @@
     background-color: $primary-light;
     color: $other-light;
 }
-

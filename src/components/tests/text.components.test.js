@@ -10,14 +10,14 @@ describe('[TextInput]', () => {
     describe('[Getters and Setters]', () => {
         it('Should get input text value', () => {
             const fieldset = `
-            <fieldset class="container-text-input-box">           
+            <fieldset class="text-input-container container">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
 
             $(document.body).html(fieldset);
 
-            input = new TextComponent('.container-text-input-box');
+            input = new TextComponent('.text-input-container');
             input.setValue('Abcdieop');
 
             expect(input._container.val()).toEqual('Abcdieop');
@@ -26,14 +26,14 @@ describe('[TextInput]', () => {
 
     it('Should set required property in text input', () => {
         const fieldset = `
-            <fieldset class="container-text-input-box">           
+            <fieldset class="text-input-container container">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
 
         $(document.body).html(fieldset);
 
-        input = new TextComponent('.container-text-input-box');
+        input = new TextComponent('.text-input-container');
         input.setRequired(false);
 
         const inputTextProperty = $('#Text-input-box').prop('required');
@@ -43,28 +43,28 @@ describe('[TextInput]', () => {
 
     it('Should check if input text has required property', () => {
         const fieldset = `
-            <fieldset class="container-text-input-box">           
+            <fieldset class="text-input-container container">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text" required />
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
 
         $(document.body).html(fieldset);
 
-        input = new TextComponent('.container-text-input-box');
+        input = new TextComponent('.text-input-container');
         const inputTextProperty = $('#Text-input-box').prop('required');
         expect(inputTextProperty).toBeTruthy();
     });
 
     it('Should check if input text has disabled property', () => {
         const fieldset = `
-            <fieldset class="container-text-input-box">           
+            <fieldset class="text-input-container container">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
 
         $(document.body).html(fieldset);
 
-        input = new TextComponent('.container-text-input-box');
+        input = new TextComponent('.container');
         input.disable();
         expect(input.disabled).toBeTruthy();
         input.enable();
@@ -74,14 +74,14 @@ describe('[TextInput]', () => {
     describe('[validState]', () => {
         it('Should get input text value is not valid', () => {
             const fieldset = `
-                <fieldset class="container-text-input-box">           
+                <fieldset class="text-input-container container">           
                     <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                     <input class="input-box" id="Email" name="email">
                 </fieldset>`;
 
             $(document.body).html(fieldset);
 
-            input = new TextComponent('.container-text-input-box');
+            input = new TextComponent('.text-input-container');
             input.setValue('');
 
             expect(input.validate()).toBeFalsy();
@@ -89,14 +89,14 @@ describe('[TextInput]', () => {
 
         it('Should get input text value is valid', () => {
             const fieldset = `
-                <fieldset class="container-text-input-box">           
+                <fieldset class="text-input-container container">           
                     <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                     <input class="input-box" id="Email" name="email">
                 </fieldset>`;
 
             $(document.body).html(fieldset);
 
-            input = new TextComponent('.container-text-input-box');
+            input = new TextComponent('.text-input-container');
             input.setValue('Abcdieop');
 
             expect(input.validate()).toBeTruthy();
@@ -104,14 +104,14 @@ describe('[TextInput]', () => {
 
         it('Should get input text value is valid', () => {
             const fieldset = `
-            <fieldset class="container-text-input-box">           
+            <fieldset class="text-input-container container">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
 
             $(document.body).html(fieldset);
 
-            input = new TextComponent('.container-text-input-box');
+            input = new TextComponent('.text-input-container');
             input.setValue('Ab@di.op');
 
             expect(input.validate()).toBeTruthy();

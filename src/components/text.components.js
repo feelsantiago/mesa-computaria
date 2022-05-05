@@ -4,7 +4,7 @@ import Component from './component';
 export default class TextComponent extends Component {
     constructor(stringQuery, required = true, disabled = false, valid = false) {
         super(disabled, required);
-        this.stringQuery = stringQuery;
+        this._stringQuery = stringQuery;
 
         this._container = $(`${stringQuery} input[type="text"]`);
         this.valid = valid;
