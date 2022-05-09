@@ -119,11 +119,10 @@ describe('[Email input tests]', () => {
 
         input = new EmailComponent('.text-input-container');
         input.setValue('rodrigo@gmail.com');
-        input.validate();
         expect(input.valid).toBeTruthy();
     });
 
-    it('Should check if input email is not valid', () => {
+    it('Should check if input email is not valid and prints the error message', () => {
         const fieldset = `
             <fieldset class="text-input-container">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
@@ -135,12 +134,12 @@ describe('[Email input tests]', () => {
         input = new EmailComponent('.text-input-container');
         input.setValue('abcgde');
         expect(() => {
-            input.validate();
+            input.validateWithException();
         }).toThrow('abcgde not a valid e-mail address');
         expect(input.valid).toBeFalsy();
     });
 
-    it('Should check if input email is not valid', () => {
+    it('Should check if input email is not valid and prints the error message', () => {
         const fieldset = `
             <fieldset class="text-input-container container">         
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
@@ -152,11 +151,11 @@ describe('[Email input tests]', () => {
         input = new EmailComponent('.text-input-container');
         input.setValue('rodrigo@gmail');
         expect(() => {
-            input.validate();
+            input.validateWithException();
         }).toThrow('rodrigo@gmail not a valid e-mail address');
     });
 
-    it('Should check if input email is not valid', () => {
+    it('Should check if input email is not valid and prints the error message', () => {
         const fieldset = `
             <fieldset class="text-input-container container">          
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
@@ -168,7 +167,7 @@ describe('[Email input tests]', () => {
         input = new EmailComponent('.text-input-container');
         input.setValue('rodrigo.com');
         expect(() => {
-            input.validate();
+            input.validateWithException();
         }).toThrow('rodrigo.com not a valid e-mail address');
     });
 });

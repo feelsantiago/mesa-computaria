@@ -47,20 +47,22 @@
 }
 
 .row-text-input{
-    & .text-input-container {
-        min-width: 200px;
-        padding: 10px;
-        margin-bottom: 20px;
-        background-color: $primary-light;
-        color: $other-light;
-    }
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: $primary-light;
+
     .text-input-container {
         & p,h3 {
             margin-left: 10px;
             margin-top: 10px;
+            color: $other-light;
         }
     }
-
+    .container {
+        width: 100%;
+        min-width: 200px;
+    }
 }
 
 .container-checkbox-component {

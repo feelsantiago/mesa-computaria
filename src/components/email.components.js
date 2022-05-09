@@ -9,20 +9,16 @@ export default class EmailComponent extends TextComponent {
         this._container = $(`${stringQuery} input[type="email"]`);
     }
 
-    setValue(string) {
-        this._container.val(string);
-        this.value = this._container.val();
-    }
-
     validate() {
         // Regex with a email form
         const EmailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-        if (!EmailRegex.test(this._container.val())) {
-            this.valid = false;
+        this.valid = EmailRegex.test(this._container.val());
+        return this.valid;
+    }
+
+    validateWithException() {
+        if (this.valid === false) {
             throw new InvalidEmail(this._container.val());
-        } else {
-            this.valid = true;
-            return this.valid;
         }
     }
 }

@@ -17,7 +17,8 @@ export default class TextComponent extends Component {
     }
 
     setValue(string) {
-        this.value = this._container.val(string);
+        this._container.val(string);
+        this.value = this._container.val();
         this.valid = this.validate();
     }
 
