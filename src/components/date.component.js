@@ -19,7 +19,10 @@ export default class DateInput extends Component {
 
     validate() {
         /*
-        Regex validation in format yyyy-mm-dd from 1900 to 2099 valid years, 01-12 months and 01-31 days
+        Regex validation in format yyyy-mm-dd 
+        value year = from 1900 to 2099 
+        value month =  from 01 to 12 
+        value day = from 01 to 31 
         */
         const validations = /^(19|20)\d\d[ ./-](0[1-9]|1[0-2])[ ./-](0[1-9]|[12]\d|3[01])$/;
 
