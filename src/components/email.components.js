@@ -17,6 +17,7 @@ export default class EmailComponent extends TextComponent {
     }
 
     validateWithException() {
+        this.validate();
         if (this.valid === false) {
             throw new InvalidEmail(this._container.val());
         }

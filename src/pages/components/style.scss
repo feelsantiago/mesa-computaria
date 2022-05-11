@@ -28,7 +28,7 @@
     }
 }
 
-.row-password-input, .row-date-input {
+.row-password-input, .row-date-input, .row-text-input {
     background-color: $primary-dark;
     padding: 10px;
     margin-top: 20px;
@@ -43,25 +43,6 @@
         margin: 0;
         padding: 0;
         width: 100%;
-    }
-}
-
-.row-text-input{
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: $primary-light;
-
-    .text-input-container {
-        & p,h3 {
-            margin-left: 10px;
-            margin-top: 10px;
-            color: $other-light;
-        }
-    }
-    .container {
-        width: 100%;
-        min-width: 200px;
     }
 }
 

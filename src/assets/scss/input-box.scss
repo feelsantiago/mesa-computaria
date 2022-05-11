@@ -4,14 +4,14 @@
 
 @import './components.scss';
 
-.text-input-container {
+.text-input {
     margin: 6px;
     
     & .input-box {
         padding-left: 35px;
     }
-}
 
-.input-box::placeholder {
-    color: $other-dark;
+    & .input-box::placeholder {
+        color: $other-dark;
+    }
 }
