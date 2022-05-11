@@ -1,12 +1,14 @@
 import { describe, expect, it, vi } from 'vitest';
 import $ from 'jquery';
-import PasswordInput from '../password.components';
+import PasswordInput from '../password.component';
 
-describe('[PasswordComponents]', () => {
+describe('[PasswordComponent]', () => {
     describe('[_checkQuery]', () => {
         it('Should throw error if query fail or the div element is not finded.', () => {
             const div = `<div id="pass"></div>`;
+
             $(document.body).html(div);
+
             // eslint-disable-next-line no-unused-vars
             let password;
 
@@ -18,11 +20,14 @@ describe('[PasswordComponents]', () => {
         it('Should throw error if query fail or the input element is not finded.', () => {
             const div = `
                 <div id="pass">
-                    <i></i>
+                    <fieldset>
+                        <i></i>
+                    </fieldset>
                 </div>
             `;
 
             $(document.body).html(div);
+
             // eslint-disable-next-line no-unused-vars
             let password;
 
@@ -34,11 +39,14 @@ describe('[PasswordComponents]', () => {
         it('Should throw error if query fail or the icon element is not finded.', () => {
             const div = `
                 <div id="pass">
-                    <input type="password">
+                    <fieldset>
+                        <input type="password">
+                    </fieldset>
                 </div>
             `;
 
             $(document.body).html(div);
+
             // eslint-disable-next-line no-unused-vars
             let password;
 
@@ -48,14 +56,14 @@ describe('[PasswordComponents]', () => {
         });
     });
 
-    describe('[addClickEvent]', () => {
+    describe('[_addClickEvent]', () => {
         it('Should add a listener to click event', () => {
             const div = `
                 <div id="pass">
-                    <div>
+                    <fieldset>
                         <input type="password">
                         <i></i>
-                    </div>
+                    </fieldset>
                 </div>
             `;
 
@@ -72,10 +80,10 @@ describe('[PasswordComponents]', () => {
         it('Should change password input to text input', () => {
             const div = `
                 <div id="pass">
-                    <div>
+                    <fieldset>
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
+                    </fieldset>
                 </div>
             `;
 
@@ -97,10 +105,10 @@ describe('[PasswordComponents]', () => {
         it('Should change text input to password input', () => {
             const div = `
                 <div id="pass">
-                    <div>
+                    <fieldset>
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
+                    </fieldset>
                 </div>
             `;
 
@@ -121,14 +129,14 @@ describe('[PasswordComponents]', () => {
         });
     });
 
-    describe('[Getters and Setters]', () => {
+    describe('[get/set]', () => {
         it('Should get input value and change its state', () => {
             const div = `
                 <div id="pass">
-                    <div>
+                    <fieldset>
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
+                    </fieldset>
                 </div>
             `;
 
@@ -143,10 +151,10 @@ describe('[PasswordComponents]', () => {
         it('Should set input value and change its state', () => {
             const div = `
                 <div id="pass">
-                    <div>
+                    <fieldset>
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
+                    </fieldset>
                 </div>
             `;
 
@@ -161,14 +169,16 @@ describe('[PasswordComponents]', () => {
             expect(password.value).toBe('Password123');
             expect(password.valid).toBeFalsy();
         });
+    });
 
-        it('Should disable input and keep its state', () => {
+    describe('[enable/disable]', () => {
+        it('Should disable fieldset group and keep its state', () => {
             const div = `
                 <div id="pass">
-                    <div>
+                    <fieldset class="container">
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
+                    </fieldset>
                 </div>
             `;
 
@@ -177,19 +187,19 @@ describe('[PasswordComponents]', () => {
             const password = new PasswordInput('#pass');
             password.disable();
 
-            const inputDisabled = $('#input-password').prop('disabled');
+            const inputDisabled = $('.container').prop('disabled');
 
             expect(inputDisabled).toBeTruthy();
             expect(password.disabled).toBeTruthy();
         });
 
-        it('Should enable input and keep its state', () => {
+        it('Should enable fieldset group and keep its state', () => {
             const div = `
             <div id="pass">
-                <div>
+                <fieldset class="container">
                     <input id="input-password" type="password" disabled>
                     <i id="icon" class="fa-solid fa-eye-slash"></i>
-                </div>
+                </fieldset>
             </div>
              `;
 
@@ -198,31 +208,10 @@ describe('[PasswordComponents]', () => {
             const password = new PasswordInput('#pass');
             password.enable();
 
-            const inputDisabled = $('#input-password').prop('disabled');
+            const inputDisabled = $('.container').prop('disabled');
 
             expect(inputDisabled).toBeFalsy();
             expect(password.disabled).toBeFalsy();
-        });
-
-        it('Should set required property and change its state', () => {
-            const div = `
-                <div id="pass">
-                    <div>
-                        <input id="input-password" type="password" required>
-                        <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
-                </div>
-            `;
-
-            $(document.body).html(div);
-
-            const password = new PasswordInput('#pass');
-            password.setRequired(false);
-
-            const inputRequired = $('#input-password').prop('required');
-
-            expect(inputRequired).toBeFalsy();
-            expect(password.required).toBeFalsy();
         });
     });
 
@@ -230,10 +219,10 @@ describe('[PasswordComponents]', () => {
         it('Should check if input value is valid and keep its state', () => {
             const div = `
                 <div id="pass">
-                    <div>
+                    <fieldset>
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
-                    </div>
+                    </fieldset>
                 </div>
             `;
 
