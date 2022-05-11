@@ -1,5 +1,5 @@
 import { LayoutProviderService } from '../../services/layout-provider.service';
-import PasswordInput from '../../components/password.components';
+import PasswordInput from '../../components/password.component';
 import CheckboxComponent from '../../components/checkbox.component';
 import TextComponent from '../../components/text.components';
 import EmailComponent from '../../components/email.components';
