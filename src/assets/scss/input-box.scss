@@ -5,13 +5,13 @@
 @import './components.scss';
 
 .text-input {
-    margin: 6px;
+    margin: 6px 0px;
     
     & .input-box {
-        padding-left: 35px;
+        padding-left: 25px;
     }
 
-    & .input-box::placeholder {
-        color: $other-dark;
+    & .standard-label {
+        margin-left: 18px;
     }
 }
