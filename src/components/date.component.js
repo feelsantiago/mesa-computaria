@@ -9,6 +9,18 @@ export default class DateInput extends Component {
 
         this.value = this._input.val();
         this.valid = false;
+
+        this._checkQuery(this._div, this._input);
+    }
+
+    _checkQuery(div, input) {
+        if (div.length === 0) {
+            throw new Error('Failed to query div');
+        }
+
+        if (input.length === 0) {
+            throw new Error('Failed to query input date');
+        }
     }
 
     setValue(string) {
