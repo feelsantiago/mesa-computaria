@@ -11,12 +11,12 @@ export default class Component {
     disable() {
         this._component.css('pointer-events', 'none');
         this._component.prop('disabled', true);
-        this.disabled = this._container.is(':disabled');
+        this.disabled = this._component.is(':disabled');
     }
 
     enable() {
         this._component.css('pointer-events', 'auto');
         this._component.prop('disabled', false);
-        this.disabled = this._container.is(':disabled');
+        this.disabled = this._component.is(':disabled');
     }
 }
