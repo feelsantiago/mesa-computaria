@@ -10,7 +10,7 @@ describe('[TextInput]', () => {
     describe('[Getters and Setters]', () => {
         it('Should get input text value', () => {
             const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
@@ -26,7 +26,7 @@ describe('[TextInput]', () => {
 
     it('Should set required property in text input', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
@@ -43,7 +43,7 @@ describe('[TextInput]', () => {
 
     it('Should check if input text has required property', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text" required />
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
@@ -57,14 +57,14 @@ describe('[TextInput]', () => {
 
     it('Should check if input text has disabled property', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;
 
         $(document.body).html(fieldset);
 
-        input = new TextComponent('.container');
+        input = new TextComponent('.component');
         input.disable();
         expect(input.disabled).toBeTruthy();
         input.enable();
@@ -74,7 +74,7 @@ describe('[TextInput]', () => {
     describe('[validState]', () => {
         it('Should get input text value is not valid', () => {
             const fieldset = `
-                <fieldset class="text-input-container container">           
+                <fieldset class="text-input-container component">           
                     <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                     <input class="input-box" id="Email" name="email">
                 </fieldset>`;
@@ -89,7 +89,7 @@ describe('[TextInput]', () => {
 
         it('Should get input text value is valid', () => {
             const fieldset = `
-                <fieldset class="text-input-container container">           
+                <fieldset class="text-input-container component">           
                     <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                     <input class="input-box" id="Email" name="email">
                 </fieldset>`;
@@ -104,7 +104,7 @@ describe('[TextInput]', () => {
 
         it('Should get input text value is valid', () => {
             const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email">
             </fieldset>`;

@@ -175,7 +175,7 @@ describe('[PasswordComponent]', () => {
         it('Should disable fieldset group and keep its state', () => {
             const div = `
                 <div id="pass">
-                    <fieldset class="container">
+                    <fieldset class="component">
                         <input id="input-password" type="password">
                         <i id="icon" class="fa-solid fa-eye-slash"></i>
                     </fieldset>
@@ -187,7 +187,7 @@ describe('[PasswordComponent]', () => {
             const password = new PasswordInput('#pass');
             password.disable();
 
-            const inputDisabled = $('.container').prop('disabled');
+            const inputDisabled = $('.component').prop('disabled');
 
             expect(inputDisabled).toBeTruthy();
             expect(password.disabled).toBeTruthy();
@@ -196,7 +196,7 @@ describe('[PasswordComponent]', () => {
         it('Should enable fieldset group and keep its state', () => {
             const div = `
             <div id="pass">
-                <fieldset class="container">
+                <fieldset class="component">
                     <input id="input-password" type="password" disabled>
                     <i id="icon" class="fa-solid fa-eye-slash"></i>
                 </fieldset>
@@ -208,7 +208,7 @@ describe('[PasswordComponent]', () => {
             const password = new PasswordInput('#pass');
             password.enable();
 
-            const inputDisabled = $('.container').prop('disabled');
+            const inputDisabled = $('.component').prop('disabled');
 
             expect(inputDisabled).toBeFalsy();
             expect(password.disabled).toBeFalsy();

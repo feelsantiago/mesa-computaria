@@ -13,14 +13,14 @@ describe('[main]', () => {
         </div>
 
         <div class="row-checkbox" id="checkboxTest">
-            <fieldset class="checkbox-container container">
+            <fieldset class="checkbox-container component">
                 <input type="checkbox" class="checkbox" />
                 <p class="checkbox-label"></p>
             </fieldset>
         </div>
         
         <div class="row-dropdown-input" id="dropdownTest">
-            <fieldset class="dropdown-container container">
+            <fieldset class="dropdown-container component">
             <button type="button" class="dropdown dropdown-btn" id="btn"></button>
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>

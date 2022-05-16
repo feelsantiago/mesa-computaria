@@ -9,7 +9,7 @@ describe('[DropdownComponent]', () => {
     beforeEach(() => {
         const html = $.parseHTML(`
         <div class="row-dropdown-input" id="test">
-            <fieldset class="dropdown-container container">
+            <fieldset class="dropdown-container component">
             <button type="button" class="dropdown dropdown-btn" id="btn"></button>
                 <div class="dropdown dropdown-list" id="list" style="display: block;">
                     <ul>

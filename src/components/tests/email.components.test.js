@@ -7,7 +7,7 @@ describe('[Email input tests]', () => {
 
     it('Should get input value for type email', () => {
         const fieldset = `
-        <fieldset class="text-input-container container">           
+        <fieldset class="text-input-container component">           
             <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
             <input class="input-box" id="Email" name="email" type="email" >
         </fieldset>`;
@@ -22,7 +22,7 @@ describe('[Email input tests]', () => {
 
     it('Should set required property in email input', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" required>
             </fieldset>`;
@@ -39,28 +39,28 @@ describe('[Email input tests]', () => {
 
     it('Should check if input-email has required property', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" required>
             </fieldset>`;
 
         $(document.body).html(fieldset);
 
-        input = new EmailComponent('.container');
+        input = new EmailComponent('.component');
         const inputTextProperty = $('#Email').prop('required');
         expect(inputTextProperty).toBeTruthy();
     });
 
     it('Should check if input email has disabled property', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" disabled>
             </fieldset>`;
 
         $(document.body).html(fieldset);
 
-        input = new EmailComponent('.container');
+        input = new EmailComponent('.component');
         input.disable();
         expect(input.disabled).toBeTruthy();
         input.enable();
@@ -69,7 +69,7 @@ describe('[Email input tests]', () => {
 
     it('Should check if input email no has disabled property', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">          
+            <fieldset class="text-input-container component">          
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
             </fieldset>`;
@@ -82,7 +82,7 @@ describe('[Email input tests]', () => {
 
     it('Should check if input email no has disabled property', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
             </fieldset>`;
@@ -96,7 +96,7 @@ describe('[Email input tests]', () => {
 
     it('Should check if input email is valid', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
             </fieldset>`;
@@ -110,7 +110,7 @@ describe('[Email input tests]', () => {
 
     it('Should check if textValid email is true', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">           
+            <fieldset class="text-input-container component">           
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
             </fieldset>`;
@@ -141,7 +141,7 @@ describe('[Email input tests]', () => {
 
     it('Should check if input email is not valid and prints the error message', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">         
+            <fieldset class="text-input-container component">         
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
             </fieldset>`;
@@ -157,7 +157,7 @@ describe('[Email input tests]', () => {
 
     it('Should check if input email is not valid and prints the error message', () => {
         const fieldset = `
-            <fieldset class="text-input-container container">          
+            <fieldset class="text-input-container component">          
                 <input class="input-box" id="Text-input-box" type="text" placeholder="First name"  name="text"/>
                 <input class="input-box" id="Email" name="email" type="email" >
             </fieldset>`;
