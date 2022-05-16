@@ -20,7 +20,7 @@ describe('[TextInput]', () => {
             input = new TextComponent('.text-input-container');
             input.setValue('Abcdieop');
 
-            expect(input._container.val()).toEqual('Abcdieop');
+            expect(input._component.val()).toEqual('Abcdieop');
         });
     });
 

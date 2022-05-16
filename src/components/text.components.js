@@ -6,24 +6,24 @@ export default class TextComponent extends Component {
         super(disabled, required);
         this._stringQuery = stringQuery;
 
-        this._container = $(`${stringQuery} input[type="text"]`);
+        this._component = $(`${stringQuery} input[type="text"]`);
         this.valid = valid;
         this.value = '';
     }
 
     setRequired(boolean) {
-        this._container.prop('required', boolean);
+        this._component.prop('required', boolean);
         this.required = boolean;
     }
 
     setValue(string) {
-        this._container.val(string);
-        this.value = this._container.val();
+        this._component.val(string);
+        this.value = this._component.val();
         this.valid = this.validate();
     }
 
     validate() {
-        this.valid = !(this._container.val() === '');
+        this.valid = !(this._component.val() === '');
         return this.valid;
     }
 }
