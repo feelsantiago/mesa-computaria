@@ -7,6 +7,7 @@ import DropdownComponent from '../../components/dropdown.component';
 
 import './style.scss';
 import page from './index.html?raw';
+import DateInput from '../../components/date.component';
 
 export function instantiateTextComponent(stringID) {
     const textInput = new TextComponent(stringID);
@@ -33,7 +34,13 @@ export function instantiateDropdown(stringID, stringPlaceholder) {
     return dropdown;
 }
 
+export function instantiateDateInput(stringID) {
+    const date = new DateInput(stringID);
+    return date;
+}
+
 LayoutProviderService.inject(page, () => {
+    instantiateDateInput('#date');
     instantiatePassword('#password');
     instantiateCheckbox('#remember', 'lembre-se');
     instantiateDropdown('#games', 'Game Type');
