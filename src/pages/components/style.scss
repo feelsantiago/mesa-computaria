@@ -2,11 +2,10 @@
 @import '@/assets/scss/buttons.scss';
 @import '@/assets/scss/input-password.scss';
 @import '@/assets/scss/input-date.scss';
+@import '@/assets/scss/input-box.scss';
 
 // Import Components Scss
 @import '@/assets/scss/dropdown.scss';
-
-@import '@/assets/scss/input-box.scss';
 @import '@/assets/scss/checkbox.scss';
 
 // page scss
@@ -14,6 +13,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.row-password-input, .row-date-input, .row-text-input {
+    background-color: $primary-dark;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .row-dropdown-input {
@@ -28,13 +34,6 @@
     }
 }
 
-.row-password-input, .row-date-input {
-    background-color: $primary-dark;
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 .row-checkbox {
     margin: 0;
     padding: 0;
@@ -46,21 +45,6 @@
     }
 }
 
-.container-text-input-box {
-    min-width: 200px;
-    margin: 20px;
-    margin-bottom: 20px;
-    background-color: $primary-light;
-    color: $other-light;
-}
-
-.text-input-box {
-    & p,h3 {
-        margin-left: 10px;
-        margin-top: 10px;
-    }
-}
-
 .container-checkbox-component {
     min-width: 200px;
     margin: 20px;
@@ -68,4 +52,3 @@
     background-color: $primary-light;
     color: $other-light;
 }
-

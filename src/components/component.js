@@ -5,18 +5,18 @@ export default class Component {
         this.query = query;
         this.required = required;
         this.disabled = false;
-        this._container = $(`${query} .container`);
+        this._component = $(`${query} .component`);
     }
 
     disable() {
-        this._container.css('pointer-events', 'none');
-        this._container.prop('disabled', true);
-        this.disabled = this._container.is(':disabled');
+        this._component.css('pointer-events', 'none');
+        this._component.prop('disabled', true);
+        this.disabled = this._component.is(':disabled');
     }
 
     enable() {
-        this._container.css('pointer-events', 'auto');
-        this._container.prop('disabled', false);
-        this.disabled = this._container.is(':disabled');
+        this._component.css('pointer-events', 'auto');
+        this._component.prop('disabled', false);
+        this.disabled = this._component.is(':disabled');
     }
 }

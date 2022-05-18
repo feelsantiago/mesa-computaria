@@ -1,25 +1,17 @@
-.input-box {
-    appearance: none;
-    border-radius: 25px;
-    border: 2px solid $accent-light;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.185);
-    padding: 20px;
-    width: 80%;
-    min-width: 30%;
-    margin: 5px;
-    height: 15px;
-    transition: 0.3s box-shadow;
-    background-color: $primary-light;
-    color: $other-light;
-    outline: none;
-    margin-bottom: 20px;
-}
+@import './style.scss';
 
-.input-box::placeholder {
-    color: $other-dark;
-}
+@import './home-layout.scss';
 
-.input-box:focus {
-    background-color: $primary-light;
-    border: 2px solid $accent-light;
+@import './components.scss';
+
+.text-input {
+    margin: 6px;
+    
+    & .input-box {
+        padding-left: 25px;
+    }
+
+    & .standard-label {
+        margin-left: 18px;
+    }
 }

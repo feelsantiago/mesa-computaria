@@ -9,7 +9,7 @@ describe('[CheckBoxComponent]', () => {
     beforeEach(() => {
         const html = $.parseHTML(`
         <div class="row-checkbox" id="test">
-            <fieldset class="checkbox-container container">
+            <fieldset class="checkbox-container component">
                 <input type="checkbox" class="checkbox" />
                 <p class="checkbox-label"></p>
             </fieldset>
